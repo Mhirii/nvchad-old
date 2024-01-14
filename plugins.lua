@@ -114,6 +114,28 @@ local plugins = {
     event = "LspAttach",
   },
 
+  {
+    "pmizio/typescript-tools.nvim",
+    ft = {
+      "javascript",
+      "typescript",
+      "javascriptreact",
+      "typescriptreact",
+    },
+    config = function()
+      require "custom.configs.ts"
+    end,
+  },
+
+  {
+    "dmmulroy/tsc.nvim",
+    cmd = { "TSC" },
+    opts = {
+      auto_open_qflist = true,
+      spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
+    },
+  },
+
   --          ╭─────────────────────────────────────────────────────────╮
   --          │                           UI                            │
   --          ╰─────────────────────────────────────────────────────────╯
@@ -181,11 +203,8 @@ local plugins = {
   },
 
   {
-    "gelguy/wilder.nvim",
-    config = function()
-      local wilder = require "wilder"
-      wilder.setup { modes = { ":", "/", "?" } }
-    end,
+    "Fildo7525/pretty_hover",
+    opts = {},
   },
 
   { -- Lsp lens Show References, Definitions etc. as virtual text
@@ -368,26 +387,6 @@ local plugins = {
     end,
   },
 
-  {
-    "ckolkey/ts-node-action", --FIXME
-    dependencies = { "nvim-treesitter" },
-    keys = {
-      {
-        "<leader>cs",
-        function()
-          require("ts-node-action").node_action()
-        end,
-        mode = "n",
-        desc = "Treesitter Code Action", -- Actually Node but...
-      },
-    },
-    config = function(_, opts)
-      -- Repo says it is not required if not using custom actions
-      require("ts-node-action").setup(opts)
-    end,
-    opts = require("custom.configs.ts").opts,
-  },
-
   { -- Built-in cheats
     -- AWESOME
     "sudormrfbin/cheatsheet.nvim",
@@ -508,12 +507,6 @@ local plugins = {
 
   {
     "alexghergh/nvim-tmux-navigation",
-    enabled = function()
-      if vim.g.neovide then
-        return false
-      end
-      return true
-    end,
     event = "VeryLazy",
     opts = {
       keybindings = {
@@ -605,6 +598,45 @@ local plugins = {
     config = function(_, opts)
       require("project_nvim").setup(opts)
     end,
+  },
+
+  {
+    "akinsho/toggleterm.nvim",
+    keys = { [[<C-\>]] },
+    cmd = { "ToggleTerm", "ToggleTermOpenAll", "ToggleTermCloseAll" },
+    opts = {
+      size = function(term)
+        if term.direction == "horizontal" then
+          return 0.25 * vim.api.nvim_win_get_height(0)
+        elseif term.direction == "vertical" then
+          return 0.25 * vim.api.nvim_win_get_width(0)
+        elseif term.direction == "float" then
+          return 85
+        end
+      end,
+      open_mapping = [[<C-\>]],
+      hide_numbers = true,
+      shade_terminals = false,
+      insert_mappings = true,
+      start_in_insert = true,
+      persist_size = true,
+      direction = "horizontal",
+      close_on_exit = true,
+      shell = vim.o.shell,
+      autochdir = true,
+      highlights = {
+        NormalFloat = {
+          link = "Normal",
+        },
+        FloatBorder = {
+          link = "FloatBorder",
+        },
+      },
+      float_opts = {
+        border = "rounded",
+        winblend = 0,
+      },
+    },
   },
 }
 

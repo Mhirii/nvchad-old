@@ -4,7 +4,6 @@ local M = {}
 local status = require("custom.utils").status
 local group_margin = "  "
 
-
 -- Path to overriding theme and highlights files
 local highlights = require "custom.highlights"
 
@@ -29,7 +28,6 @@ M.ui = {
     separator_style = "block",
 
     overriden_modules = function(modules)
-
       table.insert(
         modules,
         8,
@@ -44,11 +42,10 @@ M.ui = {
         8,
         (function()
           local hl = "%#StKernel#"
-          local icon = " " --         
-          return hl .. icon--[[  .. " " ]]
+          local icon = " " --        
+          return hl .. icon --[[  .. " " ]]
         end)()
       )
-
 
       table.insert(
         modules,
@@ -64,7 +61,6 @@ M.ui = {
           return icon
         end)()
       )
-
 
       table.insert(
         modules,
@@ -104,8 +100,7 @@ M.ui = {
           return icon
         end)()
       )
-
-    end
+    end,
   },
 
   nvdash = {
@@ -181,5 +176,9 @@ M.plugins = "custom.plugins"
 
 -- check core.mappings for table structure
 M.mappings = require "custom.mappings"
+
+if vim.g.neovide then
+  require "custom.neovide"
+end
 
 return M
