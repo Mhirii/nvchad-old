@@ -12,6 +12,16 @@ M.general = {
       end,
       "formatting",
     },
+
+    ["<C-d>"] = { "<C-d>zz", " Scroll down", opts = { silent = true } },
+    ["<C-u>"] = { "<C-u>zz", " Scroll up", opts = { silent = true } },
+
+    ["<leader>tr"] = {
+      function()
+        require("base46").toggle_transparency()
+      end,
+      "󰂵 Toggle transparency",
+    },
   },
   v = {
     [">"] = { ">gv", "indent" },
@@ -242,6 +252,13 @@ M.tabufline = {
       end,
       "Goto prev buffer",
     },
+  },
+}
+
+M.window = {
+  n = {
+    ["<leader>|"] = { "<CMD>vs <CR>", "󰤼 Vertical split", opts = { nowait = true } },
+    ["<leader>-"] = { "<CMD>sp <CR>", "󰤻 Horizontal split", opts = { nowait = true } },
   },
 }
 
