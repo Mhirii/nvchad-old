@@ -110,13 +110,8 @@ local plugins = {
   },
 
   {
-    "roobert/tailwindcss-colorizer-cmp.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("tailwindcss-colorizer-cmp").setup {
-        color_square_width = 2,
-      }
-    end,
+    "aznhe21/actions-preview.nvim",
+    event = "LspAttach",
   },
 
   --          ╭─────────────────────────────────────────────────────────╮
@@ -138,6 +133,7 @@ local plugins = {
       return require "custom.configs.noice"
     end,
     dependencies = {
+      "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
     },
     enabled = false,
