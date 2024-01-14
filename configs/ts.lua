@@ -1,117 +1,100 @@
+local baseDefinitionHandler = vim.lsp.handlers["textDocument/definition"]
 
-local M = {}
-
---- Debug Node
----@param node TSNode
-local function D(node)
-  print(vim.inspect(getmetatable(node)))
-end
-
---- Node to String
----@param node TSNode
----@return string
-local function S(node)
-  return require("ts-node-action.helpers").node_text(node)
-end
-
---- Prints the node
----@param node node TSNode
-local function print_node(node)
-  vim.print(S(node))
-end
-
-local function CCat(text_buf)
-  -- if type is table:
-  if type(text_buf) == "table" then
-    return table.concat(text_buf, "\n")
+local filter = function(arr, fn)
+  if type(arr) ~= "table" then
+    return arr
   end
-  return text_buf
-end
 
--- fn abc = -> { blah blah } <-
----@param node TSNode
----@return string
-local function till_first_brace(node)
-  local text = CCat(S(node))
-  local first_brace = string.find(text, "{")
-  local till_curly = string.sub(text, 1, first_brace - 1)
-  local trimmed = string.gsub(till_curly, "%s*$", "")
-  return trimmed
-end
-
-local function cpp_extract_block(node)
-  local node_type_parent = "function_definition"
-  -- If we are on a type of a function, we need to go up one level
-  -- recurse
-  local type = S(node)
-  vim.print(type)
-  while node:type() ~= node_type_parent do
-    -- NOTE: node is not a function
-    node = node:parent()
-    if node == nil then
-      vim.print("No parent function found")
-      return
+  local filtered = {}
+  for k, v in pairs(arr) do
+    if fn(v, k, arr) then
+      table.insert(filtered, v)
     end
   end
 
-  if node:type() == node_type_parent then
-    local replacement = {}
+  return filtered
+end
 
-    table.insert(replacement, till_first_brace(node) .. ";")
-    -- a table line represents a \n
-    table.insert(replacement, type)
-    return replacement
+local filterReactDTS = function(value)
+  if value.uri then
+    return string.match(value.uri, "%.d.ts") == nil
+  elseif value.targetUri then
+    return string.match(value.targetUri, "%.d.ts") == nil
   end
-  local signature = till_first_brace(node)
-  return signature .. ";"
 end
 
-local function rust_extract_braced(node)
-  D(node)
-  local signature = till_first_brace(node)
-  return signature .. ";"
-end
+local handlers = {
+  ["textDocument/definition"] = function(err, result, method, ...)
+    if vim.tbl_islist(result) and #result > 1 then
+      local filtered_result = filter(result, filterReactDTS)
+      return baseDefinitionHandler(err, filtered_result, method, ...)
+    end
 
--- TODO: Add ts-node-action.actions to actions
-M.lang = {}
-M.lang.rust = function()
-  return {
-    ["block"] = { { rust_extract_braced, name = "Extract" } },
-    ["function_item"] = { { rust_extract_braced, name = "Extract Function" } },
-  }
-end
-
-M.lang.cpp = function()
-  return {
-    ["compound_statement"] = { { cpp_extract_block, name = "Extract" } },
-    ["function_definition"] = { { cpp_extract_block, name = "Extract Function" } },
-    ["type_identifier"] = { { cpp_extract_block, name = "Extract Function" } },
-    ["primitive_type"] = { { cpp_extract_block, name = "Extract Function" } },
-    ["auto"] = { { cpp_extract_block, name = "Extract Function" } },
-    ["namespace_identifier"] = { { cpp_extract_block, name = "Extract Function" } },
-  }
-end
-
-M.opts = {
-
-  cpp = M.lang.cpp(),
-  rust = M.lang.rust(),
-
-  -- ["*"] = { -- Global table is checked for all langs
-  --   ["node_type"] = fn,
-  --   ...,
-  -- },
-  -- lang = {
-  --   ["node_type"] = fn,
-  --   ...,
-  -- },
-  -- ...,
+    baseDefinitionHandler(err, result, method, ...)
+  end,
+  ["textDocument/foldingRange"] = function(err, result, ctx, config)
+    if not err and result then
+      for _, r in pairs(result) do
+        if r.startLine == r.endLine then
+          r.kind = "region"
+        end
+      end
+    end
+    vim.lsp.handlers["textDocument/foldingRange"](err, result, ctx, config)
+  end,
 }
 
--- NOTE: To Debug the tsnode:
--- print(vim.inspect(getmetatable(node)))
+require("typescript-tools").setup {
+  on_attach = on_attach,
+  handlers = handlers,
 
--- NOTE: To Debug the text:
--- vim.print(text)
-
-return M
+  settings = {
+    separate_diagnostic_server = true,
+    expose_as_code_action = { "fix_all", "add_missing_imports", "remove_unused" },
+    tsserver_file_preferences = {
+      includeCompletionsForModuleExports = true,
+      quotePreference = "auto",
+      includeCompletionsForImportStatements = true,
+      includeAutomaticOptionalChainCompletions = true,
+      includeCompletionsWithClassMemberSnippets = true,
+      includeCompletionsWithObjectLiteralMethodSnippets = true,
+      importModuleSpecifierPreference = "shortest",
+      includeInlayParameterNameHints = "all",
+      includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+      includeInlayFunctionParameterTypeHints = true,
+      includeInlayVariableTypeHints = true,
+      includeInlayPropertyDeclarationTypeHints = true,
+      includeInlayFunctionLikeReturnTypeHints = true,
+      includeInlayEnumMemberValueHints = true,
+    },
+    tsserver_format_options = {
+      allowIncompleteCompletions = true,
+      allowRenameOfImportPath = true,
+    },
+    tsserver_plugins = {
+      "@styled/typescript-styled-plugin",
+    },
+    typescript = {
+      inlayHints = {
+        includeInlayParameterNameHints = "all",
+        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+        includeInlayFunctionParameterTypeHints = true,
+        includeInlayVariableTypeHints = true,
+        includeInlayPropertyDeclarationTypeHints = true,
+        includeInlayFunctionLikeReturnTypeHints = true,
+        includeInlayEnumMemberValueHints = true,
+      },
+    },
+    javascript = {
+      inlayHints = {
+        includeInlayParameterNameHints = "all",
+        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+        includeInlayFunctionParameterTypeHints = true,
+        includeInlayVariableTypeHints = true,
+        includeInlayPropertyDeclarationTypeHints = true,
+        includeInlayFunctionLikeReturnTypeHints = true,
+        includeInlayEnumMemberValueHints = true,
+      },
+    },
+  },
+}
