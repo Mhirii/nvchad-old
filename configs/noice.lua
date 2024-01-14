@@ -1,196 +1,202 @@
-local config = function()
-  local noice = require "noice"
-  local spinners = require "noice.util.spinners"
-  spinners.spinners["mine"] = {
-    frames = {
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-    },
-    interval = 80,
-  }
-  noice.setup {
+local present, noice = pcall(require, "noice")
+
+if not present then
+  return
+end
+
+noice.setup {
+  cmdline = {
+    enabled = true,
+    view = "cmdline_popup",
     format = {
-      spinner = {
-        name = "mine",
-        hl = "Constant",
-      },
+      cmdline = { pattern = "^:", icon = "󰘳 ", lang = "vim" },
+      search_down = { kind = "search", pattern = "^/", icon = "󰩊 ", lang = "regex" },
+      search_up = { kind = "search", pattern = "^%?", icon = "󰩊 ", lang = "regex" },
+      filter = { pattern = "^:%s*!", icon = "󰻿 ", lang = "bash" },
+      lua = { pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" }, icon = "", lang = "lua" },
+      help = { pattern = "^:%s*he?l?p?%s+", icon = "󰞋 " },
     },
-    lsp = {
-      progress = {
-        enabled = false,
-        format = {
-          { "{data.progress.percentage} ", hl_group = "Comment" },
-          { "{spinner} ",                  hl_group = "NoiceLspProgressSpinner" },
-          { "{data.progress.title} ",      hl_group = "Comment" },
-        },
-        format_done = {},
-      },
-      hover = { enabled = false },
-      signature = { enabled = false, auto_open = { enabled = false } },
-      override = {
-        ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-        ["vim.lsp.util.stylize_markdown"] = false,
-        ["cmp.entry.get_documentation"] = true,
-      },
+  },
+  popupmenu = {
+    enabled = true,  -- enables the Noice popupmenu UI
+    backend = "nui", -- backend to use to show regular cmdline completions
+  },
+  -- routes = {
+  --   {
+  --     filter = {
+  --       event = "lsp",
+  --       any = {
+  --         { find = "formatting" },
+  --         { find = "Diagnosing" },
+  --         { find = "Diagnostics" },
+  --         { find = "diagnostics" },
+  --         { find = "code_action" },
+  --         { find = "Processing full semantic tokens" },
+  --         { find = "symbols" },
+  --         { find = "completion" },
+  --       },
+  --     },
+  --     opts = { skip = true },
+  --   },
+  --   {
+  --     filter = {
+  --       event = "notify",
+  --       any = {
+  --         -- Neo-tree
+  --         { find = "Toggling hidden files: true" },
+  --         { find = "Toggling hidden files: false" },
+  --         { find = "Operation canceled" },
+  --         { find = "^No code actions available$" },
+  --
+  --         -- Telescope
+  --         { find = "Nothing currently selected" },
+  --         { find = "^No information available$" },
+  --         { find = "Highlight group" },
+  --         { find = "no manual entry for" },
+  --         { find = "not have parser for" },
+  --
+  --         -- ts
+  --         { find = "_ts_parse_query" },
+  --       },
+  --     },
+  --     opts = { skip = true },
+  --   },
+  --   {
+  --     filter = {
+  --       event = "msg_show",
+  --       kind = "",
+  --       any = {
+  --
+  --         -- Edit
+  --         { find = "%d+ less lines" },
+  --         { find = "%d+ fewer lines" },
+  --         { find = "%d+ more lines" },
+  --         { find = "%d+ change;" },
+  --         { find = "%d+ line less;" },
+  --         { find = "%d+ more lines?;" },
+  --         { find = "%d+ fewer lines;?" },
+  --         { find = '".+" %d+L, %d+B' },
+  --         { find = "%d+ lines yanked" },
+  --         { find = "^Hunk %d+ of %d+$" },
+  --         { find = "%d+L, %d+B$" },
+  --
+  --         -- Save
+  --         { find = " bytes written" },
+  --
+  --         -- Redo/Undo
+  --         { find = " changes; before #" },
+  --         { find = " changes; after #" },
+  --         { find = "1 change; before #" },
+  --         { find = "1 change; after #" },
+  --
+  --         -- Yank
+  --         { find = " lines yanked" },
+  --
+  --         -- Move lines
+  --         { find = " lines moved" },
+  --         { find = " lines indented" },
+  --
+  --         -- Bulk edit
+  --         { find = " fewer lines" },
+  --         { find = " more lines" },
+  --         { find = "1 more line" },
+  --         { find = "1 line less" },
+  --
+  --         -- General messages
+  --         { find = "Already at newest change" },
+  --         { find = "Already at oldest change" },
+  --         { find = "E21: Cannot make changes, 'modifiable' is off" },
+  --       },
+  --     },
+  --     opts = { skip = true },
+  --   },
+  -- },
+  lsp = {
+    progress = {
+      enabled = false,
     },
-    cmdline = {
-      format = {
-        filter = { pattern = "^:%s*!", icon = " ", ft = "sh" },
-        IncRename = {
-          pattern = "^:%s*IncRename%s+",
-          icon = " ",
-          conceal = true,
-          opts = {
-            -- relative = "cursor",
-            -- size = { min_width = 20 },
-            -- position = { row = -3, col = 0 },
-            buf_options = { filetype = "text" },
-          },
-        },
+    signature = {
+      enabled = false,
+      auto_open = {
+        enabled = true,
+        trigger = true,
+        luasnip = true,
+        throttle = 50,
       },
-    },
-    views = {
-      cmdline_popup = {
-        border = {
-          style = "none",
-          padding = { 1, 2 },
+      view = nil, -- when nil, use defaults from documentation
+      ---@type NoiceViewOptions
+      opts = {
+        focusable = false,
+        size = {
+          max_height = 15,
+          max_width = 60,
         },
         win_options = {
-          winblend = 5,
-          winhighlight = {
-            Normal = "NormalFloat",
-            FloatBorder = "NoiceCmdlinePopupBorder",
-            IncSearch = "",
-            Search = "",
-          },
-          cursorline = false,
+          wrap = false,
         },
+      },
+    },
+    hover = {
+      enabled = false,
+      silent = true,
+    },
+    documentation = {
+      opts = {
+        border = {
+          padding = { 0, 0 },
+        },
+      },
+    },
+    -- override = {
+    --   -- override the default lsp markdown formatter with Noice
+    --   ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+    --   -- override the lsp markdown formatter with Noice
+    --   ["vim.lsp.util.stylize_markdown"] = true,
+    --   -- override cmp documentation with Noice (needs the other options to work)
+    --   ["cmp.entry.get_documentation"] = true,
+    -- },
+  },
+  ---@type NoiceConfigViews
+  views = {
+    cmdline_popup = {
+      position = {
+        row = 3,
+        col = "50%",
+      },
+      size = {
+        width = 60,
+        height = "auto",
       },
     },
     popupmenu = {
-      enabled = true,
-    },
-    messages = {
-      -- NOTE: If you enable messages, then the cmdline is enabled automatically.
-      -- This is a current Neovim limitation.
-      enabled = false,             -- enables the Noice messages UI
-      view = "notify",             -- default view for messages
-      view_error = "notify",       -- view for errors
-      view_warn = "notify",        -- view for warnings
-      view_history = "messages",   -- view for :messages
-      view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
-    },
-    notify = {
-      -- Noice can be used as `vim.notify` so you can route any notification like other messages
-      -- Notification messages have their level and other properties set.
-      -- event is always "notify" and kind can be any log level as a string
-      -- The default routes will forward notifications to nvim-notify
-      -- Benefit of using Noice for this is the routing and consistent history view
-      enabled = false,
-      view = "notify",
-    },
-    routes = {
-      {
-        view = "notify",
-        filter = { event = "msg_showmode" },
+      relative = "editor",
+      position = {
+        row = 8,
+        col = "50%",
       },
-      {
-        filter = {
-          event = "msg_show",
-          find = "%d+L, %d+B",
-        },
-        view = "mini",
+      size = {
+        width = 30,
+        height = 10,
       },
-      {
-        view = "cmdline_output",
-        filter = { cmdline = "^:", min_height = 5 },
-        -- BUG: will be fixed after https://github.com/neovim/neovim/issues/21044 gets merged
+      border = {
+        style = "rounded",
+        padding = { 0, 1 },
       },
-      {
-        filter = { event = "msg_show", kind = "search_count" },
-        opts = { skip = true },
-      },
-      {
-        filter = {
-          event = "msg_show",
-          find = "; before #",
-        },
-        opts = { skip = true },
-      },
-      {
-        filter = {
-          event = "msg_show",
-          find = "; after #",
-        },
-        opts = { skip = true },
-      },
-      {
-        filter = {
-          event = "msg_show",
-          find = " lines, ",
-        },
-        opts = { skip = true },
-      },
-      {
-        filter = {
-          event = "msg_show",
-          find = "go up one level",
-        },
-        opts = { skip = true },
-      },
-      {
-        filter = {
-          event = "msg_show",
-          find = "yanked",
-        },
-        opts = { skip = true },
-      },
-      {
-        filter = { find = "No active Snippet" },
-        opts = { skip = true },
-      },
-      {
-        filter = { find = "waiting for cargo metadata" },
-        opts = { skip = true },
+      win_options = {
+        winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
       },
     },
+    mini = {
+      zindex = 100,
+      win_options = { winblend = 0 },
+    },
+  },
+  presets = {
+    bottom_search = false,
+    command_palette = false,
+    lsp_doc_border = false,
+    inc_rename = true,
+  },
+}
 
-    presets = {
-      -- you can enable a preset by setting it to true, or a table that will override the preset config
-      -- you can also add custom presets that you can enable/disable with enabled=true
-      bottom_search = false,        -- use a classic bottom cmdline for search
-      command_palette = true,       -- position the cmdline and popupmenu together
-      long_message_to_split = true, -- long messages will be sent to a split
-      inc_rename = true,            -- enables an input dialog for inc-rename.nvim
-      lsp_doc_border = true,        -- add a border to hover docs and signature help
-    },
-  }
-end
-
-return config
+-- dofile(vim.g.base46_cache .. "notify")
