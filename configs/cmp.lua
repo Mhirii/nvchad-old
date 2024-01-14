@@ -24,6 +24,16 @@ M.dependencies = {
   },
 
   {
+    "roobert/tailwindcss-colorizer-cmp.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("tailwindcss-colorizer-cmp").setup {
+        color_square_width = 2,
+      }
+    end,
+  },
+
+  {
     -- snippet plugin
     "L3MON4D3/LuaSnip",
     dependencies = "rafamadriz/friendly-snippets",
@@ -86,6 +96,9 @@ M.dependencies = {
   "hrsh7th/cmp-buffer",
   "hrsh7th/cmp-path",
   "ray-x/lsp_signature.nvim", -- lsp signature help when typing
+  "ray-x/cmp-treesitter",
+  "delphinus/cmp-ctags",
+  "hrsh7th/cmp-nvim-lsp-document-symbol",
 } -- END NV-CMP DEPENDENCIES
 
 -- ALL OPTS GET MERGED WITH DEFAULTS IN LAZY.nvim
