@@ -76,9 +76,10 @@ local plugins = {
   --}
 
   -- ── Lsp ─────────────────────────────────────────────────────────{
-  { import = "custom.configs.context-vt",      enabled = true,              desc = " very useful in nested code" },
-  { import = "custom.configs.actions-preview", enabled = true,              desc = " leader c p" },
+  { import = "custom.configs.context-vt",      enabled = ui.context,        desc = " useful in nested code" },
+  { import = "custom.configs.actions-preview", enabled = ui.code_actions,   desc = " leader c p" },
   { import = "custom.configs.aerial",          enabled = true,              desc = " Navigate your buffer seamlessly" },
+  { import = "custom.configs.refactoring",     enabled = true,              desc = " Refactoring" },
   --}
 
   -- ── Lang ────────────────────────────────────────────────────────{

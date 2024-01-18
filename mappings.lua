@@ -184,17 +184,29 @@ M.mason = {
   },
 }
 
+local function code_action()
+  local settings = require "custom.settings"
+  if settings.ui.code_actions then
+    require("actions-preview").code_actions()
+  else
+    vim.lsp.buf.code_action()
+  end
+end
+
 M.code = {
   v = {
     ["<leader>ca"] = {
-      function()
-        vim.lsp.buf.code_action()
-      end,
-      "LSP Code Action",
+      code_action,
+      "Code Action",
     },
   },
 
   n = {
+
+    ["<leader>ca"] = {
+      code_action,
+      "Code Action",
+    },
 
     ["<leader>cq"] = {
       "<CMD>TroubleToggle quickfix<CR>",
@@ -304,6 +316,9 @@ M.disabled = {
     -- Telescope
     ["<leader>fh"] = "",
     ["<leader>fz"] = "",
+
+    -- lspconfig
+    ["<leader>ca"] = "",
 
     -- Buffer
     ["<leader>b"] = "",
