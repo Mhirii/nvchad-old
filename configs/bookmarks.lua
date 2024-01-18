@@ -30,7 +30,7 @@ return {
       border_style = "single", -- border style: "single", "double", "rounded"
       hl = {
         border = "TelescopeBorder", -- border highlight
-        cursorline = "guibg=black guifg=White", -- cursorline highlight
+        cursorline = "guibg=#1F2336 guifg=White", -- cursorline highlight
       },
     }
     require("telescope").load_extension "bookmarks"

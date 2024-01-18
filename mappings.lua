@@ -126,15 +126,15 @@ M.telescope = {
     ["<leader>fc"] = { ":Telescope builtin<CR>", "Find Editor Command" },
     ["<leader>fr"] = { "<cmd> Telescope oldfiles<CR>", "Recent Files" },
     ["<leader>/"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
-    ["<leader><leader>"] = { "<cmd> Telescope find_files <CR>", "Find files" },
+    ["<leader>fl"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", "Find in current buffer" },
     ["<leader>fm"] = { "<cmd> Telescope marks <CR>", "telescope bookmarks" },
     ["<leader>fp"] = { "<cmd> Telescope projects <CR>", "telescope projects" },
-    ["<leader>fl"] = { "<cmd>Telescope harpoon marks<cr>", "Telescope Harpoon Marks" },
+    ["<leader>fh"] = { "<cmd>Telescope harpoon marks<cr>", "Telescope Harpoon Marks" },
     ["<leader>fz"] = { "<CMD>Telescope zoxide list<CR>", "Find in current buffer" },
   },
 }
 
-M.harpoon = {
+M.marks = {
   n = {
     ["<leader>hr"] = {
       function()
@@ -143,13 +143,25 @@ M.harpoon = {
       end,
       "Harpoon toggle menu",
     },
-
     ["<leader>mh"] = {
       function()
         local harpoon = require "harpoon"
         harpoon:list():append()
       end,
       "Harpoon Add File",
+    },
+
+    ["<leader>mb"] = {
+      function()
+        require("bookmarks").add_bookmarks()
+      end,
+      "Add Bookmark",
+    },
+    ["<leader>mt"] = {
+      function()
+        require("bookmarks").toggle_bookmarks()
+      end,
+      "Toggle Bookmarks",
     },
   },
 }
