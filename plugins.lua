@@ -114,6 +114,7 @@ local plugins = {
   { import = "custom.configs.hop",             enabled = true },
   { import = "custom.configs.better-escape",   enabled = true },
   { import = "custom.configs.marks",           enabled = true },
+  { import = "custom.configs.bookmarks",       enabled = true },
   { import = "custom.configs.harpoon",         enabled = true },
   { import = "custom.configs.mini",            enabled = true },
 
