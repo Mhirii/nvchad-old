@@ -1,4 +1,5 @@
-local status = require("custom.utils").status
+local utils = require "custom.utils"
+local status = utils.status
 local group_margin = "  "
 
 -- Path to overriding theme and highlights files
@@ -34,15 +35,15 @@ return {
         end)()
       )
 
-      table.insert(
-        modules,
-        8,
-        (function()
-          local hl = "%#StKernel#"
-          local icon = " " --        
-          return hl .. icon --[[  .. " " ]]
-        end)()
-      )
+      -- table.insert(
+      --   modules,
+      --   8,
+      --   (function()
+      --     local hl = "%#StKernel#"
+      --     local icon = " " --        
+      --     return hl .. icon --[[  .. " " ]]
+      --   end)()
+      -- )
 
       table.insert(
         modules,
@@ -51,7 +52,7 @@ return {
           local hl = "%#StCodeium#"
           local icon = "" -- 󱜙  󰘦
 
-          if status.codeium then
+          if utils.cmp_source "codeium" then
             icon = hl .. "󱜙" .. group_margin
           end
 
@@ -71,32 +72,6 @@ return {
           return icon
         end)()
       )
-
-      table.insert(
-        modules,
-        8,
-        (function()
-          local hl = "%#StGit#"
-          local icon = ""
-          if status.git then
-            icon = hl .. "" .. group_margin
-          end
-          return icon
-        end)()
-      )
-
-      table.insert(
-        modules,
-        8,
-        (function()
-          local hl = "%#StGithub#"
-          local icon = ""
-          if status.github then
-            icon = hl .. "" .. group_margin
-          end
-          return icon
-        end)()
-      )
     end,
   },
 
@@ -105,22 +80,11 @@ return {
 
     buttons = {
       {
-        "  New Project",
-        "Spc n n",
-        "ProjectNew",
-      },
-      {
         "󰁯  Restore Session",
         "Spc q l",
         function()
           require("persistence").load { last = true }
         end,
-      },
-      {
-        "  File Manager",
-        "Spc .",
-        "Telescope file_browser path=%:p:h select_buffer=true",
-        -- FIXME cmd doesn't work with lazy loading!
       },
       {
         "  Find File",

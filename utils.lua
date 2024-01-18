@@ -1,4 +1,3 @@
-
 local M = {}
 
 --- Plugin Status
@@ -14,5 +13,25 @@ M.extern = function(cmd, opts)
 end
 
 HOME = os.getenv "HOME"
+
+function M.cmp_source(name)
+  local started = false
+  if not package.loaded["cmp"] then
+    return
+  end
+  for _, s in ipairs(require("cmp").core.sources) do
+    if s.name == name then
+      if s.source:is_available() then
+        started = true
+      else
+        return started and "error" or nil
+      end
+      if s.status == s.SourceStatus.FETCHING then
+        return "pending"
+      end
+      return true
+    end
+  end
+end
 
 return M
