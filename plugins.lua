@@ -28,6 +28,7 @@ local plugins = {
   --}
 
   -- ── Lsp ─────────────────────────────────────────────────────────{
+  { import = "custom.configs.lsp-zero",        enabled = false },
   { import = "custom.configs.context-vt",      enabled = ui.context,        desc = " useful in nested code" },
   { import = "custom.configs.actions-preview", enabled = ui.code_actions,   desc = " leader c p" },
   { import = "custom.configs.aerial",          enabled = true,              desc = " Buffer Navigation" },
@@ -45,6 +46,8 @@ local plugins = {
 
   -- ── Ui ──────────────────────────────────────────────────────────{
   { import = "custom.configs.dressing",        enabled = true,              desc = " UI" },
+  { import = "custom.configs.fidget",          enabled = false,             desc = " UI" },
+  { import = "custom.configs.noice",           enabled = true,              desc = " UI" },
   { import = "custom.configs.trouble",         enabled = true,              desc = " Diagnostics and more" },
   { import = "custom.configs.lsp-lens",        enabled = true,              desc = " Helpful lens" },
   { import = "custom.configs.modicator",       enabled = true,              desc = " change line color based on mode" },

@@ -30,25 +30,25 @@ M.general = {
 
 M.multiplexer = {
   n = {
-    ["<C-h>"] = {
+    ["<M-C-h>"] = {
       function()
         require("smart-splits").move_cursor_left()
       end,
       "move cursor left",
     },
-    ["<C-j>"] = {
+    ["<M-C-j>"] = {
       function()
         require("smart-splits").move_cursor_down()
       end,
       "move cursor down",
     },
-    ["<C-k>"] = {
+    ["<M-C-k>"] = {
       function()
         require("smart-splits").move_cursor_up()
       end,
       "move cursor up",
     },
-    ["<C-l>"] = {
+    ["<M-C-l>"] = {
       function()
         require("smart-splits").move_cursor_right()
       end,
