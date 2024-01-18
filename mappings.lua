@@ -123,7 +123,6 @@ M.config = {
 M.telescope = {
   n = {
 
-    ["<leader>th"] = { "<cmd> Telescope themes <CR>", "󰸌 Nvchad themes" },
     ["<leader>fc"] = { ":Telescope builtin<CR>", "Find Editor Command" },
     ["<leader>fr"] = { "<cmd> Telescope oldfiles<CR>", "Recent Files" },
     ["<leader>/"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
@@ -221,8 +220,17 @@ M.dashboard = {
 
 M.toggle = {
   n = {
-    ["<leader>un"] = { "<cmd> set nu! <CR>", "Toggle line number" },
-    ["<leader>ur"] = { "<cmd> set rnu! <CR>", "Toggle relative number" },
+    ["<leader>tnl"] = { "<cmd> set nu! <CR>", "Toggle line number" },
+    ["<leader>tnr"] = { "<cmd> set rnu! <CR>", "Toggle relative number" },
+
+    ["<leader>td"] = {
+      function()
+        require("gitsigns").toggle_deleted()
+      end,
+      " Toggle deleted",
+    },
+
+    ["<leader>th"] = { "<cmd> Telescope themes <CR>", "󰸌 Nvchad themes" },
   },
 }
 
