@@ -3,7 +3,9 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
+    "nvim-telescope/telescope.nvim",
   },
+  cmd = { "Refactor" },
   config = function()
     require("refactoring").setup {
       prompt_func_return_type = {
@@ -31,5 +33,6 @@ return {
       show_success_message = false, -- shows a message with information about the refactor on success
       -- i.e. [Refactor] Inlined 3 variable occurrences
     }
+    require("telescope").load_extension "refactoring"
   end,
 }

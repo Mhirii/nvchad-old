@@ -22,8 +22,10 @@ M.prefixes = function()
       nt    = { name = "󱘎 TreeSitter" },
       o     = { name = " Open" },
       q     = { name = "󰗼 Quit" },
-      s     = { name = " LSP" },
+      r     = { name = " Refactor" },
+      s     = { name = " LSP" }, -- TODO: this should be Search
       t     = { name = " Toggle" },
+      tn    = { name = " Line number" },
       u     = { name = "󰚰 Update" },
       w     = { name = " Workspace" },
       z     = { name = "󰇘 Extras" },

@@ -49,6 +49,36 @@ M.resize = {
   },
 }
 
+M.refactor = {
+  n = {
+    ["<leader>re"] = { ":Refactor extract<CR>", "Extract" },
+    ["<leader>rE"] = { ":Refactor extract_to_file<CR>", "Extract to file" },
+    ["<leader>rv"] = { ":Refactor extract_var<CR>", "Extract Variable" },
+    ["<leader>ri"] = { ":Refactor inline_var<CR>", "Extract inline variable" },
+    ["<leader>rI"] = { ":Refactor inline_func<CR>", "Extract function" },
+    ["<leader>rb"] = { ":Refactor extract_block<CR>", "Extract block" },
+    ["<leader>rB"] = { ":Refactor extract_block_to_file<CR>", "Extract block to file" },
+    ["<leader>rf"] = {
+      function()
+        require("telescope").extensions.refactoring.refactors()
+      end,
+      "Select Refactor",
+    },
+  },
+  v = {
+    ["<leader>re"] = { ":Refactor extract<CR>", "Extract" },
+    ["<leader>rE"] = { ":Refactor extract_to_file<CR>", "Extract to file" },
+    ["<leader>rv"] = { ":Refactor extract_var<CR>", "Extract Variable" },
+    ["<leader>ri"] = { ":Refactor inline_var<CR>", "Extract inline variable" },
+    ["<leader>rf"] = {
+      function()
+        require("telescope").extensions.refactoring.refactors()
+      end,
+      "Select Refactor",
+    },
+  },
+}
+
 local toggled = false
 M.buffer = {
   n = {
@@ -347,6 +377,9 @@ M.disabled = {
     -- NvChad
     ["<leader>ra"] = "",
     ["<leader>fo"] = "", -- moved: <leader>fr
+
+    ["<leader>rh"] = "",
+    ["<leader>rn"] = "",
   },
 }
 
