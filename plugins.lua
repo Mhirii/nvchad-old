@@ -1,7 +1,10 @@
 local overrides = require "custom.configs.overrides"
 
-local zoxide = true
-local typescipt = true
+local settings = require "custom.settings"
+local typescipt = settings.lang.typescript
+local motions = settings.motions
+local ui = settings.ui
+local formatter = settings.formatter
 
 ---@type NvPluginSpec[]
 local plugins = {
@@ -19,6 +22,7 @@ local plugins = {
         opts = function()
           return require "custom.configs.null-ls"
         end,
+        enabled = formatter == "none-ls",
       },
     },
     config = function()
@@ -32,6 +36,7 @@ local plugins = {
     opts = function()
       return require "custom.configs.null-ls"
     end,
+    enabled = formatter == "none-ls",
   },
   {
     "williamboman/mason.nvim",
@@ -44,12 +49,13 @@ local plugins = {
   {
     "nvim-tree/nvim-tree.lua",
     opts = overrides.nvimtree,
+    enabled = ui.tree == "nvimtree",
   },
   {
     "stevearc/conform.nvim",
     --  for users those who want auto-save conform + lazyloading!
     -- event = "BufWritePre"
-    enabled = false,
+    enabled = formatter == "conform",
     config = function()
       require "custom.configs.conform"
     end,
@@ -76,18 +82,14 @@ local plugins = {
     opts = require("custom.configs.whichkey").opts,
   },
 
-  --          ╭─────────────────────────────────────────────────────────╮
-  --          │                           LSP                           │
-  --          ╰─────────────────────────────────────────────────────────╯
+  -- ── Lsp ─────────────────────────────────────────────────────────
 
   { import = "custom.configs.context-vt",      enabled = true },
   { import = "custom.configs.actions-preview", enabled = true },
   { import = "custom.configs.ts",              enabled = typescipt },
   { import = "custom.configs.tsc",             enabled = typescipt },
 
-  --          ╭─────────────────────────────────────────────────────────╮
-  --          │                           UI                            │
-  --          ╰─────────────────────────────────────────────────────────╯
+  -- ── Ui ──────────────────────────────────────────────────────────
 
   { import = "custom.configs.dressing",        enabled = true },
   { import = "custom.configs.neoscroll",       enabled = true },
@@ -97,25 +99,21 @@ local plugins = {
   { import = "custom.configs.modicator",       enabled = true },
   { import = "custom.configs.numb",            enabled = true },
 
-  --          ╭─────────────────────────────────────────────────────────╮
-  --          │                         Utility                         │
-  --          ╰─────────────────────────────────────────────────────────╯
+  -- ── Utility ─────────────────────────────────────────────────────
 
   { import = "custom.configs.case-change",     enabled = true },
   { import = "custom.configs.toggler",         enabled = true },
   { import = "custom.configs.todo-comments",   enabled = true },
   { import = "custom.configs.comment-box",     enabled = true },
+  { import = "custom.configs.cheatsheet",      enabled = true },
 
-  --          ╭─────────────────────────────────────────────────────────╮
-  --          │                         Motions                         │
-  --          ╰─────────────────────────────────────────────────────────╯
-  --
-  --
-  { import = "custom.configs.hop",             enabled = true },
+  -- ── Motions ─────────────────────────────────────────────────────
+
+  { import = "custom.configs.hop",             enabled = motions.hop },
+  { import = "custom.configs.bookmarks",       enabled = motions.bookmarks },
+  { import = "custom.configs.harpoon",         enabled = motions.harpoon },
   { import = "custom.configs.better-escape",   enabled = true },
   { import = "custom.configs.marks",           enabled = true },
-  { import = "custom.configs.bookmarks",       enabled = true },
-  { import = "custom.configs.harpoon",         enabled = true },
   { import = "custom.configs.mini",            enabled = true },
 
   -- { -- TODO: tmux
@@ -132,9 +130,7 @@ local plugins = {
   --   },
   -- },
 
-  --          ╭─────────────────────────────────────────────────────────╮
-  --          │                          Gold                           │
-  --          ╰─────────────────────────────────────────────────────────╯
+  -- ── Awesome ─────────────────────────────────────────────────────
 
   { import = "custom.configs.persistence",     enabled = true },
   { import = "custom.configs.lazygit",         enabled = true },
@@ -188,14 +184,6 @@ local plugins = {
 --       winblend = 0,
 --     },
 --   },
--- },
-
--- { -- Built-in cheats
---   -- AWESOME
---   "sudormrfbin/cheatsheet.nvim",
---   cmd = { "Cheatsheet" },
---   keys = require("custom.configs.cheatsheet").keys,
---   dependencies = require("custom.configs.cheatsheet").dependencies,
 -- },
 
 --TODO: typescript tools
