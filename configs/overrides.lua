@@ -4,18 +4,23 @@ M.treesitter = {
   ensure_installed = {
     "vim",
     "lua",
+    -- webdev
     "html",
     "css",
     "javascript",
     "typescript",
     "tsx",
     "vue",
+    -- programming
     "c",
     "rust",
+    -- markdown
     "markdown",
     "markdown_inline",
+    -- scripting
     "bash",
     "fish",
+    "python"
   },
   indent = {
     enable = true,
@@ -69,10 +74,10 @@ M.nvimtree = function()
         error = "",
       },
     },
-    sync_root_with_cwd = true,
+    sync_root_with_cwd = false,
     update_focused_file = {
       enable = true,
-      update_cwd = true,
+      update_cwd = false,
       ignore_list = {},
     },
     git = {
