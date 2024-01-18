@@ -122,12 +122,16 @@ M.config = {
 
 M.telescope = {
   n = {
+
+    ["<leader>th"] = { "<cmd> Telescope themes <CR>", "󰸌 Nvchad themes" },
     ["<leader>fc"] = { ":Telescope builtin<CR>", "Find Editor Command" },
     ["<leader>fr"] = { "<cmd> Telescope oldfiles<CR>", "Recent Files" },
     ["<leader>/"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
     ["<leader><leader>"] = { "<cmd> Telescope find_files <CR>", "Find files" },
     ["<leader>fm"] = { "<cmd> Telescope marks <CR>", "telescope bookmarks" },
+    ["<leader>fp"] = { "<cmd> Telescope projects <CR>", "telescope projects" },
     ["<leader>fl"] = { "<cmd>Telescope harpoon marks<cr>", "Telescope Harpoon Marks" },
+    ["<leader>fz"] = { "<CMD>Telescope zoxide list<CR>", "Find in current buffer" },
   },
 }
 
@@ -279,6 +283,7 @@ M.disabled = {
 
     -- Telescope
     ["<leader>fh"] = "",
+    ["<leader>fz"] = "",
 
     -- Buffer
     ["<leader>b"] = "",

@@ -44,7 +44,7 @@ local opts = {
     },
 
     -- TreeSitter
-    b.code_actions.ts_node_action,
+    -- b.code_actions.ts_node_action,
 
     -- dictionary
     b.hover.dictionary,
