@@ -43,7 +43,7 @@ return {
         -- CodeLens
         -- WARNING: Experimental feature also in VSCode, because it might hit performance of server.
         -- possible values: ("off"|"all"|"implementations_only"|"references_only")
-        code_lens = "off",
+        code_lens = "references_only",
         -- by default code lenses are displayed on all referencable values and for some of you it can
         -- be too much this option reduce count of them by removing member references from lenses
         disable_member_code_lens = true,
@@ -51,7 +51,7 @@ return {
         -- WARNING: it is disabled by default (maybe you configuration or distro already uses nvim-ts-autotag,
         -- that maybe have a conflict if enable this feature. )
         jsx_close_tag = {
-          enable = false,
+          enable = true,
           filetypes = { "javascriptreact", "typescriptreact" },
         },
       },
