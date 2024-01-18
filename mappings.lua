@@ -89,10 +89,6 @@ M.terms = {
       "<cmd> Telescope terms <CR>",
       "Pick hidden term",
     },
-    ["<leader>fs"] = {
-      "<cmd> Telescope lsp_document_symbols <CR>",
-      "Search Symbols",
-    },
   },
 }
 
@@ -131,6 +127,10 @@ M.telescope = {
     ["<leader>fp"] = { "<cmd> Telescope projects <CR>", "telescope projects" },
     ["<leader>fh"] = { "<cmd>Telescope harpoon marks<cr>", "Telescope Harpoon Marks" },
     ["<leader>fz"] = { "<CMD>Telescope zoxide list<CR>", "Find in current buffer" },
+    ["<leader>fs"] = {
+      "<cmd> Telescope lsp_document_symbols <CR>",
+      "Search Symbols",
+    },
   },
 }
 
