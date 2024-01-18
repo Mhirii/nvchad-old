@@ -81,6 +81,7 @@ local plugins = {
 
   { import = "custom.configs.context-vt",      enabled = true },
   { import = "custom.configs.actions-preview", enabled = true },
+  { import = "custom.configs.ts",              enabled = true },
 
   {
     "dmmulroy/tsc.nvim",
@@ -204,17 +205,5 @@ local plugins = {
 -- },
 
 --TODO: typescript tools
--- {
---   "pmizio/typescript-tools.nvim",
---   ft = {
---     "javascript",
---     "typescript",
---     "javascriptreact",
---     "typescriptreact",
---   },
---   config = function()
---     require "custom.configs.ts"
---   end,
--- },
 
 return plugins
