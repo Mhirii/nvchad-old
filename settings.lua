@@ -24,6 +24,8 @@ M.motions = {
   hop = true,
 }
 
-M.formatter = "none-ls" -- none-ls or conform TODO: Configure conform and lint
+M.multiplexer = "wezterm" -- wezterm | tmux.
+
+M.formatter = "none-ls"   -- none-ls | conform. TODO: Configure conform and lint
 
 return M

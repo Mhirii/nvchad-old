@@ -28,6 +28,35 @@ M.general = {
   },
 }
 
+M.multiplexer = {
+  n = {
+    ["<C-h>"] = {
+      function()
+        require("smart-splits").move_cursor_left()
+      end,
+      "move cursor left",
+    },
+    ["<C-j>"] = {
+      function()
+        require("smart-splits").move_cursor_down()
+      end,
+      "move cursor down",
+    },
+    ["<C-k>"] = {
+      function()
+        require("smart-splits").move_cursor_up()
+      end,
+      "move cursor up",
+    },
+    ["<C-l>"] = {
+      function()
+        require("smart-splits").move_cursor_right()
+      end,
+      "move cursor right",
+    },
+  },
+}
+
 M.nvimtree = {
   n = {
     ["<leader>e"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },

@@ -3,6 +3,7 @@ local typescipt = settings.lang.typescript
 local motions = settings.motions
 local ui = settings.ui
 local formatter = settings.formatter
+local mux = settings.multiplexer
 
 ---@type NvPluginSpec[]
 local plugins = {
@@ -74,6 +75,10 @@ local plugins = {
   { import = "custom.configs.projects",        enabled = true,              desc = " project management" },
   { import = "custom.configs.toggleterm",      enabled = true,              desc = " use <number> Ctrl  " },
   --}
+
+  -- ── Multiplexer ─────────────────────────────────────────────────{
+  { import = "custom.configs.smart-splits",    enabled = mux == "wezterm",  desc = " Smart Splits" },
+  -- }
 }
 
 -- { -- TODO: tmux
