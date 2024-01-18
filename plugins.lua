@@ -8,15 +8,10 @@ local formatter = settings.formatter
 
 ---@type NvPluginSpec[]
 local plugins = {
-
-  --          ╭─────────────────────────────────────────────────────────╮
-  --          │                        Overrides                        │
-  --          ╰─────────────────────────────────────────────────────────╯
-
+  -- ── Overrides ───────────────────────────────────────────────────{
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      -- format & linting
       {
         "nvimtools/none-ls.nvim",
         opts = function()
@@ -28,7 +23,7 @@ local plugins = {
     config = function()
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"
-    end, -- Override to setup mason-lspconfig
+    end,
   },
   {
     "nvimtools/none-ls.nvim",
@@ -53,8 +48,6 @@ local plugins = {
   },
   {
     "stevearc/conform.nvim",
-    --  for users those who want auto-save conform + lazyloading!
-    -- event = "BufWritePre"
     enabled = formatter == "conform",
     config = function()
       require "custom.configs.conform"
@@ -71,7 +64,6 @@ local plugins = {
     opts = require("custom.configs.cmp").opts,
   },
   { import = "custom.configs.telescope" },
-
   {
     "folke/which-key.nvim",
     config = function(_, opts)
@@ -81,62 +73,77 @@ local plugins = {
     end,
     opts = require("custom.configs.whichkey").opts,
   },
+  --}
 
-  -- ── Lsp ─────────────────────────────────────────────────────────
+  -- ── Lsp ─────────────────────────────────────────────────────────{
+  { import = "custom.configs.context-vt",      enabled = true,              desc = " very useful in nested code" },
+  { import = "custom.configs.actions-preview", enabled = true,              desc = " leader c p" },
+  { import = "custom.configs.aerial",          enabled = true,              desc = " Navigate your buffer seamlessly" },
+  --}
 
-  { import = "custom.configs.context-vt",      enabled = true },
-  { import = "custom.configs.actions-preview", enabled = true },
+  -- ── Lang ────────────────────────────────────────────────────────{
+  -- typescipt
   { import = "custom.configs.ts",              enabled = typescipt },
   { import = "custom.configs.tsc",             enabled = typescipt },
+  --Rust
+  --Go
+  -- }
 
-  -- ── Ui ──────────────────────────────────────────────────────────
+  -- ── Ui ──────────────────────────────────────────────────────────{
+  { import = "custom.configs.dressing",        enabled = true,              desc = " UI" },
+  { import = "custom.configs.trouble",         enabled = true,              desc = " Diagnostics and more" },
+  { import = "custom.configs.lsp-lens",        enabled = true,              desc = " Reference count above functions" },
+  { import = "custom.configs.modicator",       enabled = true,              desc = " change line color based on mode" },
+  { import = "custom.configs.neoscroll",       enabled = true,              desc = " Eye Candy Scrolling" },
+  { import = "custom.configs.numb",            enabled = true,              desc = " Watch where you're going" },
+  --}
 
-  { import = "custom.configs.dressing",        enabled = true },
-  { import = "custom.configs.neoscroll",       enabled = true },
-  { import = "custom.configs.aerial",          enabled = true },
-  { import = "custom.configs.trouble",         enabled = true },
-  { import = "custom.configs.lsp-lens",        enabled = true },
-  { import = "custom.configs.modicator",       enabled = true },
-  { import = "custom.configs.numb",            enabled = true },
+  -- ── Utility ─────────────────────────────────────────────────────{
+  { import = "custom.configs.case-change",     enabled = true,              desc = " Change case with Alt Shift S" },
+  { import = "custom.configs.toggler",         enabled = true,              desc = " Toggle booleans with Leader i" },
+  { import = "custom.configs.todo-comments",   enabled = true,              desc = " Bring todo comments to life" },
+  { import = "custom.configs.comment-box",     enabled = true,              desc = " Eye Candy comments" },
+  { import = "custom.configs.cheatsheet",      enabled = true,              desc = " Try this Leader f C" },
+  --}
 
-  -- ── Utility ─────────────────────────────────────────────────────
+  -- ── Motions ─────────────────────────────────────────────────────{
+  { import = "custom.configs.hop",             enabled = motions.hop,       desc = "Wings of Freedom" },
+  { import = "custom.configs.bookmarks",       enabled = motions.bookmarks, desc = " next level marks" },
+  { import = "custom.configs.harpoon",         enabled = motions.harpoon,   desc = " Mark important files" },
+  { import = "custom.configs.better-escape",   enabled = true,              desc = " jk to escape insert mode" },
+  { import = "custom.configs.marks",           enabled = true,              desc = " Enhances Marks" },
+  { import = "custom.configs.mini",            enabled = true,              desc = " Surround, Indents and Align" },
+  --}
 
-  { import = "custom.configs.case-change",     enabled = true },
-  { import = "custom.configs.toggler",         enabled = true },
-  { import = "custom.configs.todo-comments",   enabled = true },
-  { import = "custom.configs.comment-box",     enabled = true },
-  { import = "custom.configs.cheatsheet",      enabled = true },
-
-  -- ── Motions ─────────────────────────────────────────────────────
-
-  { import = "custom.configs.hop",             enabled = motions.hop },
-  { import = "custom.configs.bookmarks",       enabled = motions.bookmarks },
-  { import = "custom.configs.harpoon",         enabled = motions.harpoon },
-  { import = "custom.configs.better-escape",   enabled = true },
-  { import = "custom.configs.marks",           enabled = true },
-  { import = "custom.configs.mini",            enabled = true },
-
-  -- { -- TODO: tmux
-  --   "alexghergh/nvim-tmux-navigation",
-  --   event = "VeryLazy",
-  --   opts = {
-  --     keybindings = {
-  --       left = "<C-h>",
-  --       down = "<C-j>",
-  --       up = "<C-k>",
-  --       right = "<C-l>",
-  --       last_active = "<C-\\>",
-  --     },
-  --   },
-  -- },
-
-  -- ── Awesome ─────────────────────────────────────────────────────
-
-  { import = "custom.configs.persistence",     enabled = true },
-  { import = "custom.configs.lazygit",         enabled = true },
-  { import = "custom.configs.projects",        enabled = true },
-  { import = "custom.configs.toggleterm",      enabled = true },
+  -- ── Awesome Stuff ───────────────────────────────────────────────{
+  { import = "custom.configs.persistence",     enabled = true,              desc = " Load Previous Sessions" },
+  { import = "custom.configs.lazygit",         enabled = true,              desc = " Git never been easier" },
+  {
+    import = "custom.configs.projects",
+    enabled = true,
+    desc = " leader f p to access your projects",
+  },
+  {
+    import = "custom.configs.toggleterm",
+    enabled = true,
+    desc = " self explanatory, use <number> Ctrl  ",
+  },
+  --}
 }
+
+-- { -- TODO: tmux
+--   "alexghergh/nvim-tmux-navigation",
+--   event = "VeryLazy",
+--   opts = {
+--     keybindings = {
+--       left = "<C-h>",
+--       down = "<C-j>",
+--       up = "<C-k>",
+--       right = "<C-l>",
+--       last_active = "<C-\\>",
+--     },
+--   },
+-- },
 
 -- {  -- TODO:
 --   "rktjmp/paperplanes.nvim",
