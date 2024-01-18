@@ -5,15 +5,17 @@ return {
   "ahmedkhalf/project.nvim",
   lazy = false,
   opts = {
+    manual_mode = true,
     patterns = {
       ".git",
-      "Cargo.toml",
-      "CMakeLists.txt",
-      ".vscode",
-      ".svn",
-      "Makefile",
-      "package.json",
+      -- "Cargo.toml",
+      -- "CMakeLists.txt",
+      -- ".vscode",
+      -- ".svn",
+      -- "Makefile",
+      -- "package.json",
     },
+    show_hidden = true,
     -- Path where project.nvim will store the project history for use in telescope
     datapath = vim.fn.stdpath "data",
   },

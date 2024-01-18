@@ -90,17 +90,7 @@ local plugins = {
 --   },
 -- },
 
--- {  -- TODO:
---   "rktjmp/paperplanes.nvim",
---   event = "VeryLazy",
---   keys = require("custom.configs.paperplanes").keys,
---   config = function(_, opts)
---     require("paperplanes").setup(opts)
---   end,
---   opts = require("custom.configs.paperplanes").opts,
--- },
--- TODO: windwp/nvim-ts-autotag
+-- TODO: rktjmp/paperplanes.nvim,
 -- TODO: Wezterm
--- TODO: add snippets for vue
 
 return plugins

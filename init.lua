@@ -6,3 +6,6 @@
 --   command = "tabdo wincmd =",
 -- })
 vim.opt.relativenumber = true
+vim.g.vscode_snippets_path = "~/.config/nvim/lua/custom/snippets/json"
+vim.g.lua_snippets_path = "~/.config/nvim/lua/custom/snippets/lua"
+vim.g.snipmate_snippets_path = "~/.config/nvim/lua/custom/snippets/snipmate"

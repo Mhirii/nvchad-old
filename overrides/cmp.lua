@@ -56,9 +56,9 @@ return {
           silent = true,
         },
       },
-
       config = function(_, opts)
         require("plugins.configs.others").luasnip(opts)
+        local ls = require "luasnip"
       end,
     },
 
