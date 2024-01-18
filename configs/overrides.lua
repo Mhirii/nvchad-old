@@ -69,14 +69,14 @@ M.nvimtree = function()
         error = "",
       },
     },
-    sync_root_with_cwd = false,
+    sync_root_with_cwd = true,
     update_focused_file = {
       enable = true,
       update_cwd = true,
       ignore_list = {},
     },
     git = {
-      enable = false,
+      enable = true,
       ignore = true,
       show_on_dirs = true,
       show_on_open_dirs = true,

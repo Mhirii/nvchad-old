@@ -1,6 +1,7 @@
 local overrides = require "custom.configs.overrides"
 
 local zoxide = true
+local typescipt = true
 
 ---@type NvPluginSpec[]
 local plugins = {
@@ -65,15 +66,15 @@ local plugins = {
   },
   { import = "custom.configs.telescope" },
 
-  -- {
-  --   "folke/which-key.nvim",
-  --   config = function(_, opts)
-  --     dofile(vim.g.base46_cache .. "whichkey")
-  --     require("which-key").setup(opts)
-  --     require("custom.configs.whichkey").prefixes()
-  --   end,
-  --   opts = require("custom.configs.whichkey").opts,
-  -- },
+  {
+    "folke/which-key.nvim",
+    config = function(_, opts)
+      dofile(vim.g.base46_cache .. "whichkey")
+      require("which-key").setup(opts)
+      require("custom.configs.whichkey").prefixes()
+    end,
+    opts = require("custom.configs.whichkey").opts,
+  },
 
   --          ╭─────────────────────────────────────────────────────────╮
   --          │                           LSP                           │
@@ -81,48 +82,40 @@ local plugins = {
 
   { import = "custom.configs.context-vt",      enabled = true },
   { import = "custom.configs.actions-preview", enabled = true },
-  { import = "custom.configs.ts",              enabled = true },
-
-  {
-    "dmmulroy/tsc.nvim",
-    cmd = { "TSC" },
-    opts = {
-      auto_open_qflist = true,
-      spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
-    },
-  },
+  { import = "custom.configs.ts",              enabled = typescipt },
+  { import = "custom.configs.tsc",             enabled = typescipt },
 
   --          ╭─────────────────────────────────────────────────────────╮
   --          │                           UI                            │
   --          ╰─────────────────────────────────────────────────────────╯
 
-  { import = "custom.configs.dressing",      enabled = true },
-  { import = "custom.configs.neoscroll",     enabled = true },
-  { import = "custom.configs.aerial",        enabled = true },
-  { import = "custom.configs.trouble",       enabled = true },
-  { import = "custom.configs.lsp-lens",      enabled = true },
-  { import = "custom.configs.modicator",     enabled = true },
-  { import = "custom.configs.numb",          enabled = true },
+  { import = "custom.configs.dressing",        enabled = true },
+  { import = "custom.configs.neoscroll",       enabled = true },
+  { import = "custom.configs.aerial",          enabled = true },
+  { import = "custom.configs.trouble",         enabled = true },
+  { import = "custom.configs.lsp-lens",        enabled = true },
+  { import = "custom.configs.modicator",       enabled = true },
+  { import = "custom.configs.numb",            enabled = true },
 
   --          ╭─────────────────────────────────────────────────────────╮
   --          │                         Utility                         │
   --          ╰─────────────────────────────────────────────────────────╯
 
-  { import = "custom.configs.case-change",   enabled = true },
-  { import = "custom.configs.toggler",       enabled = true },
-  { import = "custom.configs.todo-comments", enabled = true },
-  { import = "custom.configs.comment-box",   enabled = true },
+  { import = "custom.configs.case-change",     enabled = true },
+  { import = "custom.configs.toggler",         enabled = true },
+  { import = "custom.configs.todo-comments",   enabled = true },
+  { import = "custom.configs.comment-box",     enabled = true },
 
   --          ╭─────────────────────────────────────────────────────────╮
   --          │                         Motions                         │
   --          ╰─────────────────────────────────────────────────────────╯
   --
   --
-  { import = "custom.configs.hop",           enabled = true },
-  { import = "custom.configs.better-escape", enabled = true },
-  { import = "custom.configs.marks",         enabled = true },
-  { import = "custom.configs.harpoon",       enabled = true },
-  { import = "custom.configs.mini",          enabled = true },
+  { import = "custom.configs.hop",             enabled = true },
+  { import = "custom.configs.better-escape",   enabled = true },
+  { import = "custom.configs.marks",           enabled = true },
+  { import = "custom.configs.harpoon",         enabled = true },
+  { import = "custom.configs.mini",            enabled = true },
 
   -- { -- TODO: tmux
   --   "alexghergh/nvim-tmux-navigation",
@@ -142,9 +135,9 @@ local plugins = {
   --          │                          Gold                           │
   --          ╰─────────────────────────────────────────────────────────╯
 
-  { import = "custom.configs.persistence",   enabled = true },
-  { import = "custom.configs.lazygit",       enabled = true },
-  { import = "custom.configs.projects",      enabled = true },
+  { import = "custom.configs.persistence",     enabled = true },
+  { import = "custom.configs.lazygit",         enabled = true },
+  { import = "custom.configs.projects",        enabled = true },
 }
 
 -- {  -- TODO:
