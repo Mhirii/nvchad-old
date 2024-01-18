@@ -135,6 +135,7 @@ local plugins = {
   { import = "custom.configs.persistence",     enabled = true },
   { import = "custom.configs.lazygit",         enabled = true },
   { import = "custom.configs.projects",        enabled = true },
+  { import = "custom.configs.toggleterm",      enabled = true },
 }
 
 -- {  -- TODO:
@@ -146,46 +147,5 @@ local plugins = {
 --   end,
 --   opts = require("custom.configs.paperplanes").opts,
 -- },
-
--- { -- TODO:
---   "akinsho/toggleterm.nvim",
---   keys = { [[<C-\>]] },
---   cmd = { "ToggleTerm", "ToggleTermOpenAll", "ToggleTermCloseAll" },
---   opts = {
---     size = function(term)
---       if term.direction == "horizontal" then
---         return 0.25 * vim.api.nvim_win_get_height(0)
---       elseif term.direction == "vertical" then
---         return 0.25 * vim.api.nvim_win_get_width(0)
---       elseif term.direction == "float" then
---         return 85
---       end
---     end,
---     open_mapping = [[<C-\>]],
---     hide_numbers = true,
---     shade_terminals = false,
---     insert_mappings = true,
---     start_in_insert = true,
---     persist_size = true,
---     direction = "horizontal",
---     close_on_exit = true,
---     shell = vim.o.shell,
---     autochdir = true,
---     highlights = {
---       NormalFloat = {
---         link = "Normal",
---       },
---       FloatBorder = {
---         link = "FloatBorder",
---       },
---     },
---     float_opts = {
---       border = "rounded",
---       winblend = 0,
---     },
---   },
--- },
-
---TODO: typescript tools
 
 return plugins
