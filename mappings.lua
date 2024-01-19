@@ -30,29 +30,78 @@ M.general = {
 
 M.multiplexer = {
   n = {
-    ["<M-C-h>"] = {
+    ["<C-h>"] = {
       function()
         require("smart-splits").move_cursor_left()
       end,
       "move cursor left",
     },
-    ["<M-C-j>"] = {
+    ["<C-j>"] = {
       function()
         require("smart-splits").move_cursor_down()
       end,
       "move cursor down",
     },
-    ["<M-C-k>"] = {
+    ["<C-k>"] = {
       function()
         require("smart-splits").move_cursor_up()
       end,
       "move cursor up",
     },
-    ["<M-C-l>"] = {
+    ["<C-l>"] = {
       function()
         require("smart-splits").move_cursor_right()
       end,
       "move cursor right",
+    },
+    ["<M-h>"] = {
+      function()
+        require("smart-splits").resize_left()
+      end,
+      "move cursor left",
+    },
+    ["<M-j>"] = {
+      function()
+        require("smart-splits").resize_down()
+      end,
+      "move cursor down",
+    },
+    ["<M-k>"] = {
+      function()
+        require("smart-splits").resize_up()
+      end,
+      "move cursor up",
+    },
+    ["<M-l>"] = {
+      function()
+        require("smart-splits").resize_right()
+      end,
+      "move cursor right",
+    },
+
+    ["<leader><leader>h"] = {
+      function()
+        require("smart-splits").swap_buf_left()
+      end,
+      "move cursor left",
+    },
+    ["<leader><leader>j"] = {
+      function()
+        require("smart-splits").swap_buf_down()
+      end,
+      "move cursor left",
+    },
+    ["<leader><leader>k"] = {
+      function()
+        require("smart-splits").swap_buf_up()
+      end,
+      "move cursor left",
+    },
+    ["<leader><leader>l"] = {
+      function()
+        require("smart-splits").swap_buf_right()
+      end,
+      "move cursor left",
     },
   },
 }
@@ -148,6 +197,33 @@ M.terms = {
       "<cmd> Telescope terms <CR>",
       "Pick hidden term",
     },
+    ["<M-1>"] = {
+      "<cmd> ToggleTerm direction=horizontal <CR>",
+      "Toggle Horizontal Term",
+    },
+    ["<M-2>"] = {
+      "<cmd> ToggleTerm direction=vertical <CR>",
+      "Toggle Vertical Term",
+    },
+    ["<M-3>"] = {
+      "<cmd> ToggleTerm direction=float <CR>",
+      "Toggle Vertical Term",
+    },
+  },
+  t = {
+    ["<M-1>"] = {
+      "<cmd> ToggleTerm direction=horizontal <CR>",
+      "Toggle Horizontal Term",
+    },
+    ["<M-2>"] = {
+      "<cmd> ToggleTerm direction=vertical <CR>",
+      "Toggle Vertical Term",
+    },
+    ["<M-3>"] = {
+      "<cmd> ToggleTerm direction=float <CR>",
+      "Toggle Vertical Term",
+    },
+    ["<M-w>"] = { vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), "Escape terminal mode" },
   },
 }
 
@@ -359,6 +435,13 @@ M.window = {
 
 M.disabled = {
 
+  t = {
+    -- Terminal
+    ["<A-h>"] = "",
+    ["<A-v>"] = "",
+    ["<leader>h"] = "",
+    ["<leader>v"] = "",
+  },
   n = {
     -- general
     ["<leader>fm"] = "",
@@ -369,8 +452,10 @@ M.disabled = {
     ["<leader>q"] = "",
 
     -- Terminal
-    ["<leader>v"] = "",
+    ["<A-h>"] = "",
+    ["<A-v>"] = "",
     ["<leader>h"] = "",
+    ["<leader>v"] = "",
 
     -- Telescope
     ["<leader>fh"] = "",
