@@ -1,7 +1,7 @@
 return {
   "andersevenrud/nvim_context_vt",
   dependencies = "nvim-treesitter",
-  config = function(_, opts)
+  config = function()
     require("nvim_context_vt").setup {
       -- Enable by default. You can disable and use :NvimContextVtToggle to maually enable.
       -- Default: true
@@ -37,39 +37,36 @@ return {
 
       -- Custom virtual text node parser callback
       -- Default: nil
-      custom_parser = function(node, ft, opts)
-        local utils = require "nvim_context_vt.utils"
-
-        -- If you return `nil`, no virtual text will be displayed.
-        if node:type() == "function" then
-          return nil
-        end
-
-        -- This is the standard text
-        return opts.prefix .. " " .. utils.get_node_text(node)[1]
-      end,
+      -- custom_parser = function(node, ft, opts)
+      --   local utils = require "nvim_context_vt.utils"
+      --   -- If you return `nil`, no virtual text will be displayed.
+      --   if node:type() == "function" then
+      --     return nil
+      --   end
+      --   -- This is the standard text
+      --   return opts.prefix .. " " .. utils.get_node_text(node)[1]
+      -- end,
 
       -- Custom node validator callback
       -- Default: nil
-      custom_validator = function(node, ft, opts)
-        -- Internally a node is matched against min_rows and configured targets
-        local default_validator = require("nvim_context_vt.utils").default_validator
-        if default_validator(node, ft) then
-          -- Custom behaviour after using the internal validator
-          if node:type() == "function" then
-            return false
-          end
-        end
-
-        return true
-      end,
+      -- custom_validator = function(node, ft, opts)
+      --   -- Internally a node is matched against min_rows and configured targets
+      --   local default_validator = require("nvim_context_vt.utils").default_validator
+      --   if default_validator(node, ft) then
+      --     -- Custom behaviour after using the internal validator
+      --     if node:type() == "function" then
+      --       return false
+      --     end
+      --   end
+      --   return true
+      -- end,
 
       -- Custom node virtual text resolver callback
       -- Default: nil
-      custom_resolver = function(nodes, ft, opts)
-        -- By default the last node is used
-        return nodes[#nodes]
-      end,
+      -- custom_resolver = function(nodes, ft, opts)
+      --   -- By default the last node is used
+      --   return nodes[#nodes]
+      -- end,
     }
     vim.cmd [[NvimContextVtToggle]]
   end,

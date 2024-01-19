@@ -1,3 +1,5 @@
+local on_attach = require("plugins.configs.lspconfig").on_attach
+local capabilities = require("plugins.configs.lspconfig").capabilities
 return {
   "pmizio/typescript-tools.nvim",
   dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
@@ -9,7 +11,7 @@ return {
   },
   config = function()
     require("typescript-tools").setup {
-      -- on_attach = function() ... end,
+      on_attach = on_attach,
       -- handlers = { ... },
       -- ...
       settings = {
@@ -38,12 +40,12 @@ return {
         -- https://github.com/microsoft/TypeScript/blob/3c221fc086be52b19801f6e8d82596d04607ede6/src/compiler/utilitiesPublic.ts#L620
         tsserver_locale = "en",
         -- mirror of VSCode's `typescript.suggest.completeFunctionCalls`
-        complete_function_calls = false,
+        complete_function_calls = true,
         include_completions_with_insert_text = true,
         -- CodeLens
         -- WARNING: Experimental feature also in VSCode, because it might hit performance of server.
         -- possible values: ("off"|"all"|"implementations_only"|"references_only")
-        code_lens = "references_only",
+        code_lens = "off",
         -- by default code lenses are displayed on all referencable values and for some of you it can
         -- be too much this option reduce count of them by removing member references from lenses
         disable_member_code_lens = true,
