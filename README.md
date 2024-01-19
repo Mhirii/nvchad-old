@@ -11,7 +11,7 @@ git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
 2. inside neovim type :NvChadUpdate
 3. clone this repo
 ```sh
-git clone https://github.com/Mhirii/nvchad/ ~/.config/nvim/custom
+git clone https://github.com/Mhirii/nvchad/ ~/.config/nvim/lua/custom
 ```
 4. open nvim and let the plugins install
 5. Enjoy!
