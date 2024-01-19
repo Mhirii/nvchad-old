@@ -1,5 +1,6 @@
 local settings = require "custom.settings"
 local typescipt = settings.lang.typescript
+local rust = settings.lang.rust
 local motions = settings.motions
 local ui = settings.ui
 local formatter = settings.formatter
@@ -41,6 +42,7 @@ local plugins = {
   { import = "custom.configs.tsc",             enabled = typescipt },
   { import = "custom.configs.ts-autotag",      enabled = typescipt },
   --Rust
+  { import = "custom.configs.rustaceanvim",    enabled = rust,              desc = " Rust" },
   --Go
   -- }
 
