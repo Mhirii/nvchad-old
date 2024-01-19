@@ -371,6 +371,24 @@ M.code = {
   },
 }
 
+M.lspconfig = {
+  plugin = true,
+  n = {
+    ["K"] = {
+      function()
+        require("hover").hover()
+      end,
+      "hover",
+    },
+    ["gK"] = {
+      function()
+        require("hover").hover_select()
+      end,
+      "hover (select)",
+    },
+  },
+}
+
 M.dashboard = {
   n = {
     ["<leader>;"] = { "<cmd> Nvdash<CR>", "Open Dashboard" },
@@ -390,6 +408,7 @@ M.toggle = {
     },
 
     ["<leader>th"] = { "<cmd> Telescope themes <CR>", "󰸌 Nvchad themes" },
+    ["<leader>tb"] = { ":TroubleToggle<CR>", "󱂩 Toggle Trouble" },
   },
 }
 
@@ -463,6 +482,7 @@ M.disabled = {
 
     -- lspconfig
     ["<leader>ca"] = "",
+    ["K"] = "",
 
     -- Buffer
     ["<leader>b"] = "",
