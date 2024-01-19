@@ -7,7 +7,7 @@ local highlights = require "custom.highlights"
 
 return {
   theme = "tokyonight",
-  theme_toggle = { "tokyonight", "tokyodark" },
+  theme_toggle = { "tokyonight", "rosepine" },
 
   hl_override = highlights.override,
   hl_add = highlights.add,
