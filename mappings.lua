@@ -12,7 +12,6 @@ end
 
 M.general = {
   n = {
-    [";"] = { ":", "enter command mode", opts = { nowait = true } },
     --  format with conform
     ["<leader>fm"] = {
       function()
@@ -50,36 +49,48 @@ M.buffer = {
       end,
       "Toggle Conceal",
     },
-    ["<leader>bn"] = { "<cmd> enew <CR>", "New buffer" },
+    ["<leader>bn"] = { "<cmd> enew <CR>", "󰻭 New buffer" },
     -- quit buffer
     ["<leader>bd"] = {
       "<cmd> q<CR>",
-      "Close buffer", -- Terminals are hidden
+      "󱪠 Close buffer", -- Terminals are hidden
     },
     -- close buffer + hide terminal buffer
     ["<leader>bk"] = {
       function()
         require("nvchad.tabufline").close_buffer()
       end,
-      "Close buffer", -- Terminals are hidden
+      "󱪠 Close buffer", -- Terminals are hidden
     },
     ["<leader>bo"] = {
       function()
         require("nvchad.tabufline").closeOtherBufs()
       end,
-      "Close other buffers",
+      "󰱞 Close other buffers",
     },
     ["<leader>bh"] = {
       function()
         require("nvchad.tabufline").move_buf(-1)
       end,
-      "Close other buffers",
+      "󱨻 Move buffer to left",
     },
     ["<leader>bl"] = {
       function()
         require("nvchad.tabufline").move_buf(1)
       end,
-      "Close other buffers",
+      "󱨽 Move buffer to right",
+    },
+    ["<S-L>"] = {
+      function()
+        require("nvchad.tabufline").tabuflineNext()
+      end,
+      "󰁔 Goto next buffer",
+    },
+    ["<S-H>"] = {
+      function()
+        require("nvchad.tabufline").tabuflinePrev()
+      end,
+      "󰁍 Goto prev buffer",
     },
   },
 }
@@ -88,65 +99,60 @@ M.code = {
   v = {
     ["<leader>ca"] = {
       code_action,
-      "Code Action",
+      "󱃸 Code Action",
     },
   },
   n = {
     ["<leader>ca"] = {
       code_action,
-      "Code Action",
+      "󱃸 Code Action",
     },
     ["<leader>cq"] = {
       "<CMD>TroubleToggle quickfix<CR>",
-      "Quickfix",
+      "󰁨 Quickfix",
     },
     ["<leader>sr"] = {
       function()
         vim.lsp.buf.signature_help()
       end,
-      "LSP Signature Help",
+      "󰘥 LSP Signature Help",
     },
     ["<leader>cr"] = {
       function()
         require("nvchad.renamer").open()
       end,
-      "LSP rename",
+      "󰑕 LSP rename",
     },
     ["<leader>cd"] = {
       function()
         vim.diagnostic.open_float { border = "rounded" }
       end,
-      "Floating diagnostic",
+      "󰨰 Floating diagnostic",
     },
   },
 }
 
 M.config = {
   n = {
-    ["<leader>oc"] = { ":next ~/.config/nvim/lua/custom/*.lua<CR>", "Open Editor Configuration" },
+    ["<leader>oc"] = { ":next ~/.config/nvim/lua/custom/*.lua<CR>", " Open Editor Configuration" },
   },
 }
 
 M.dashboard = {
   n = {
-    ["<leader>;"] = { "<cmd> Nvdash<CR>", "Open Dashboard" },
+    ["<leader>;"] = { "<cmd> Nvdash<CR>", "󰋜 Open Dashboard" },
   },
 }
 
 M.extra = {
   n = {
     ["<leader>zh"] = { "<cmd> Telescope help_tags <CR>", "Help page" },
-    ["<leader>zf"] = { "<cmd>TodoTelescope keywords=FIX,FIXME<CR>", "Find Todo" },
-    ["<leader>zp"] = { "<cmd>PP<CR>", "Send buffer to Pastebin Client" },
-  },
-  v = {
-    ["<leader>zp"] = { "<cmd>PP<CR>", "Send selected Code to Pastebin Client" },
   },
 }
 
 M.lazy = {
   n = {
-    ["<leader>ll"] = { ":Lazy<CR>", "Open Plugin Manager" },
+    ["<leader>ll"] = { ":Lazy<CR>", "󰒲 Open Plugin Manager" },
   },
 }
 
@@ -157,13 +163,13 @@ M.lspconfig = {
       function()
         require("hover").hover()
       end,
-      "hover",
+      "󱤇 hover",
     },
     ["gK"] = {
       function()
         require("hover").hover_select()
       end,
-      "hover (select)",
+      "󱁵 hover (select)",
     },
   },
 }
@@ -175,33 +181,33 @@ M.marks = {
         local harpoon = require "harpoon"
         harpoon.ui:toggle_quick_menu(harpoon:list())
       end,
-      "Harpoon toggle menu",
+      "󰷐 Harpoon toggle menu",
     },
     ["<leader>mh"] = {
       function()
         local harpoon = require "harpoon"
         harpoon:list():append()
       end,
-      "Harpoon Add File",
+      "󰛢 Harpoon Add File",
     },
     ["<leader>mb"] = {
       function()
         require("bookmarks").add_bookmarks()
       end,
-      "Add Bookmark",
+      "󰃄 Add Bookmark",
     },
     ["<leader>mt"] = {
       function()
         require("bookmarks").toggle_bookmarks()
       end,
-      "Toggle Bookmarks",
+      "󰧏 Toggle Bookmarks",
     },
   },
 }
 
 M.mason = {
   n = {
-    ["<leader>om"] = { ":Mason<CR>", "Open Mason" },
+    ["<leader>om"] = { ":Mason<CR>", "󰟾 Open Mason" },
   },
 }
 
@@ -211,80 +217,80 @@ M.multiplexer = {
       function()
         require("smart-splits").move_cursor_left()
       end,
-      "move cursor left",
+      "󱂪 move cursor left",
     },
     ["<C-j>"] = {
       function()
         require("smart-splits").move_cursor_down()
       end,
-      "move cursor down",
+      "󱂩 move cursor down",
     },
     ["<C-k>"] = {
       function()
         require("smart-splits").move_cursor_up()
       end,
-      "move cursor up",
+      "󱔓 move cursor up",
     },
     ["<C-l>"] = {
       function()
         require("smart-splits").move_cursor_right()
       end,
-      "move cursor right",
+      "󱂫 move cursor right",
     },
     ["<M-h>"] = {
       function()
         require("smart-splits").resize_left()
       end,
-      "move cursor left",
+      " resize left",
     },
     ["<M-j>"] = {
       function()
         require("smart-splits").resize_down()
       end,
-      "move cursor down",
+      " resize down",
     },
     ["<M-k>"] = {
       function()
         require("smart-splits").resize_up()
       end,
-      "move cursor up",
+      " resize up",
     },
     ["<M-l>"] = {
       function()
         require("smart-splits").resize_right()
       end,
-      "move cursor right",
+      " resize right",
     },
     ["<leader><leader>h"] = {
       function()
         require("smart-splits").swap_buf_left()
       end,
-      "move cursor left",
+      "󰯍 swap buffer left",
     },
     ["<leader><leader>j"] = {
       function()
         require("smart-splits").swap_buf_down()
       end,
-      "move cursor left",
+      "󰯎 Swap buffer down",
     },
     ["<leader><leader>k"] = {
       function()
         require("smart-splits").swap_buf_up()
       end,
-      "move cursor left",
+      "󰯎 Swap buffer up",
     },
     ["<leader><leader>l"] = {
       function()
         require("smart-splits").swap_buf_right()
       end,
-      "move cursor left",
+      "󰯍 Swap buffer right",
     },
   },
 }
 
 M.nvimtree = {
   n = {
-    ["<leader>e"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
+    ["<leader>e"] = { "<cmd> NvimTreeToggle <CR>", "󱏒 Toggle nvimtree" },
   },
 }
 
@@ -294,13 +300,13 @@ M.nvterm = {
       function()
         require("nvterm.terminal").new "horizontal"
       end,
-      "New horizontal term",
+      "󱂩 New horizontal term",
     },
     ["<leader>vv"] = {
       function()
         require("nvterm.terminal").new "vertical"
       end,
-      "New vertical term",
+      "󱂫 New vertical term",
     },
   },
 }
@@ -331,32 +337,6 @@ M.refactor = {
         require("telescope").extensions.refactoring.refactors()
       end,
       "Select Refactor",
-    },
-  },
-}
-
-M.resize = {
-  n = {
-    ["C-M-j"] = { ":resize -2<CR>", "Resize Window -2" },
-    ["C-M-k"] = { ":resize +2<CR>", "Resize Window +2" },
-  },
-}
-
-M.tabufline = {
-  plugin = true,
-  n = {
-    -- cycle through buffers
-    ["<S-L>"] = {
-      function()
-        require("nvchad.tabufline").tabuflineNext()
-      end,
-      "Goto next buffer",
-    },
-    ["<S-H>"] = {
-      function()
-        require("nvchad.tabufline").tabuflinePrev()
-      end,
-      "Goto prev buffer",
     },
   },
 }
