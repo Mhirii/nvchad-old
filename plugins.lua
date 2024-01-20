@@ -29,7 +29,7 @@ local plugins = {
   --}
 
   -- ── Lsp ─────────────────────────────────────────────────────────{
-  { import = "custom.configs.lsp-zero", enabled = false },
+  { import = "custom.configs.lsp-zero", enabled = true },
   { import = "custom.configs.context-vt", enabled = ui.context, desc = " useful in nested code" },
   { import = "custom.configs.actions-preview", enabled = ui.code_actions, desc = " leader c p" },
   { import = "custom.configs.aerial", enabled = true, desc = " Buffer Navigation" },
