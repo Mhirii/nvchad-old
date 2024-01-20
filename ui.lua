@@ -19,11 +19,17 @@ return {
 
   transparency = false,
 
+  tabufline = {
+    overriden_modules = function(modules)
+      table.remove(modules, 1) -- disable buffers shift when you toggle the tree
+    end,
+  },
+
   statusline = {
     theme = "minimal", -- default/vscode/vscode_colored/minimal
     -- default/round/block/arrow separators work only for default statusline theme
     -- round and block will work for minimal theme only
-    separator_style = "block",
+    separator_style = "round",
 
     overriden_modules = function(modules)
       table.insert(
