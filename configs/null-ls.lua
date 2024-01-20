@@ -8,7 +8,7 @@ local opts = {
     b.code_actions.refactoring,
 
     -- All
-    b.diagnostics.codespell,     -- Smart spell checker, Does not check code, checks text. (comment only probably)
+    b.diagnostics.codespell, -- Smart spell checker, Does not check code, checks text. (comment only probably)
     b.code_actions.shellcheck,
     b.diagnostics.todo_comments, -- TODO: viewer
     b.diagnostics.trail_space,
@@ -42,9 +42,9 @@ local opts = {
     b.code_actions.eslint_d.with {
       filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
     },
-    b.diagnostics.eslint_d.with {
-      filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
-    },
+    -- b.diagnostics.eslint_d.with {
+    --   filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
+    -- },
 
     -- TreeSitter
     -- b.code_actions.ts_node_action,
