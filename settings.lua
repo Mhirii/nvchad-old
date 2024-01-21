@@ -12,6 +12,7 @@ M.ui = {
   tree = "nvimtree", --TODO: add neotree and oil.nvim
   code_actions = true,
   context = true,
+  split_animation = true,
 }
 
 M.ai = { -- TODO: add Tabnine
@@ -26,7 +27,7 @@ M.motions = {
 
 M.multiplexer = "wezterm" -- wezterm | tmux.
 
-M.formatter = "none-ls"   -- none-ls | conform. TODO: Configure conform and lint
+M.formatter = "none-ls" -- none-ls | conform. TODO: Configure conform and lint
 
 M.dotfiles = {
   hyprland = true,
