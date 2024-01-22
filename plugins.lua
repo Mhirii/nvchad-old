@@ -35,6 +35,7 @@ local plugins = {
   { import = "custom.configs.actions-preview", enabled = ui.code_actions, desc = " leader c p" },
   { import = "custom.configs.aerial", enabled = true, desc = " Buffer Navigation" },
   { import = "custom.configs.refactoring", enabled = true, desc = " Refactoring" },
+  { import = "custom.configs.lsplines", enabled = true, desc = " Explanation Lines below errors" },
   --}
 
   -- ── Lang ────────────────────────────────────────────────────────{

@@ -156,6 +156,15 @@ M.lazy = {
   },
 }
 
+M.lsp_lines = {
+  n = {
+    ["<leader>ti"] = {
+      ":lua require('lsp_lines').toggle() <CR>",
+      "∥ Toggle LspLines",
+    },
+  },
+}
+
 M.hover = {
   plugin = true,
   n = {
