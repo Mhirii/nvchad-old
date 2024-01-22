@@ -14,6 +14,8 @@ M.ui = {
   context = true,
   split_animation = true,
   mode_indicator = "reactive", -- modicator or reactive
+  hover = true,
+  glance = true,
 }
 
 M.ai = { -- TODO: add Tabnine

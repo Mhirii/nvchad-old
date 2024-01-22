@@ -165,6 +165,39 @@ M.lsp_lines = {
   },
 }
 
+M.glance = {
+  n = {
+    ["<leader>pd"] = {
+      ":Glance definitions<CR>",
+      "⊶ Preview definition",
+    },
+    ["<leader>pr"] = {
+      ":Glance references<CR>",
+      " Preview references",
+    },
+    ["<leader>pi"] = {
+      ":Glance implementations<CR>",
+      " Preview implementations",
+    },
+    ["<leader>pD"] = {
+      ":Glance type_definitions<CR>",
+      "⊶ Preview type_definitions",
+    },
+    ["gR"] = {
+      ":Glance references<CR>",
+      " Preview references",
+    },
+    ["gM"] = {
+      ":Glance implementations<CR>",
+      " Preview implementations",
+    },
+    ["gY"] = {
+      ":Glance type_definitions<CR>",
+      "⊶ Preview type_definitions",
+    },
+  },
+}
+
 M.hover = {
   plugin = true,
   n = {

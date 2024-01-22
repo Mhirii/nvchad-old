@@ -84,7 +84,8 @@ local plugins = {
   },
   { import = "custom.configs.neoscroll", enabled = true, desc = " Eye Candy Scrolling" },
   { import = "custom.configs.numb", enabled = true, desc = " Watch where you're going" },
-  { import = "custom.configs.hover", enabled = true, desc = " Better Hover" },
+  { import = "custom.configs.hover", enabled = ui.hover, desc = " Better Hover" },
+  { import = "custom.configs.glance", enabled = true, desc = " MUCH Better Hover" },
   { import = "custom.configs.windows", enabled = ui.split_animation, desc = " auto resize focused split" },
   --}
 
