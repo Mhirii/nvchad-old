@@ -18,10 +18,6 @@ for _, lsp in ipairs(servers) do
     -- filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
     filetypes = { "vue" },
   }
-  lspconfig["gopls"].setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
-  }
 end
 
 local volar_cmd = { "vue-language-server", "--stdio" }
