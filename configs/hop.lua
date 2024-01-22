@@ -28,6 +28,6 @@ return {
     { "<leader>hv", mode = { "n", "v" }, "<Cmd>HopVertical <cr>" },
     { "<leader>hs", mode = { "n", "v" }, "<Cmd>HopChar2 <cr>" },
     { "<M-s>", mode = { "n", "v" }, "<Cmd>HopWord <cr>" },
-    { "<M-S>", mode = { "n", "v" }, "<Cmd>HopLine <cr>" },
+    -- { "<M-S>", mode = { "n", "v" }, "<Cmd>HopLine <cr>" },
   },
 }

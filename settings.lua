@@ -13,7 +13,7 @@ M.ui = {
   code_actions = true,
   context = true,
   split_animation = true,
-  mode_indicator = "reactive", -- modicator or reactive
+  mode_indicator = "modicator", -- modicator or reactive
   hover = true,
   glance = true,
 }
