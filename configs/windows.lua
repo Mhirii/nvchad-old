@@ -1,6 +1,5 @@
 return {
   "anuvyklack/windows.nvim",
-  event = "VeryLazy",
   dependencies = {
     "anuvyklack/middleclass",
     "anuvyklack/animation.nvim",
@@ -11,4 +10,13 @@ return {
     vim.o.equalalways = false
     require("windows").setup()
   end,
+  keys = {
+    {
+      "<leader>tw",
+      function()
+        require("windows").setup()
+      end,
+      desc = "Toggle window autosize",
+    },
+  },
 }

@@ -97,14 +97,26 @@ M.buffer = {
 
 M.code = {
   v = {
-    ["<leader>ca"] = {
+    ["<leader>cp"] = {
       code_action,
+      "󱃸 Code Action Preview",
+    },
+    ["<leader>ca"] = {
+      function()
+        vim.lsp.buf.code_action()
+      end,
       "󱃸 Code Action",
     },
   },
   n = {
-    ["<leader>ca"] = {
+    ["<leader>cp"] = {
       code_action,
+      "󱃸 Code Action Preview",
+    },
+    ["<leader>ca"] = {
+      function()
+        vim.lsp.buf.code_action()
+      end,
       "󱃸 Code Action",
     },
     ["<leader>cq"] = {

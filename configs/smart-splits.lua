@@ -1,6 +1,14 @@
 return {
   "mrjones2014/smart-splits.nvim",
-  lazy = false,
+  keys = {
+    {
+      "<leader>sa",
+      function()
+        require("smart-splits").setup()
+      end,
+      " Toggle Smart Splits",
+    },
+  },
   config = function()
     require("smart-splits").setup {
       ignored_buftypes = { "NvimTree" },

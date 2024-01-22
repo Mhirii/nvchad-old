@@ -10,8 +10,11 @@ M.lang = { -- TODO: add Go, cpp and Zig
 
 M.ui = {
   tree = "nvimtree", --TODO: add neotree and oil.nvim
+  trouble = true,
   code_actions = true,
+  scroll = true,
   context = true,
+  lens = true,
   split_animation = true,
   mode_indicator = "modicator", -- modicator or reactive
   hover = true,
@@ -27,6 +30,13 @@ M.motions = {
   bookmarks = true,
   hop = true,
 }
+
+M.utilities = {
+  aerial = true,
+  lsplines = true,
+}
+
+M.lspzero = false
 
 M.multiplexer = "wezterm" -- wezterm | tmux.
 

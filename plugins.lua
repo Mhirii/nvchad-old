@@ -6,6 +6,7 @@ local ui = settings.ui
 local formatter = settings.formatter
 local mux = settings.multiplexer
 local hypr = settings.hyprland
+local utils = settings.utilities
 
 ---@type NvPluginSpec[]
 local plugins = {
@@ -30,18 +31,18 @@ local plugins = {
   --}
 
   -- ── Lsp ─────────────────────────────────────────────────────────{
-  { import = "custom.configs.lsp-zero", enabled = true },
+  { import = "custom.configs.lsp-zero", enabled = settings.lspzero },
   {
     import = "custom.configs.context-vt",
     enabled = ui.context,
     desc = " useful in nested code",
   },
   { import = "custom.configs.actions-preview", enabled = ui.code_actions, desc = " leader c p" },
-  { import = "custom.configs.aerial", enabled = true, desc = " Buffer Navigation" },
+  { import = "custom.configs.aerial", enabled = utils.aerial, desc = " Buffer Navigation" },
   { import = "custom.configs.refactoring", enabled = true, desc = " Refactoring" },
   {
     import = "custom.configs.lsplines",
-    enabled = true,
+    enabled = utils.lsplines,
     desc = " Explanation Lines below errors",
   },
   --}
@@ -68,10 +69,10 @@ local plugins = {
   { import = "custom.configs.noice", enabled = true, desc = " UI" },
   {
     import = "custom.configs.trouble",
-    enabled = true,
+    enabled = ui.trouble,
     desc = " Diagnostics and more",
   },
-  { import = "custom.configs.lsp-lens", enabled = true, desc = " Helpful lens" },
+  { import = "custom.configs.lsp-lens", enabled = ui.lens, desc = " Helpful lens" },
   {
     import = "custom.configs.reactive",
     enabled = ui.mode_indicator == "reactive",
@@ -82,10 +83,10 @@ local plugins = {
     enabled = ui.mode_indicator == "modicator",
     desc = " change line color based on mode",
   },
-  { import = "custom.configs.neoscroll", enabled = true, desc = " Eye Candy Scrolling" },
+  { import = "custom.configs.neoscroll", enabled = ui.scroll, desc = " Eye Candy Scrolling" },
   { import = "custom.configs.numb", enabled = true, desc = " Watch where you're going" },
   { import = "custom.configs.hover", enabled = ui.hover, desc = " Better Hover" },
-  { import = "custom.configs.glance", enabled = true, desc = " MUCH Better Hover" },
+  { import = "custom.configs.glance", enabled = ui.glance, desc = " MUCH Better Hover" },
   { import = "custom.configs.windows", enabled = ui.split_animation, desc = " auto resize focused split" },
   --}
 
@@ -119,21 +120,6 @@ local plugins = {
   -- }
 }
 
--- { -- TODO: tmux
---   "alexghergh/nvim-tmux-navigation",
---   event = "VeryLazy",
---   opts = {
---     keybindings = {
---       left = "<C-h>",
---       down = "<C-j>",
---       up = "<C-k>",
---       right = "<C-l>",
---       last_active = "<C-\\>",
---     },
---   },
--- },
-
 -- TODO: rktjmp/paperplanes.nvim,
--- TODO: Wezterm
 
 return plugins

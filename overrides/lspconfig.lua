@@ -14,6 +14,10 @@ return {
       },
     },
     config = function()
+      if settings.lspzero then
+        local lsp_zero = require "lsp-zero"
+        lsp_zero.extend_lspconfig()
+      end
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"
     end,

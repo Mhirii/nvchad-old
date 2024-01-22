@@ -1,7 +1,7 @@
 return {
   "aznhe21/actions-preview.nvim",
   dependencies = { "nvim-telescope/telescope.nvim" },
-  event = "LspAttach",
+  -- event = "LspAttach",
   config = function()
     require("actions-preview").setup {
       -- options for vim.diff(): https://neovim.io/doc/user/lua.html#vim.diff()

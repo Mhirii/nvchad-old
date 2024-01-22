@@ -25,6 +25,7 @@ local opts = {
 
     -- Shell
     b.formatting.shfmt,
+    b.formatting.fish_indent,
     b.code_actions.shellcheck,
     b.diagnostics.shellcheck.with { diagnostics_format = "#{m} [#{c}]" },
     b.diagnostics.fish,
@@ -33,6 +34,7 @@ local opts = {
     b.formatting.rustfmt, -- TODO: rust-tools.nvim
 
     -- TS
+    b.code_actions.xo,
     b.formatting.biome.with {
       filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "json", "jsonc" },
     },

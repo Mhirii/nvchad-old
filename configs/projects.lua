@@ -3,7 +3,7 @@ return {
     "nvim-telescope/telescope.nvim",
   },
   "ahmedkhalf/project.nvim",
-  lazy = false,
+  -- lazy = false,
   opts = {
     manual_mode = true,
     patterns = {
