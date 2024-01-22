@@ -31,11 +31,19 @@ local plugins = {
 
   -- ── Lsp ─────────────────────────────────────────────────────────{
   { import = "custom.configs.lsp-zero", enabled = true },
-  { import = "custom.configs.context-vt", enabled = ui.context, desc = " useful in nested code" },
+  {
+    import = "custom.configs.context-vt",
+    enabled = ui.context,
+    desc = " useful in nested code",
+  },
   { import = "custom.configs.actions-preview", enabled = ui.code_actions, desc = " leader c p" },
   { import = "custom.configs.aerial", enabled = true, desc = " Buffer Navigation" },
   { import = "custom.configs.refactoring", enabled = true, desc = " Refactoring" },
-  { import = "custom.configs.lsplines", enabled = true, desc = " Explanation Lines below errors" },
+  {
+    import = "custom.configs.lsplines",
+    enabled = true,
+    desc = " Explanation Lines below errors",
+  },
   --}
 
   -- ── Lang ────────────────────────────────────────────────────────{
@@ -47,18 +55,31 @@ local plugins = {
   { import = "custom.configs.rustaceanvim", enabled = rust, desc = " Rust" },
   --Go
   --Config
-  { import = "custom.configs.hyprlang", enabled = hypr, desc = " Hyprland Treesitter" },
+  {
+    import = "custom.configs.hyprlang",
+    enabled = hypr,
+    desc = " Hyprland Treesitter",
+  },
   -- }
 
   -- ── Ui ──────────────────────────────────────────────────────────{
   { import = "custom.configs.dressing", enabled = true, desc = " UI" },
   { import = "custom.configs.fidget", enabled = false, desc = " UI" },
   { import = "custom.configs.noice", enabled = true, desc = " UI" },
-  { import = "custom.configs.trouble", enabled = true, desc = " Diagnostics and more" },
+  {
+    import = "custom.configs.trouble",
+    enabled = true,
+    desc = " Diagnostics and more",
+  },
   { import = "custom.configs.lsp-lens", enabled = true, desc = " Helpful lens" },
   {
+    import = "custom.configs.reactive",
+    enabled = ui.mode_indicator == "reactive",
+    desc = "Awesome UI changes based on mode",
+  },
+  {
     import = "custom.configs.modicator",
-    enabled = true,
+    enabled = ui.mode_indicator == "modicator",
     desc = " change line color based on mode",
   },
   { import = "custom.configs.neoscroll", enabled = true, desc = " Eye Candy Scrolling" },

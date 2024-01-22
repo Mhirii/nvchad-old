@@ -13,6 +13,7 @@ M.ui = {
   code_actions = true,
   context = true,
   split_animation = true,
+  mode_indicator = "reactive", -- modicator or reactive
 }
 
 M.ai = { -- TODO: add Tabnine
