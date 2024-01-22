@@ -6,7 +6,7 @@ local group_margin = "  "
 local highlights = require "custom.highlights"
 
 return {
-  theme = "tokyonight",
+  theme = "rosepine",
   theme_toggle = { "tokyonight", "rosepine" },
 
   hl_override = highlights.override,

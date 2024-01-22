@@ -72,6 +72,7 @@ local plugins = {
   { import = "custom.configs.todo-comments", enabled = true, desc = " Bring todo comments to life" },
   { import = "custom.configs.comment-box", enabled = true, desc = " Eye Candy comments" },
   { import = "custom.configs.cheatsheet", enabled = true, desc = " Try this Leader f C" },
+  { import = "custom.configs.hawtkeys", enabled = true, desc = " keybindings" },
   --}
 
   -- ── Motions ─────────────────────────────────────────────────────{
