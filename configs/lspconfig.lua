@@ -4,7 +4,7 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 
 -- if you just want default config for the servers then put them in a table
-local servers = { "cssls", "clangd", "cmake", "volar", "prismals" }
+local servers = { "cssls", "clangd", "cmake", "volar", "prismals", "gopls" }
 --"rust_analyzer", "tsserver"
 
 for _, lsp in ipairs(servers) do
@@ -17,6 +17,10 @@ for _, lsp in ipairs(servers) do
     on_attach = on_attach,
     -- filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
     filetypes = { "vue" },
+  }
+  lspconfig["gopls"].setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
   }
 end
 

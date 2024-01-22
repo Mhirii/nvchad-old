@@ -48,8 +48,10 @@ local opts = {
     --   filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
     -- },
 
-    -- TreeSitter
-    -- b.code_actions.ts_node_action,
+    -- golang
+    b.code_actions.impl,
+    b.formatting.gofmt,
+    b.formatting.goimports,
 
     -- dictionary
     b.hover.dictionary,

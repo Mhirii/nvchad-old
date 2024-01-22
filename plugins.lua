@@ -1,6 +1,7 @@
 local settings = require "custom.settings"
 local typescipt = settings.lang.typescript
 local rust = settings.lang.rust
+local go = settings.lang.go
 local motions = settings.motions
 local ui = settings.ui
 local formatter = settings.formatter
@@ -55,6 +56,7 @@ local plugins = {
   --Rust
   { import = "custom.configs.rustaceanvim", enabled = rust, desc = " Rust" },
   --Go
+  { import = "custom.configs.go", enabled = go, desc = " Go Toolchain" },
   --Config
   {
     import = "custom.configs.hyprlang",

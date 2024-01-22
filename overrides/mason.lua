@@ -2,11 +2,11 @@ return {
   "williamboman/mason.nvim",
   opts = {
     ensure_installed = {
-      -- lua
+      -- ── lua ─────────────────────────────────────────────────────────
       "lua-language-server",
       "stylua",
 
-      -- web dev
+      -- ── web dev ─────────────────────────────────────────────────────
       "css-lsp",
       "html-lsp",
       "typescript-language-server",
@@ -16,9 +16,13 @@ return {
       "eslint_d",
       "biome",
 
-      -- "clangd",
-      -- "clang-format",
+      -- ── programming ─────────────────────────────────────────────────
+      -- rust
       "rust-analyzer",
+      -- Go
+      "gopls",
+      "goimports",
+      "impl",
     },
   },
 }
