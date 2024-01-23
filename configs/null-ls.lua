@@ -10,7 +10,7 @@ local opts = {
     -- All
     b.diagnostics.codespell, -- Smart spell checker, Does not check code, checks text. (comment only probably)
     b.code_actions.shellcheck,
-    b.diagnostics.todo_comments, -- TODO: viewer
+    -- b.diagnostics.todo_comments, -- TODO: viewer
     b.diagnostics.trail_space,
     b.completion.luasnip,
 
