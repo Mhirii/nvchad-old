@@ -20,6 +20,7 @@ M.ui = {
   mode_indicator = "modicator", -- modicator or reactive
   hover = true,
   glance = true,
+  notify = true,
 }
 
 M.ai = { -- TODO: add Tabnine

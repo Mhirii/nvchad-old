@@ -1,3 +1,4 @@
+local settings = require "custom.settings"
 return {
   "folke/noice.nvim",
   event = "VeryLazy",
@@ -7,14 +8,13 @@ return {
   dependencies = {
     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
     "MunifTanjim/nui.nvim",
+    "rcarriga/nvim-notify",
   },
   config = function()
     require("noice").setup {
       cmdline = {
-        enabled = true,         -- enables the Noice cmdline UI
-        view = "cmdline_popup", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
-        opts = {},              -- global options for the cmdline. See section on views
-        ---@type table<string, CmdlineFormat>
+        enabled = true,
+        view = "cmdline_popup",
         format = {
           -- conceal: (default=true) This will hide the text in the cmdline that matches the pattern.
           -- view: (default is cmdline view)
@@ -24,7 +24,7 @@ return {
           cmdline = { pattern = "^:", icon = "", lang = "vim" },
           search_down = { kind = "search", pattern = "^/", icon = " ", lang = "regex" },
           search_up = { kind = "search", pattern = "^%?", icon = " ", lang = "regex" },
-          filter = { pattern = "^:%s*!", icon = "$", lang = "bash" },
+          filter = { pattern = "^:%s*!", icon = "󰻿 ", lang = "bash" },
           lua = { pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" }, icon = "", lang = "lua" },
           help = { pattern = "^:%s*he?l?p?%s+", icon = "" },
           input = {}, -- Used by input()
@@ -35,7 +35,7 @@ return {
         enabled = false, -- enables the Noice messages UI
       },
       popupmenu = {
-        enabled = true,  -- enables the Noice popupmenu UI
+        enabled = true, -- enables the Noice popupmenu UI
         ---@type 'nui'|'cmp'
         backend = "nui", -- backend to use to show regular cmdline completions
         ---@type NoicePopupmenuItemKind|false
@@ -48,7 +48,7 @@ return {
         -- event is always "notify" and kind can be any log level as a string
         -- The default routes will forward notifications to nvim-notify
         -- Benefit of using Noice for this is the routing and consistent history view
-        enabled = false,
+        enabled = settings.ui.notify,
         view = "notify",
       },
       lsp = {
@@ -83,13 +83,132 @@ return {
       health = {
         checker = false, -- Disable if you don't want health checks to run
       },
+      routes = {
+        {
+          filter = {
+            event = "lsp",
+            any = {
+              { find = "formatting" },
+              { find = "Diagnosing" },
+              { find = "Diagnostics" },
+              { find = "diagnostics" },
+              { find = "code_action" },
+              { find = "Processing full semantic tokens" },
+              { find = "symbols" },
+              { find = "completion" },
+            },
+          },
+          opts = { skip = true },
+        },
+        {
+          filter = {
+            event = "notify",
+            any = {
+              -- Telescope
+              { find = "Nothing currently selected" },
+              { find = "^No information available$" },
+              { find = "Highlight group" },
+              { find = "no manual entry for" },
+              { find = "not have parser for" },
+
+              -- ts
+              { find = "_ts_parse_query" },
+            },
+          },
+          opts = { skip = true },
+        },
+        {
+          filter = {
+            event = "msg_show",
+            kind = "",
+            any = {
+
+              -- Edit
+              { find = "%d+ less lines" },
+              { find = "%d+ fewer lines" },
+              { find = "%d+ more lines" },
+              { find = "%d+ change;" },
+              { find = "%d+ line less;" },
+              { find = "%d+ more lines?;" },
+              { find = "%d+ fewer lines;?" },
+              { find = '".+" %d+L, %d+B' },
+              { find = "%d+ lines yanked" },
+              { find = "^Hunk %d+ of %d+$" },
+              { find = "%d+L, %d+B$" },
+
+              -- Save
+              { find = " bytes written" },
+
+              -- Redo/Undo
+              { find = " changes; before #" },
+              { find = " changes; after #" },
+              { find = "1 change; before #" },
+              { find = "1 change; after #" },
+
+              -- Yank
+              { find = " lines yanked" },
+
+              -- Move lines
+              { find = " lines moved" },
+              { find = " lines indented" },
+
+              -- Bulk edit
+              { find = " fewer lines" },
+              { find = " more lines" },
+              { find = "1 more line" },
+              { find = "1 line less" },
+
+              -- General messages
+              { find = "Already at newest change" },
+              { find = "Already at oldest change" },
+              { find = "E21: Cannot make changes, 'modifiable' is off" },
+            },
+          },
+          opts = { skip = true },
+        },
+      },
+
+      views = {
+        cmdline_popup = {
+          position = {
+            row = 3,
+            col = "50%",
+          },
+          size = {
+            width = 60,
+            height = "auto",
+          },
+        },
+        popupmenu = {
+          relative = "editor",
+          position = {
+            row = 8,
+            col = "50%",
+          },
+          size = {
+            width = 60,
+            height = 10,
+          },
+          border = {
+            style = "rounded",
+            padding = { 0, 1 },
+          },
+          win_options = {
+            winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
+          },
+        },
+        mini = {
+          zindex = 100,
+          win_options = { winblend = 0 },
+        },
+      },
       -- you can enable a preset for easier configuration
       presets = {
-        bottom_search = false,        -- use a classic bottom cmdline for search
-        command_palette = true,       -- position the cmdline and popupmenu together
+        bottom_search = false, -- use a classic bottom cmdline for search
+        command_palette = true, -- position the cmdline and popupmenu together
         long_message_to_split = true, -- long messages will be sent to a split
-        inc_rename = false,           -- enables an input dialog for inc-rename.nvim
-        lsp_doc_border = false,       -- add a border to hover docs and signature help
+        inc_rename = false, -- enables an input dialog for inc-rename.nvim
+        lsp_doc_border = false, -- add a border to hover docs and signature help
       },
     }
   end,
