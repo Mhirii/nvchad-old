@@ -116,6 +116,7 @@ local plugins = {
   { import = "custom.configs.lazygit", enabled = true, desc = " Git never been easier" },
   { import = "custom.configs.projects", enabled = true, desc = " project management" },
   { import = "custom.configs.toggleterm", enabled = true, desc = " use <number> Ctrl  " },
+  { import = "custom.configs.recorder", enabled = true, desc = " better macro experience" },
   --}
 
   -- ── Multiplexer ─────────────────────────────────────────────────{

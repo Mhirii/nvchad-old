@@ -1,5 +1,4 @@
 local utils = require "custom.utils"
-local status = utils.status
 local group_margin = "  "
 
 -- Path to overriding theme and highlights files
@@ -41,16 +40,6 @@ return {
         end)()
       )
 
-      -- table.insert(
-      --   modules,
-      --   8,
-      --   (function()
-      --     local hl = "%#StKernel#"
-      --     local icon = " " --        
-      --     return hl .. icon --[[  .. " " ]]
-      --   end)()
-      -- )
-
       table.insert(
         modules,
         8,
@@ -68,14 +57,9 @@ return {
 
       table.insert(
         modules,
-        8,
+        4,
         (function()
-          local hl = "%#StDiscord#"
-          local icon = ""
-          if status.discord then
-            icon = hl .. "󰙯" .. group_margin
-          end
-          return icon
+          return "%#RecordHl#" .. utils.Get_record()
         end)()
       )
     end,

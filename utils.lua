@@ -34,4 +34,21 @@ function M.cmp_source(name)
   end
 end
 
+function M.Get_record()
+  if package.loaded["recorder"] then
+    local ok, recorder = pcall(require, "recorder")
+    if ok then
+      local status = recorder.recordingStatus()
+      if status ~= "" then
+        return " " .. status .. " "
+      end
+      return ""
+    else
+      return ""
+    end
+  else
+    return ""
+  end
+end
+
 return M
