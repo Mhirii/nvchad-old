@@ -90,6 +90,7 @@ local plugins = {
   { import = "custom.configs.hover", enabled = ui.hover, desc = " Better Hover" },
   { import = "custom.configs.glance", enabled = ui.glance, desc = " MUCH Better Hover" },
   { import = "custom.configs.windows", enabled = ui.split_animation, desc = " auto resize focused split" },
+  { import = "custom.configs.oil", enabled = ui.oil, desc = " Edit fs like a buffer" },
   --}
 
   -- ── Utility ─────────────────────────────────────────────────────{

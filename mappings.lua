@@ -1,4 +1,4 @@
----@type MappingsTable
+---@type MappingsTablemappingsmappings
 local M = {}
 
 local function code_action()
@@ -469,6 +469,12 @@ M.nvterm = {
   },
 }
 
+M.oil = {
+  n = {
+    ["<leader>to"] = { ':lua require("oil").toggle_float()<CR>', "Open oil" },
+  },
+}
+
 M.refactor = {
   n = {
     ["<leader>re"] = { ":Refactor extract<CR>", "Extract" },
@@ -564,6 +570,7 @@ M.toggle = {
     },
     ["<leader>th"] = { "<cmd> Telescope themes <CR>", "󰸌 Nvchad themes" },
     ["<leader>tb"] = { ":TroubleToggle<CR>", "󱂩 Toggle Trouble" },
+    -- ["<leader>to"] = { ':lua require("oil").setup()<CR>', "󱏒 Toggle oil" },
   },
 }
 
