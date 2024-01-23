@@ -15,11 +15,14 @@ local plugins = {
   -- ── Overrides ───────────────────────────────────────────────────{
   { import = "custom.overrides.lspconfig" },
   { import = "custom.overrides.mason" },
+  { "williamboman/mason-lspconfig.nvim" },
   { import = "custom.overrides.treesitter" },
   { import = "custom.overrides.nvimtree" },
   { import = "custom.overrides.telescope" },
   { import = "custom.overrides.cmp" },
   { import = "custom.overrides.whichkey" },
+  { import = "custom.overrides.nvterm" },
+
   { "stevearc/conform.nvim", enabled = formatter == "conform" },
   {
     "nvimtools/none-ls.nvim",

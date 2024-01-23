@@ -6,11 +6,13 @@ local opts = {
   sources = {
 
     b.code_actions.refactoring,
+    b.code_actions.gomodifytags,
+    b.formatting.tidy,
 
     -- All
     b.diagnostics.codespell, -- Smart spell checker, Does not check code, checks text. (comment only probably)
     b.code_actions.shellcheck,
-    -- b.diagnostics.todo_comments, -- TODO: viewer
+    -- b.diagnostics.todo_comments,
     b.diagnostics.trail_space,
     b.completion.luasnip,
 
@@ -34,7 +36,7 @@ local opts = {
     b.formatting.rustfmt, -- TODO: rust-tools.nvim
 
     -- TS
-    b.code_actions.xo,
+    -- b.code_actions.xo,
     b.formatting.biome.with {
       filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "json", "jsonc" },
     },

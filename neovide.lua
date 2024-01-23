@@ -24,5 +24,5 @@ vim.g.neovide_light_angle_degrees = 45
 vim.g.neovide_light_radius = 5
 vim.g.neovide_hide_mouse_when_typing = false
 
-vim.g.neovide_refresh_rate = 60
+vim.g.neovide_refresh_rate = 140
 vim.g.neovide_no_idle = false -- only enable this if animations appear to stop too early.
