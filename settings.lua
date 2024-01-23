@@ -17,7 +17,7 @@ M.ui = {
   context = true,
   lens = true,
   split_animation = true,
-  mode_indicator = "none", -- modicator or reactive
+  mode_indicator = "modicator", -- modicator or reactive
   hover = true,
   glance = true,
 }

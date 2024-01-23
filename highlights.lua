@@ -17,6 +17,14 @@ M.override = {
 ---@type HLTable
 M.add = {
   NvimTreeOpenedFolderName = { fg = "green", bold = true },
+  InsertMode = { fg = "blue" },
+  NormalMode = { fg = "white" },
+  VisualMode = { fg = "purple" },
+  CommandMode = { fg = "white" },
+  ReplaceMode = { fg = "red" },
+  SelectMode = { fg = "green" },
+  TerminalMode = { fg = "cyan" },
+  TerminalNormalMode = { fg = "yellow" },
 }
 
 return M
