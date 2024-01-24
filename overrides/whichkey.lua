@@ -22,6 +22,7 @@ return {
         m     = { name = "󰍎 Marks" },
         nt    = { name = "󱘎 TreeSitter" },
         o     = { name = " Open" },
+        p     = { name = " Preview" },
         q     = { name = "󰗼 Quit" },
         r     = { name = " Refactor" },
         s     = { name = " LSP" }, -- TODO: this should be Search

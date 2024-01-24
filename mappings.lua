@@ -446,6 +446,12 @@ M.multiplexer = {
   },
 }
 
+M.notify = {
+  n = {
+    ["<leader>nd"] = { "<cmd> NoiceDismiss <CR>", " Dismiss Notifications" },
+  },
+}
+
 M.nvimtree = {
   n = {
     ["<leader>e"] = { "<cmd> NvimTreeToggle <CR>", "󱏒 Toggle nvimtree" },
@@ -632,7 +638,7 @@ M.disabled = {
     ["<leader>cm"] = "", -- Commits
     ["<leader>ph"] = "", -- Preview hunk
     -- Editor
-    ["<leader>n"] = "", -- linenr
+    ["<leader>n"] = "",  -- linenr
     -- Terminal
     ["<leader>pt"] = "",
     -- LSP
