@@ -39,7 +39,7 @@ require("mason-lspconfig").setup_handlers {
 
   function(server_name)
     lspconfig[server_name].setup {
-      on_attach = custom_on_attach,
+      on_attach = on_attach,
       capabilities = capabilities,
     }
   end,
@@ -49,7 +49,7 @@ require("mason-lspconfig").setup_handlers {
 
   ["lua_ls"] = function()
     lspconfig["lua_ls"].setup {
-      on_attach = custom_on_attach,
+      on_attach = on_attach,
       capabilities = capabilities,
       settings = {
         Lua = {
@@ -129,7 +129,7 @@ require("mason-lspconfig").setup_handlers {
 
   ["eslint"] = function()
     lspconfig["eslint"].setup {
-      on_attach = custom_on_attach,
+      on_attach = on_attach,
       capabilities = capabilities,
       filetypes = {
         "javascript",
@@ -222,7 +222,7 @@ for _, lsp in ipairs(servers) do
   }
   lspconfig["volar"].setup {
     capabilities = capabilities,
-    on_attach = custom_on_attach,
+    on_attach = on_attach,
     -- filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
     filetypes = { "vue" },
   }
