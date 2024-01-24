@@ -1,4 +1,4 @@
----@type MappingsTablemappingsmappings
+---@type MappingsTablemappingsmappingsmappingsmappings
 local M = {}
 
 local function code_action()
@@ -211,7 +211,7 @@ M.glance = {
 }
 
 M.hover = {
-  plugin = true,
+  -- plugin = true,
   n = {
     ["K"] = {
       function()
@@ -246,12 +246,12 @@ M.lspconfig = {
       "LSP definition",
     },
 
-    ["K"] = {
-      function()
-        vim.lsp.buf.hover()
-      end,
-      "LSP hover",
-    },
+    -- ["K"] = {
+    --   function()
+    --     vim.lsp.buf.hover()
+    --   end,
+    --   "LSP hover",
+    -- },
 
     ["gi"] = {
       function()

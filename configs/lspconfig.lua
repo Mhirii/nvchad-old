@@ -149,12 +149,10 @@ require("mason-lspconfig").setup_handlers {
           end
           return 4 -- approved
         end,
-
         ["eslint/noLibrary"] = function()
           vim.notify("[lspconfig] Unable to find ESLint library.", vim.log.levels.WARN)
           return {}
         end,
-
         ["eslint/openDoc"] = function(_, result)
           if not result then
             return
@@ -169,7 +167,6 @@ require("mason-lspconfig").setup_handlers {
           end
           return {}
         end,
-
         ["eslint/probeFailed"] = function()
           vim.notify("[lspconfig] ESLint probe failed.", vim.log.levels.WARN)
           return {}
@@ -210,6 +207,59 @@ require("mason-lspconfig").setup_handlers {
         workingDirectory = {
           mode = "location",
         },
+      },
+    }
+  end,
+
+  ["tailwindcss"] = function()
+    lspconfig["tailwindcss"].setup {
+      filetypes = {
+        "aspnetcorerazor",
+        "astro",
+        "astro-markdown",
+        "blade",
+        "clojure",
+        "django-html",
+        "htmldjango",
+        "edge",
+        "eelixir",
+        "elixir",
+        "ejs",
+        "erb",
+        "eruby",
+        "gohtml",
+        "gohtmltmpl",
+        "haml",
+        "handlebars",
+        "hbs",
+        "html",
+        "html-eex",
+        "heex",
+        "jade",
+        "leaf",
+        "liquid",
+        "markdown",
+        "mdx",
+        "mustache",
+        "njk",
+        "nunjucks",
+        "php",
+        "razor",
+        "slim",
+        "twig",
+        "css",
+        "less",
+        "postcss",
+        "sass",
+        "scss",
+        "stylus",
+        "sugarss",
+        "javascriptreact",
+        "reason",
+        "rescript",
+        "typescriptreact",
+        "vue",
+        "svelte",
       },
     }
   end,
