@@ -83,7 +83,7 @@ require("mason-lspconfig").setup_handlers {
 
   ["gopls"] = function()
     lspconfig["gopls"].setup {
-      on_attach = custom_on_attach,
+      on_attach = on_attach,
       capabilities = capabilities,
       filetypes = { "go", "gomod", "gowork", "gosum", "goimpl" },
       settings = {
