@@ -35,7 +35,7 @@ return {
         enabled = false, -- enables the Noice messages UI
       },
       popupmenu = {
-        enabled = true, -- enables the Noice popupmenu UI
+        enabled = true,  -- enables the Noice popupmenu UI
         ---@type 'nui'|'cmp'
         backend = "nui", -- backend to use to show regular cmdline completions
         ---@type NoicePopupmenuItemKind|false
@@ -84,22 +84,22 @@ return {
         checker = false, -- Disable if you don't want health checks to run
       },
       routes = {
-        {
-          filter = {
-            event = "lsp",
-            any = {
-              { find = "formatting" },
-              { find = "Diagnosing" },
-              { find = "Diagnostics" },
-              { find = "diagnostics" },
-              { find = "code_action" },
-              { find = "Processing full semantic tokens" },
-              { find = "symbols" },
-              { find = "completion" },
-            },
-          },
-          opts = { skip = true },
-        },
+        -- {
+        --   filter = {
+        --     event = "lsp",
+        --     any = {
+        --       { find = "formatting" },
+        --       { find = "Diagnosing" },
+        --       { find = "Diagnostics" },
+        --       { find = "diagnostics" },
+        --       { find = "code_action" },
+        --       { find = "Processing full semantic tokens" },
+        --       { find = "symbols" },
+        --       { find = "completion" },
+        --     },
+        --   },
+        --   opts = { skip = true },
+        -- },
         {
           filter = {
             event = "notify",
@@ -204,11 +204,11 @@ return {
       },
       -- you can enable a preset for easier configuration
       presets = {
-        bottom_search = false, -- use a classic bottom cmdline for search
-        command_palette = true, -- position the cmdline and popupmenu together
+        bottom_search = false,        -- use a classic bottom cmdline for search
+        command_palette = true,       -- position the cmdline and popupmenu together
         long_message_to_split = true, -- long messages will be sent to a split
-        inc_rename = false, -- enables an input dialog for inc-rename.nvim
-        lsp_doc_border = false, -- add a border to hover docs and signature help
+        inc_rename = false,           -- enables an input dialog for inc-rename.nvim
+        lsp_doc_border = false,       -- add a border to hover docs and signature help
       },
     }
   end,
