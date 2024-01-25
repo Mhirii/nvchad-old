@@ -9,7 +9,7 @@ M.lang = { -- TODO: add Go, cpp and Zig
 }
 
 M.ui = {
-  tree = "nvimtree", --TODO: add neotree and oil.nvim
+  tree = "nvimtree",
   oil = true,
   trouble = true,
   code_actions = true,

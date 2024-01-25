@@ -1,16 +1,7 @@
----@type MappingsTablemappingsmappingsmappingsmappings
+---@diagnostic disable: inject-field
 local M = {}
 
 local settings = require "custom.settings"
-
-local function code_action()
-  local settings = require "custom.settings"
-  if settings.ui.code_actions then
-    require("actions-preview").code_actions()
-  else
-    vim.lsp.buf.code_action()
-  end
-end
 
 M.general = {
   n = {
@@ -99,10 +90,6 @@ M.buffer = {
 
 M.code = {
   v = {
-    ["<leader>cp"] = {
-      code_action,
-      "󱃸 Code Action Preview",
-    },
     ["<leader>ca"] = {
       function()
         vim.lsp.buf.code_action()
@@ -111,19 +98,11 @@ M.code = {
     },
   },
   n = {
-    ["<leader>cp"] = {
-      code_action,
-      "󱃸 Code Action Preview",
-    },
     ["<leader>ca"] = {
       function()
         vim.lsp.buf.code_action()
       end,
       "󱃸 Code Action",
-    },
-    ["<leader>cq"] = {
-      "<CMD>TroubleToggle quickfix<CR>",
-      "󰁨 Quickfix",
     },
     ["<leader>sr"] = {
       function()
@@ -142,6 +121,17 @@ M.code = {
         vim.diagnostic.open_float { border = "rounded" }
       end,
       "󰨰 Floating diagnostic",
+    },
+  },
+}
+
+M.code_actions_preview = {
+  n = {
+    ["<leader>cp"] = {
+      function()
+        require("actions-preview").code_actions()
+      end,
+      "󱃸 Code Action Preview",
     },
   },
 }
@@ -171,6 +161,7 @@ M.lazy = {
 }
 
 M.lsp_lines = {
+  plugin = true,
   n = {
     ["<leader>ti"] = {
       ":lua require('lsp_lines').toggle() <CR>",
@@ -236,12 +227,13 @@ M.hop = {
   },
 }
 
-if settings.motions.hop then
-  require("core.utils").load_mappings "hop"
-end
+-- Only Load the mapping when the setting is true
+-- if settings.motions.hop then
+--   require("core.utils").load_mappings "hop"
+-- end
 
 M.hover = {
-  -- plugin = true,
+  plugin = true,
   n = {
     ["K"] = {
       function()
@@ -362,7 +354,8 @@ M.lspconfig = {
   },
 }
 
-M.marks = {
+M.harpoon = {
+  plugin = true,
   n = {
     ["<leader>hr"] = {
       function()
@@ -378,6 +371,12 @@ M.marks = {
       end,
       "󰛢 Harpoon Add File",
     },
+    ["<leader>fh"] = { "<cmd>Telescope harpoon marks<cr>", "Telescope Harpoon Marks" },
+  },
+}
+
+M.bookmarks = {
+  n = {
     ["<leader>mb"] = {
       function()
         require("bookmarks").add_bookmarks()
@@ -506,10 +505,15 @@ M.nvterm = {
 }
 
 M.oil = {
+  plugin = true,
   n = {
     ["<leader>to"] = { ':lua require("oil").toggle_float()<CR>', "Open oil" },
   },
 }
+
+-- if settings.ui.oil then
+--   require("core.utils").load_mappings "oil"
+-- end
 
 M.refactor = {
   n = {
@@ -541,7 +545,8 @@ M.refactor = {
   },
 }
 
-M.rest_nvim = {
+M.rest = {
+  plugin = true,
   n = {
     ["<leader>ht"] = {
       function()
@@ -566,7 +571,6 @@ M.telescope = {
     ["<leader>fl"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", "Find in current buffer" },
     ["<leader>fm"] = { "<cmd> Telescope marks <CR>", "telescope bookmarks" },
     ["<leader>fp"] = { "<cmd> Telescope projects <CR>", "telescope projects" },
-    ["<leader>fh"] = { "<cmd>Telescope harpoon marks<cr>", "Telescope Harpoon Marks" },
     ["<leader>fz"] = { "<CMD>Telescope zoxide list<CR>", "Find in current buffer" },
     ["<leader>fs"] = {
       "<cmd> Telescope lsp_document_symbols <CR>",
@@ -622,7 +626,6 @@ M.toggle = {
       " Toggle deleted",
     },
     ["<leader>th"] = { "<cmd> Telescope themes <CR>", "󰸌 Nvchad themes" },
-    ["<leader>tb"] = { ":TroubleToggle<CR>", "󱂩 Toggle Trouble" },
     -- ["<leader>to"] = { ':lua require("oil").setup()<CR>', "󱏒 Toggle oil" },
   },
 }
@@ -632,6 +635,17 @@ M.treesitter = {
     ["<leader>nts"] = { "<cmd> Inspect<CR>", "HL groups Under Cursor" },
     ["<leader>ntt"] = { "<cmd> InspectTree<CR>", "Parsed Syntax Tree" },
     ["<leader>ntq"] = { "<cmd> PreviewQuery<CR>", "Query Editor" },
+  },
+}
+
+M.trouble = {
+  plugin = true,
+  n = {
+    ["<leader>tb"] = { ":TroubleToggle<CR>", "󱂩 Toggle Trouble" },
+    ["<leader>cq"] = {
+      "<CMD>TroubleToggle quickfix<CR>",
+      "󰁨 Quickfix",
+    },
   },
 }
 
@@ -697,5 +711,24 @@ M.disabled = {
     ["<leader>rn"] = "",
   },
 }
+
+local plugins = {
+  { name = "oil",                  setting = settings.ui.oil },
+  { name = "trouble",              setting = settings.ui.trouble },
+  { name = "code_actions_preview", setting = settings.ui.code_actions },
+  { name = "hover",                setting = settings.ui.hover },
+  { name = "glance",               setting = settings.ui.glance },
+  { name = "harpoon",              setting = settings.motions.harpoon },
+  { name = "bookmarks",            setting = settings.motions.bookmarks },
+  { name = "hop",                  setting = settings.motions.hop },
+  { name = "lsp_lines",            setting = settings.utilities.lsplines },
+  { name = "rest",                 setting = settings.utilities.rest },
+}
+
+for _, plugin in ipairs(plugins) do
+  if plugin.setting then
+    require("core.utils").load_mappings(plugin.name)
+  end
+end
 
 return M
