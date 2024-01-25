@@ -42,7 +42,9 @@ M.lspzero = false
 
 M.multiplexer = "wezterm" -- wezterm | tmux.
 
-M.formatter = "none-ls" -- none-ls | conform. TODO: Configure conform and lint
+M.formatter = "none-ls"   -- none-ls | conform. TODO: Configure conform and lint
+
+M.neorg = true
 
 M.dotfiles = {
   hyprland = true,
