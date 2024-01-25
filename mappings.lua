@@ -1,6 +1,8 @@
 ---@type MappingsTablemappingsmappingsmappingsmappings
 local M = {}
 
+local settings = require "custom.settings"
+
 local function code_action()
   local settings = require "custom.settings"
   if settings.ui.code_actions then
@@ -209,6 +211,34 @@ M.glance = {
     },
   },
 }
+
+M.hop = {
+  plugin = true,
+  v = {
+    ["<leader>hw"] = { "<Cmd>HopWord <cr>", "󰟵 Hop Word" },
+    ["<leader>h/"] = { "<Cmd>HopPattern <cr>", " Hop Pattern" },
+    ["<leader>he"] = { "<Cmd>HopAnywhere <cr>", " Hop Anywhere" },
+    ["<leader>hc"] = { "<Cmd>HopChar1 <cr>", "󰾺 Hop Character" },
+    ["<leader>hv"] = { "<Cmd>HopVertical <cr>", " Hop Vertical" },
+    ["<leader>hs"] = { "<Cmd>HopChar2 <cr>", " Hop 2 Characters" },
+    ["<M-s>"] = { "<Cmd>HopWord <cr>", "󰟵 Hop Word" },
+    ["<M-f>"] = { "<Cmd>HopChar1 <cr>", "󰾺 Hop Character" },
+  },
+  n = {
+    ["<leader>hw"] = { "<Cmd>HopWord <cr>", "󰟵 Hop Word" },
+    ["<leader>h/"] = { "<Cmd>HopPattern <cr>", " Hop Pattern" },
+    ["<leader>he"] = { "<Cmd>HopAnywhere <cr>", " Hop Anywhere" },
+    ["<leader>hc"] = { "<Cmd>HopChar1 <cr>", "󰾺 Hop Character" },
+    ["<leader>hv"] = { "<Cmd>HopVertical <cr>", " Hop Vertical" },
+    ["<leader>hs"] = { "<Cmd>HopChar2 <cr>", " Hop 2 Characters" },
+    ["<M-s>"] = { "<Cmd>HopWord <cr>", "󰟵 Hop Word" },
+    ["<M-f>"] = { "<Cmd>HopChar1 <cr>", "󰾺 Hop Character" },
+  },
+}
+
+if settings.motions.hop then
+  require("core.utils").load_mappings "hop"
+end
 
 M.hover = {
   -- plugin = true,
