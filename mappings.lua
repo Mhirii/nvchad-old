@@ -511,6 +511,23 @@ M.refactor = {
   },
 }
 
+M.rest_nvim = {
+  n = {
+    ["<leader>ht"] = {
+      function()
+        require("rest-nvim").run()
+      end,
+      "󱅥 Run HTTP Request",
+    },
+    ["<leader>hl"] = {
+      function()
+        require("rest-nvim").last()
+      end,
+      "󱅣 reRun Last HTTP Request",
+    },
+  },
+}
+
 M.telescope = {
   n = {
     ["<leader>fc"] = { ":Telescope builtin<CR>", "Find Editor Command" },

@@ -36,6 +36,7 @@ M.motions = {
 M.utilities = {
   aerial = true,
   lsplines = true,
+  rest = true,
 }
 
 M.lspzero = false
