@@ -1,11 +1,12 @@
 local M = {}
 
-M.lang = { -- TODO: add Go, cpp and Zig
+M.lang = { -- TODO: add cpp
   typescript = true,
   rust = true,
   go = true,
   cpp = true,
-  zig = true,
+
+  hyprland = true,
 }
 
 M.ui = {
@@ -21,6 +22,8 @@ M.ui = {
   hover = true,
   glance = true,
   notify = true,
+  fidget = false,
+  noice = true,
 }
 
 M.ai = { -- TODO: add Tabnine
@@ -37,18 +40,24 @@ M.utilities = {
   aerial = true,
   lsplines = true,
   rest = true,
+  cheat = false,
 }
 
 M.lspzero = false
 
-M.multiplexer = "wezterm" -- wezterm | tmux.
+M.multiplexer = "wezterm" -- wezterm | tmux -- edit: the plugin works well with both
 
 M.formatter = "none-ls"   -- none-ls | conform. TODO: Configure conform and lint
 
-M.neorg = true
+M.refactoring = true
 
-M.dotfiles = {
-  hyprland = true,
+M.extras = {
+  persist = true,
+  git = true,
+  projects = false,
+  terms = true,
+  recorder = true,
+  neorg = true,
 }
 
 return M
