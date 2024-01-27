@@ -6,20 +6,8 @@ local settings = require "custom.settings"
 M.general = {
   n = {
     --  format with conform
-    ["<leader>fm"] = {
-      function()
-        require("conform").format()
-      end,
-      "formatting",
-    },
     ["<C-d>"] = { "<C-d>zz", " Scroll down", opts = { silent = true } },
     ["<C-u>"] = { "<C-u>zz", " Scroll up", opts = { silent = true } },
-    ["<leader>tr"] = {
-      function()
-        require("base46").toggle_transparency()
-      end,
-      "󰂵 Toggle transparency",
-    },
   },
   v = {
     [">"] = { ">gv", "indent" },
@@ -150,7 +138,7 @@ M.dashboard = {
 
 M.extra = {
   n = {
-    ["<leader>zh"] = { "<cmd> Telescope help_tags <CR>", "Help page" },
+    ["<leader>zh"] = { "<cmd> Telescope help_tags <CR>", "󰋖 Help page" },
   },
 }
 
@@ -216,14 +204,14 @@ M.hop = {
     ["<M-f>"] = { "<Cmd>HopChar1 <cr>", "󰾺 Hop Character" },
   },
   n = {
-    ["<leader>hw"] = { "<Cmd>HopWord <cr>", "󰟵 Hop Word" },
-    ["<leader>h/"] = { "<Cmd>HopPattern <cr>", " Hop Pattern" },
-    ["<leader>he"] = { "<Cmd>HopAnywhere <cr>", " Hop Anywhere" },
-    ["<leader>hc"] = { "<Cmd>HopChar1 <cr>", "󰾺 Hop Character" },
-    ["<leader>hv"] = { "<Cmd>HopVertical <cr>", " Hop Vertical" },
-    ["<leader>hs"] = { "<Cmd>HopChar2 <cr>", " Hop 2 Characters" },
-    ["<M-s>"] = { "<Cmd>HopWord <cr>", "󰟵 Hop Word" },
-    ["<M-f>"] = { "<Cmd>HopChar1 <cr>", "󰾺 Hop Character" },
+    ["<leader>hw"] = { "<Cmd>HopWord <cr>", "󱡮 Hop Word" },
+    ["<leader>h/"] = { "<Cmd>HopPattern <cr>", "󱡮 Hop Pattern" },
+    ["<leader>he"] = { "<Cmd>HopAnywhere <cr>", "󱡮 Hop Anywhere" },
+    ["<leader>hc"] = { "<Cmd>HopChar1 <cr>", "󱡮 Hop Character" },
+    ["<leader>hv"] = { "<Cmd>HopVertical <cr>", "󱡮 Hop Vertical" },
+    ["<leader>hs"] = { "<Cmd>HopChar2 <cr>", "󱡮 Hop 2 Characters" },
+    ["<M-s>"] = { "<Cmd>HopWord <cr>", "󱡮 Hop Word" },
+    ["<M-f>"] = { "<Cmd>HopChar1 <cr>", "󱡮 Hop Character" },
   },
 }
 
@@ -362,7 +350,7 @@ M.harpoon = {
         local harpoon = require "harpoon"
         harpoon.ui:toggle_quick_menu(harpoon:list())
       end,
-      "󰷐 Harpoon toggle menu",
+      "󰛢 Harpoon toggle menu",
     },
     ["<leader>mh"] = {
       function()
@@ -371,7 +359,7 @@ M.harpoon = {
       end,
       "󰛢 Harpoon Add File",
     },
-    ["<leader>fh"] = { "<cmd>Telescope harpoon marks<cr>", "Telescope Harpoon Marks" },
+    ["<leader>fh"] = { "<cmd>Telescope harpoon marks<cr>", "󰛢 Telescope Harpoon Marks" },
   },
 }
 
@@ -428,25 +416,25 @@ M.multiplexer = {
       function()
         require("smart-splits").resize_left()
       end,
-      " resize left",
+      "󰩨 resize left",
     },
     ["<M-j>"] = {
       function()
         require("smart-splits").resize_down()
       end,
-      " resize down",
+      "󰩨 resize down",
     },
     ["<M-k>"] = {
       function()
         require("smart-splits").resize_up()
       end,
-      " resize up",
+      "󰩨 resize up",
     },
     ["<M-l>"] = {
       function()
         require("smart-splits").resize_right()
       end,
-      " resize right",
+      "󰩨 resize right",
     },
     ["<leader><leader>h"] = {
       function()
@@ -507,7 +495,7 @@ M.nvterm = {
 M.oil = {
   plugin = true,
   n = {
-    ["<leader>to"] = { ':lua require("oil").toggle_float()<CR>', "Open oil" },
+    ["<leader>to"] = { ':lua require("oil").toggle_float()<CR>', "󱏒 Open oil" },
   },
 }
 
@@ -565,16 +553,16 @@ M.rest = {
 
 M.telescope = {
   n = {
-    ["<leader>fc"] = { ":Telescope builtin<CR>", "Find Editor Command" },
-    ["<leader>fr"] = { "<cmd> Telescope oldfiles<CR>", "Recent Files" },
-    ["<leader>/"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
-    ["<leader>fl"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", "Find in current buffer" },
-    ["<leader>fm"] = { "<cmd> Telescope marks <CR>", "telescope bookmarks" },
-    ["<leader>fp"] = { "<cmd> Telescope projects <CR>", "telescope projects" },
-    ["<leader>fz"] = { "<CMD>Telescope zoxide list<CR>", "Find in current buffer" },
+    ["<leader>fc"] = { ":Telescope builtin<CR>", " Find Editor Command" },
+    ["<leader>fr"] = { "<cmd> Telescope oldfiles<CR>", " Recent Files" },
+    ["<leader>/"] = { "<cmd> Telescope live_grep <CR>", " Live grep" },
+    ["<leader>fl"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", " Find in current buffer" },
+    ["<leader>fm"] = { "<cmd> Telescope marks <CR>", "󰸖 telescope bookmarks" },
+    -- ["<leader>fp"] = { "<cmd> Telescope projects <CR>", "telescope projects" }, --TODO: Make a M.projects and move this there
+    ["<leader>fz"] = { "<CMD>Telescope zoxide list<CR>", "󰥩 Zoxide" },
     ["<leader>fs"] = {
       "<cmd> Telescope lsp_document_symbols <CR>",
-      "Search Symbols",
+      "󰊕 Search Symbols",
     },
   },
 }
@@ -626,22 +614,28 @@ M.toggle = {
       " Toggle deleted",
     },
     ["<leader>th"] = { "<cmd> Telescope themes <CR>", "󰸌 Nvchad themes" },
-    -- ["<leader>to"] = { ':lua require("oil").setup()<CR>', "󱏒 Toggle oil" },
+    ["<leader>ts"] = {
+      function()
+        require("base46").toggle_transparency()
+      end,
+      "󰂵 Toggle transparency",
+    },
   },
 }
 
-M.treesitter = {
-  n = {
-    ["<leader>nts"] = { "<cmd> Inspect<CR>", "HL groups Under Cursor" },
-    ["<leader>ntt"] = { "<cmd> InspectTree<CR>", "Parsed Syntax Tree" },
-    ["<leader>ntq"] = { "<cmd> PreviewQuery<CR>", "Query Editor" },
-  },
-}
+-- M.treesitter = {
+--   n = {
+--     ["<leader>nts"] = { "<cmd> Inspect<CR>", "HL groups Under Cursor" },
+--     ["<leader>ntt"] = { "<cmd> InspectTree<CR>", "Parsed Syntax Tree" },
+--     ["<leader>ntq"] = { "<cmd> PreviewQuery<CR>", "Query Editor" },
+--   },
+-- }
 
 M.trouble = {
   plugin = true,
   n = {
     ["<leader>tb"] = { ":TroubleToggle<CR>", "󱂩 Toggle Trouble" },
+    ["<leader>wd"] = { ":TroubleToggle workspace_diagnostics<CR>", "󱂩 Workspace Diagnostics" },
     ["<leader>cq"] = {
       "<CMD>TroubleToggle quickfix<CR>",
       "󰁨 Quickfix",

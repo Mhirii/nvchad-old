@@ -118,6 +118,4 @@ local plugins = {
   -- }
 }
 
--- TODO: rktjmp/paperplanes.nvim,
-
 return plugins

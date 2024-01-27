@@ -5,7 +5,6 @@ M.lang = { -- TODO: add cpp
   rust = true,
   go = true,
   cpp = true,
-
   hyprland = true,
 }
 
