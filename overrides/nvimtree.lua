@@ -1,7 +1,7 @@
 local settings = require "custom.settings"
 local ui = settings.ui
 local HEIGHT_RATIO = 0.8 -- You can change this
-local WIDTH_RATIO = 0.5 -- You can change this too
+local WIDTH_RATIO = 0.5  -- You can change this too
 return {
   "nvim-tree/nvim-tree.lua",
   enabled = ui.tree == "nvimtree",
@@ -34,7 +34,7 @@ return {
       },
       git = {
         enable = true,
-        ignore = true,
+        ignore = false,
         show_on_dirs = true,
         show_on_open_dirs = true,
         timeout = 5000,
