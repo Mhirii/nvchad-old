@@ -46,7 +46,7 @@ M.lspzero = false
 
 M.multiplexer = "wezterm" -- wezterm | tmux -- edit: the plugin works well with both
 
-M.formatter = "none-ls"   -- none-ls | conform. TODO: Configure conform and lint
+M.formatter = "conform"   -- none-ls | conform. TODO: Configure conform and lint
 
 M.refactoring = true
 
