@@ -1,6 +1,8 @@
+local keys = require("custom.mappings").glance
 return {
   "dnlhc/glance.nvim",
   event = "BufRead",
+  keys = keys,
   config = function()
     -- Lua configuration
     local glance = require "glance"
@@ -81,7 +83,7 @@ return {
         icon = "│",
       },
       winbar = {
-        enable = true, -- Available strating from nvim-0.8+
+        enable = true, -- Available starting from nvim-0.8+
       },
     }
   end,

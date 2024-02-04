@@ -160,6 +160,7 @@ M.lsp_lines = {
 }
 
 M.glance = {
+  plugin = true,
   n = {
     ["<leader>pd"] = {
       ":Glance definitions<CR>",
@@ -497,6 +498,7 @@ M.oil = {
   plugin = true,
   n = {
     ["<leader>to"] = { ':lua require("oil").toggle_float()<CR>', "󱏒 Open oil" },
+    ["<leader>oi"] = { ":Oil<CR>", "󱏒 Open oil" },
     ["<C-o>"] = { ':lua require("oil").toggle_float()<CR>', "󱏒 Open oil" },
   },
 }

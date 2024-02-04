@@ -25,7 +25,8 @@ return {
 
     {
       "roobert/tailwindcss-colorizer-cmp.nvim",
-      event = "VeryLazy",
+      ft = { "vue", "typescript", "typescriptreact", "javascript", "javascriptreact", "astro", "svelte" },
+      -- event = "VeryLazy",
       config = function()
         require("tailwindcss-colorizer-cmp").setup {
           color_square_width = 2,

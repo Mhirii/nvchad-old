@@ -1,6 +1,8 @@
+local keys = require("custom.mappings").hover
 return {
   "lewis6991/hover.nvim",
-  event = "VeryLazy",
+  -- event = "VeryLazy",
+  keys = keys,
   config = function()
     require("hover").setup {
       init = function()
