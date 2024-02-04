@@ -52,6 +52,7 @@ local plugins = {
   -- ── Lang ────────────────────────────────────────────────────────{
   -- typescipt
   { import = "custom.configs.ts", enabled = typescipt },
+  { import = "custom.configs.imports", enabled = typescipt },
   -- Typechecking
   { import = "custom.configs.tsc", enabled = typescipt },
   { import = "custom.configs.ts-autotag", enabled = typescipt },
