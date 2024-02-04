@@ -23,6 +23,7 @@ M.ui = {
   notify = true,
   fidget = false,
   noice = true,
+  illuminate = true,
 }
 
 M.ai = { -- TODO: add Tabnine

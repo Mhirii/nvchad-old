@@ -88,6 +88,8 @@ local plugins = {
   { import = "custom.configs.windows", enabled = ui.split_animation },
   -- Edit fs like a buffer
   { import = "custom.configs.oil", enabled = ui.oil },
+  -- Highlight occurrences of word under cursor
+  { import = "custom.configs.illuminate", enabled = ui.illuminate },
   --}
 
   -- ── Utility ─────────────────────────────────────────────────────{
