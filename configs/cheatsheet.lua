@@ -8,7 +8,7 @@ return {
   cmd = { "Cheatsheet" },
   keys = {
     {
-      "<leader>fC",
+      "<leader>sC",
       "<cmd>Cheatsheet<CR>",
       mode = { "n", "v" },
       desc = "Telescope Cheatsheet",

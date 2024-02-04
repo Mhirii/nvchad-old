@@ -1,3 +1,4 @@
+local keys = require("custom.mappings").todo
 return {
   "folke/todo-comments.nvim",
   event = "VeryLazy",
@@ -7,26 +8,7 @@ return {
   }, -- bqf is optional
   keys = {
     {
-      "<leader>ltq",
-      "<cmd>TodoQuickFix<cr>",
-      mode = "n",
-      desc = "QuickFix TODOs",
-    },
-    {
-      "<leader>ltt",
-      "<cmd>TodoTelescope<cr>",
-      mode = "n",
-      desc = "Telescope TODOs",
-    },
-    {
-      "<leader>ltl",
-      "<cmd>TodoLocList<cr>",
-      mode = "n",
-      desc = "LocList TODOs",
-    },
-    -- 🚦 :TodoTrouble is an option too!
-    {
-      "<leader>ltn",
+      "]t",
       function()
         require("todo-comments").jump_next() -- More arguments: {keywords = { "ERROR", "WARNING"}}
       end,
@@ -34,7 +16,7 @@ return {
       desc = "Next TODO",
     },
     {
-      "<leader>ltp",
+      "[t",
       function()
         require("todo-comments").jump_prev()
       end,

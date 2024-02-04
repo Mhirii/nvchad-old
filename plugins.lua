@@ -146,3 +146,12 @@ local plugins = {
 }
 
 return plugins
+-- TODO: add telescope import
+-- TODO: add gen.nvim
+-- FIXME: key load comment-box
+-- FIXME: key load hawtkeys
+-- FIXME: key load glance
+-- FIXME: key load hover
+-- FIXME: filetype load hover
+-- FIXME: filetype load tailwind
+-- FIXME: filetype load oil

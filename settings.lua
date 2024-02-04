@@ -46,7 +46,7 @@ M.lspzero = false
 
 M.multiplexer = "wezterm" -- wezterm | tmux -- edit: the plugin works well with both
 
-M.formatter = "conform"   -- none-ls | conform. TODO: Configure conform and lint
+M.formatter = "conform" -- none-ls | conform. TODO: Configure conform and lint
 
 M.refactoring = true
 
@@ -55,7 +55,7 @@ M.extras = {
   git = true,
   projects = false,
   terms = true,
-  recorder = true,
+  recorder = false,
   neorg = true,
 }
 

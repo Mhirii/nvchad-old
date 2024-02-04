@@ -6,7 +6,7 @@ return {
       function()
         require("smart-splits").setup()
       end,
-      " Toggle Smart Splits",
+      desc = " Toggle Smart Splits",
     },
   },
   config = function()

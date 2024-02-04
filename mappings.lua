@@ -30,7 +30,7 @@ M.buffer = {
       end,
       "Toggle Conceal",
     },
-    ["<leader>bn"] = { "<cmd> enew <CR>", "󰻭 New buffer" },
+    ["<leader>bn"] = { "<cmd> new <CR>", "󰻭 New buffer" },
     -- quit buffer
     ["<leader>bd"] = {
       "<cmd> q<CR>",
@@ -92,12 +92,12 @@ M.code = {
       end,
       "󱃸 Code Action",
     },
-    ["<leader>sr"] = {
-      function()
-        vim.lsp.buf.signature_help()
-      end,
-      "󰘥 LSP Signature Help",
-    },
+    -- ["<leader>sr"] = {
+    --   function()
+    --     vim.lsp.buf.signature_help()
+    --   end,
+    --   "󰘥 LSP Signature Help",
+    -- },
     ["<leader>cr"] = {
       function()
         require("nvchad.renamer").open()
@@ -145,6 +145,7 @@ M.extra = {
 M.lazy = {
   n = {
     ["<leader>ll"] = { ":Lazy<CR>", "󰒲 Open Plugin Manager" },
+    ["<leader>pl"] = { ":Lazy<CR>", "󰒲 Open Plugin Manager" },
   },
 }
 
@@ -359,7 +360,7 @@ M.harpoon = {
       end,
       "󰛢 Harpoon Add File",
     },
-    ["<leader>fh"] = { "<cmd>Telescope harpoon marks<cr>", "󰛢 Telescope Harpoon Marks" },
+    ["<leader>sh"] = { "<cmd>Telescope harpoon marks<cr>", "󰛢 Telescope Harpoon Marks" },
   },
 }
 
@@ -496,6 +497,7 @@ M.oil = {
   plugin = true,
   n = {
     ["<leader>to"] = { ':lua require("oil").toggle_float()<CR>', "󱏒 Open oil" },
+    ["<C-o>"] = { ':lua require("oil").toggle_float()<CR>', "󱏒 Open oil" },
   },
 }
 
@@ -553,23 +555,41 @@ M.rest = {
 
 M.telescope = {
   n = {
-    ["<leader>fc"] = { ":Telescope builtin<CR>", " Find Editor Command" },
-    ["<leader>fr"] = { "<cmd> Telescope oldfiles<CR>", " Recent Files" },
+
+    ["<leader>f"] = {
+      "<cmd> Telescope find_files follow=true no_ignore=true hidden=true theme=dropdown previewer=false <CR>",
+      "Find all",
+    },
+    ["<leader>sf"] = {
+      "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>",
+      "Find all",
+    },
+    ["<leader>sc"] = { ":Telescope builtin<CR>", " Find Editor Command" },
+    ["<leader>sr"] = { "<cmd> Telescope oldfiles<CR>", " Recent Files" },
     ["<leader>/"] = { "<cmd> Telescope live_grep <CR>", " Live grep" },
-    ["<leader>fl"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", " Find in current buffer" },
-    ["<leader>fm"] = { "<cmd> Telescope marks <CR>", "󰸖 telescope bookmarks" },
-    -- ["<leader>fp"] = { "<cmd> Telescope projects <CR>", "telescope projects" }, --TODO: Make a M.projects and move this there
-    ["<leader>fz"] = { "<CMD>Telescope zoxide list<CR>", "󰥩 Zoxide" },
-    ["<leader>fs"] = {
+    ["<leader>sF"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", " Find in current buffer" },
+    ["<leader>sm"] = { "<cmd> Telescope marks <CR>", "󰸖 telescope bookmarks" },
+    ["<leader>sz"] = { "<CMD>Telescope zoxide list<CR>", "󰥩 Zoxide" },
+    ["<leader>zx"] = { "<CMD>Telescope zoxide list<CR>", "󰥩 Zoxide" },
+    ["<leader>ss"] = {
       "<cmd> Telescope lsp_document_symbols <CR>",
       "󰊕 Search Symbols",
     },
+    ["<leader>so"] = { "<cmd> Telescope oldfiles <CR>", "Find oldfiles" },
+    ["<leader>sb"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
+    ["<leader>sl"] = { "<cmd>Telescope resume<cr>", "Resume last search" },
+  },
+}
+
+M.todo = {
+  n = {
+    ["<leader>sd"] = { "<cmd>TodoTelescope<cr>", "Telescope TODOs" },
   },
 }
 
 M.terms = {
   n = {
-    ["<leader>ft"] = {
+    ["<leader>st"] = {
       "<cmd> Telescope terms <CR>",
       "Pick hidden term",
     },
@@ -607,7 +627,7 @@ M.toggle = {
   n = {
     ["<leader>tnl"] = { "<cmd> set nu! <CR>", "Toggle line number" },
     ["<leader>tnr"] = { "<cmd> set rnu! <CR>", "Toggle relative number" },
-    ["<leader>td"] = {
+    ["<leader>tD"] = {
       function()
         require("gitsigns").toggle_deleted()
       end,
@@ -636,10 +656,8 @@ M.trouble = {
   n = {
     ["<leader>tb"] = { ":TroubleToggle<CR>", "󱂩 Toggle Trouble" },
     ["<leader>wd"] = { ":TroubleToggle workspace_diagnostics<CR>", "󱂩 Workspace Diagnostics" },
-    ["<leader>cq"] = {
-      "<CMD>TroubleToggle quickfix<CR>",
-      "󰁨 Quickfix",
-    },
+    ["<leader>cq"] = { "<CMD>TroubleToggle quickfix<CR>", "󰁨 Quickfix" },
+    ["<leader>td"] = { "<CMD>TodoTrouble<CR>", " Todo" },
   },
 }
 
@@ -666,7 +684,7 @@ M.disabled = {
   },
   n = {
     -- general
-    ["<leader>fm"] = "",
+    ["<leader>sm"] = "",
     -- diagnostics
     ["<leader>lf"] = "",
     -- loclist
@@ -677,8 +695,8 @@ M.disabled = {
     ["<leader>h"] = "",
     ["<leader>v"] = "",
     -- Telescope
-    ["<leader>fh"] = "",
-    ["<leader>fz"] = "",
+    ["<leader>sh"] = "",
+    ["<leader>sz"] = "",
     -- lspconfig
     ["<leader>ca"] = "",
     ["K"] = "",
@@ -693,30 +711,47 @@ M.disabled = {
     ["<leader>cm"] = "", -- Commits
     ["<leader>ph"] = "", -- Preview hunk
     -- Editor
-    ["<leader>n"] = "",  -- linenr
+    ["<leader>n"] = "", -- linenr
     -- Terminal
     ["<leader>pt"] = "",
     -- LSP
     ["<leader>ls"] = "",
     -- NvChad
     ["<leader>ra"] = "",
-    ["<leader>fo"] = "", -- moved: <leader>fr
+    ["<leader>so"] = "", -- moved: <leader>fr
     ["<leader>rh"] = "",
     ["<leader>rn"] = "",
+
+    -- find all
+    ["<leader>fa"] = "",
+    -- find buffer
+    ["<leader>fb"] = "",
+    -- find file
+    ["<leader>ff"] = "",
+    -- find help
+    ["<leader>fh"] = "",
+    -- format
+    ["<leader>fm"] = "",
+    -- find old
+    ["<leader>fo"] = "",
+    -- find word
+    ["<leader>fw"] = "",
+    -- find current buffer
+    ["<leader>fz"] = "",
   },
 }
 
 local plugins = {
-  { name = "oil",                  setting = settings.ui.oil },
-  { name = "trouble",              setting = settings.ui.trouble },
+  { name = "oil", setting = settings.ui.oil },
+  { name = "trouble", setting = settings.ui.trouble },
   { name = "code_actions_preview", setting = settings.ui.code_actions },
-  { name = "hover",                setting = settings.ui.hover },
-  { name = "glance",               setting = settings.ui.glance },
-  { name = "harpoon",              setting = settings.motions.harpoon },
-  { name = "bookmarks",            setting = settings.motions.bookmarks },
-  { name = "hop",                  setting = settings.motions.hop },
-  { name = "lsp_lines",            setting = settings.utilities.lsplines },
-  { name = "rest",                 setting = settings.utilities.rest },
+  { name = "hover", setting = settings.ui.hover },
+  { name = "glance", setting = settings.ui.glance },
+  { name = "harpoon", setting = settings.motions.harpoon },
+  { name = "bookmarks", setting = settings.motions.bookmarks },
+  { name = "hop", setting = settings.motions.hop },
+  { name = "lsp_lines", setting = settings.utilities.lsplines },
+  { name = "rest", setting = settings.utilities.rest },
 }
 
 for _, plugin in ipairs(plugins) do
@@ -726,3 +761,5 @@ for _, plugin in ipairs(plugins) do
 end
 
 return M
+-- TODO: bring keys from custom.configs
+-- TODO: use cod icons
