@@ -37,84 +37,111 @@ local plugins = {
 
   -- ── Lsp ─────────────────────────────────────────────────────────{
   { import = "custom.configs.lsp-zero", enabled = settings.lspzero },
-  { import = "custom.configs.context-vt", enabled = ui.context, desc = " useful in nested code" },
-  { import = "custom.configs.actions-preview", enabled = ui.code_actions, desc = " leader c p" },
-  { import = "custom.configs.aerial", enabled = utils.aerial, desc = " Buffer Navigation" },
-  { import = "custom.configs.refactoring", enabled = settings.refactoring, desc = " Refactoring" },
-  {
-    import = "custom.configs.lsplines",
-    enabled = utils.lsplines,
-    desc = " Explanation Lines below errors",
-  },
+  --" useful in nested code"
+  { import = "custom.configs.context-vt", enabled = ui.context },
+  -- leader c p
+  { import = "custom.configs.actions-preview", enabled = ui.code_actions },
+  -- Buffer Navigation
+  { import = "custom.configs.aerial", enabled = utils.aerial },
+  -- Refactoring
+  { import = "custom.configs.refactoring", enabled = settings.refactoring },
+  -- Explanation Lines below errors
+  { import = "custom.configs.lsplines", enabled = utils.lsplines },
   --}
 
   -- ── Lang ────────────────────────────────────────────────────────{
   -- typescipt
   { import = "custom.configs.ts", enabled = typescipt },
+  -- Typechecking
   { import = "custom.configs.tsc", enabled = typescipt },
   { import = "custom.configs.ts-autotag", enabled = typescipt },
   --Rust
-  { import = "custom.configs.rustaceanvim", enabled = rust, desc = " Rust" },
-  --Go
-  { import = "custom.configs.go", enabled = go, desc = " Go Toolchain" },
+  { import = "custom.configs.rustaceanvim", enabled = rust },
+  -- Go Toolchain
+  { import = "custom.configs.go", enabled = go },
   --Config
-  { import = "custom.configs.hyprlang", enabled = hypr, desc = " Hyprland Treesitter" },
+  -- Hyprland Treesitter
+  { import = "custom.configs.hyprlang", enabled = hypr },
   -- }
 
   -- ── Ui ──────────────────────────────────────────────────────────{
-  { import = "custom.configs.dressing", enabled = true, desc = " UI" },
-  { import = "custom.configs.fidget", enabled = ui.fidget, desc = " UI" },
-  { import = "custom.configs.noice", enabled = ui.noice, desc = " UI" },
-  { import = "custom.configs.trouble", enabled = ui.trouble, desc = " Diagnostics and more" },
-  { import = "custom.configs.lsp-lens", enabled = ui.lens, desc = " Helpful lens" },
-  {
-    import = "custom.configs.reactive",
-    enabled = ui.mode_indicator == "reactive",
-    desc = "Awesome UI changes based on mode",
-  },
-  {
-    import = "custom.configs.modicator",
-    enabled = ui.mode_indicator == "modicator",
-    desc = " change line color based on mode",
-  },
-  { import = "custom.configs.neoscroll", enabled = ui.scroll, desc = " Eye Candy Scrolling" },
-  { import = "custom.configs.hover", enabled = ui.hover, desc = " Better Hover" },
-  { import = "custom.configs.glance", enabled = ui.glance, desc = " MUCH Better Hover" },
-  { import = "custom.configs.windows", enabled = ui.split_animation, desc = " auto resize focused split" },
-  { import = "custom.configs.oil", enabled = ui.oil, desc = " Edit fs like a buffer" },
+  { import = "custom.configs.dressing", enabled = true },
+  -- cool looking spinner animation for loading time
+  { import = "custom.configs.fidget", enabled = ui.fidget },
+  -- UI overhaul
+  { import = "custom.configs.noice", enabled = ui.noice },
+  -- Diagnostics and more
+  { import = "custom.configs.trouble", enabled = ui.trouble },
+  -- Helpful lens
+  { import = "custom.configs.lsp-lens", enabled = ui.lens },
+  -- Awesome UI changes based on mode
+  { import = "custom.configs.reactive", enabled = ui.mode_indicator == "reactive" },
+  -- change line color based on mode
+  { import = "custom.configs.modicator", enabled = ui.mode_indicator == "modicator" },
+  -- Eye Candy Scrolling
+  { import = "custom.configs.neoscroll", enabled = ui.scroll },
+  -- Better Hover
+  { import = "custom.configs.hover", enabled = ui.hover },
+  -- MUCH Better Hover
+  { import = "custom.configs.glance", enabled = ui.glance },
+  -- auto resize focused split
+  { import = "custom.configs.windows", enabled = ui.split_animation },
+  -- Edit fs like a buffer
+  { import = "custom.configs.oil", enabled = ui.oil },
   --}
 
   -- ── Utility ─────────────────────────────────────────────────────{
-  { import = "custom.configs.case-change", enabled = true, desc = " Change case with Alt Shift S" },
-  { import = "custom.configs.numb", enabled = true, desc = " Watch where you're going" },
-  { import = "custom.configs.toggler", enabled = true, desc = " Toggle booleans with leader i" },
-  { import = "custom.configs.todo-comments", enabled = true, desc = " Bring todo comments to life" },
-  { import = "custom.configs.comment-box", enabled = true, desc = " Eye Candy comments" },
-  { import = "custom.configs.cheatsheet", enabled = utils.cheat, desc = " Try this Leader f C" },
-  { import = "custom.configs.hawtkeys", enabled = true, desc = " keybindings" },
-  { import = "custom.configs.rest", enabled = utils.rest, desc = " send http requests" },
+  -- Change case with Alt Shift S
+  { import = "custom.configs.case-change", enabled = true },
+  -- Watch where you're going
+  { import = "custom.configs.numb", enabled = true },
+  -- Toggle booleans with leader i
+  { import = "custom.configs.toggler", enabled = true },
+  -- Bring todo comments to life
+  { import = "custom.configs.todo-comments", enabled = true },
+  -- Eye Candy comments
+  { import = "custom.configs.comment-box", enabled = true },
+  -- Try this Leader f C
+  { import = "custom.configs.cheatsheet", enabled = utils.cheat },
+  -- keybindings
+  { import = "custom.configs.hawtkeys", enabled = true },
+  -- send http requests
+  { import = "custom.configs.rest", enabled = utils.rest },
   --}
 
   -- ── Motions ─────────────────────────────────────────────────────{
-  { import = "custom.configs.hop", enabled = motions.hop, desc = " Wings of Freedom" },
-  { import = "custom.configs.bookmarks", enabled = motions.bookmarks, desc = " next level marks" },
-  { import = "custom.configs.harpoon", enabled = motions.harpoon, desc = " Mark important files" },
-  { import = "custom.configs.better-escape", enabled = true, desc = " jk to escape insert mode" },
-  { import = "custom.configs.marks", enabled = true, desc = " Enhances Marks" },
-  { import = "custom.configs.mini", enabled = true, desc = " Surround, Indents and Align" },
+  -- Wings of Freedom
+  { import = "custom.configs.hop", enabled = motions.hop },
+  -- next level marks
+  { import = "custom.configs.bookmarks", enabled = motions.bookmarks },
+  -- Mark important files
+  { import = "custom.configs.harpoon", enabled = motions.harpoon },
+  -- jk to escape insert mode
+  { import = "custom.configs.better-escape", enabled = true },
+  -- Enhances Marks
+  { import = "custom.configs.marks", enabled = true },
+  -- Surround, Indents and Align
+  { import = "custom.configs.mini", enabled = true },
   --}
 
   -- ── Awesome Stuff ───────────────────────────────────────────────{
-  { import = "custom.configs.persistence", enabled = x.persist, desc = " Load Previous Sessions" },
-  { import = "custom.configs.lazygit", enabled = x.git, desc = " Git never been easier" },
-  { import = "custom.configs.projects", enabled = x.projects, desc = " project management" },
-  { import = "custom.configs.toggleterm", enabled = x.terms, desc = " use <number> Ctrl  " },
-  { import = "custom.configs.recorder", enabled = x.recorder, desc = " better macro experience" },
-  { import = "custom.configs.neorg", enabled = x.neorg, desc = " Note taking and more" },
+  -- Load Previous Sessions
+  { import = "custom.configs.persistence", enabled = x.persist },
+  -- Git never been easier
+  { import = "custom.configs.lazygit", enabled = x.git },
+  -- project management
+  { import = "custom.configs.projects", enabled = x.projects },
+  -- use <number> Ctrl
+  { import = "custom.configs.toggleterm", enabled = x.terms },
+  -- better macro experience
+  { import = "custom.configs.recorder", enabled = x.recorder },
+  -- Note taking and more
+  { import = "custom.configs.neorg", enabled = x.neorg },
   --}
 
   -- ── Extra ───────────────────────────────────────────────────────{
-  { import = "custom.configs.smart-splits", enabled = mux == "wezterm", desc = " Smart Splits" },
+  -- Smart Splits
+  { import = "custom.configs.smart-splits", enabled = mux == "wezterm" },
   -- }
 }
 
