@@ -1,6 +1,7 @@
 return {
   "crusj/bookmarks.nvim",
   branch = "main",
+  event = "BufEnter",
   dependencies = { "nvim-web-devicons" },
   config = function()
     require("bookmarks").setup {
