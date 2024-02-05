@@ -1,39 +1,68 @@
 local keys = require("custom.mappings").hover
 return {
-  "lewis6991/hover.nvim",
-  -- event = "VeryLazy",
-  keys = keys,
-  config = function()
-    require("hover").setup {
-      init = function()
-        -- Require providers
-        require "hover.providers.lsp"
-        -- require('hover.providers.gh')
-        -- require('hover.providers.gh_user')
-        -- require('hover.providers.jira')
-        require "hover.providers.man"
-        require "hover.providers.dictionary"
-      end,
-      preview_opts = {
-        border = "single",
-      },
-      -- Whether the contents of a currently open hover window should be moved
-      -- to a :h preview-window when pressing the hover keymap.
-      preview_window = false,
-      title = true,
-      mouse_providers = {
-        "LSP",
-      },
-      mouse_delay = 1000,
-    }
+  {
+    {
+      "Fildo7525/pretty_hover",
+      keys = { "<leader>k" },
+      config = function()
+        require("pretty_hover").setup {
+          -- Tables grouping the detected strings and using the markdown highlighters.
+          header = {
+            detect = { "[\\@]class" },
+            styler = "###",
+          },
+          line = {
+            detect = { "[\\@]brief" },
+            styler = "**",
+          },
+          listing = {
+            detect = { "[\\@]li" },
+            styler = " - ",
+          },
+          references = {
+            detect = { "[\\@]ref", "[\\@]c", "[\\@]name" },
+            styler = { "**", "`" },
+          },
+          word = {
+            detect = { "[\\@]param", "[\\@]tparam", "[\\@]see", "[\\@]*param*" },
+            styler = "`",
+          },
 
-    -- Setup keymaps
-    -- require("hover").hover
-    -- require("hover").hover_select" })
-    -- require("hover").hover_switch "previous"
-    -- require("hover").hover_switch "next"
-    -- Mouse support
-    -- vim.keymap.set("n", "<MouseMove>", require("hover").hover_mouse, { desc = "hover.nvim (mouse)" })
-    -- vim.o.mousemoveevent = true
-  end,
+          -- Tables used for cleaner identification of hover segments.
+          code = {
+            start = { "[\\@]code" },
+            ending = { "[\\@]endcode" },
+          },
+          return_statement = {
+            "[\\@]return",
+            "[\\@]*return*",
+          },
+
+          -- Highlight groups used in the hover method. Feel free to define your own highlight group.
+          hl = {
+            error = {
+              color = "#DC2626",
+              detect = { "[\\@]error", "[\\@]bug" },
+              line = false, -- Flag detecting if the whole line should be highlighted
+            },
+            warning = {
+              color = "#FBBF24",
+              detect = { "[\\@]warning", "[\\@]thread_safety", "[\\@]throw" },
+              line = false,
+            },
+            info = {
+              color = "#2563EB",
+              detect = { "[\\@]remark", "[\\@]note", "[\\@]notes" },
+            },
+            -- Here you can setup your own highlight groups.
+          },
+
+          border = "rounded",
+          max_width = nil,
+          max_height = nil,
+          toggle = false,
+        }
+      end,
+    },
+  },
 }

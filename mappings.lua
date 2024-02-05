@@ -227,15 +227,9 @@ M.hover = {
   n = {
     ["K"] = {
       function()
-        require("hover").hover()
+        require("pretty_hover").hover()
       end,
       "󱤇 hover",
-    },
-    ["gK"] = {
-      function()
-        require("hover").hover_select()
-      end,
-      "󱁵 hover (select)",
     },
   },
 }
