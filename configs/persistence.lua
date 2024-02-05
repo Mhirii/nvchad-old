@@ -10,7 +10,7 @@ return {
         require("persistence").load()
       end,
       mode = "n",
-      desc = "Save Session",
+      desc = "Load Session",
     },
     -- restore the last session
     {
