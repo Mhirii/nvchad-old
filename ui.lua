@@ -1,5 +1,6 @@
 local utils = require "custom.utils"
 local group_margin = "  "
+local themes = require "custom.themes"
 
 -- Path to overriding theme and highlights files
 local highlights = require "custom.highlights"
@@ -7,6 +8,8 @@ local highlights = require "custom.highlights"
 return {
   theme = "tokyodark",
   theme_toggle = { "tokyonight", "rosepine" },
+
+  changed_themes = themes,
 
   hl_override = highlights.override,
   hl_add = highlights.add,
