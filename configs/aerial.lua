@@ -1,3 +1,4 @@
+local icons = require "custom.icons"
 return {
   "stevearc/aerial.nvim",
   dependencies = {
@@ -349,7 +350,7 @@ return {
     }
   end,
   keys = {
-    { "<leader>cs", "<CMD> AerialToggle right<CR>", desc = "Aerial Sidebar" },
-    { "<leader>cn", "<CMD> AerialNavToggle<CR>",    desc = "Aerial Nav" },
+    { "<leader>cs", "<CMD> AerialToggle right<CR>", desc = icons.ui.SplitHorizontal .. " Aerial Sidebar" },
+    { "<leader>cn", "<CMD> AerialNavToggle<CR>", desc = icons.ui.OpenPreview .. " Aerial Nav" },
   },
 }

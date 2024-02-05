@@ -1,3 +1,4 @@
+local icons = require "custom.icons"
 return {
   "piersolenski/telescope-import.nvim",
   ft = { "typescript", "javascript", "lua", "cpp" },
@@ -24,6 +25,6 @@ return {
     }
   end,
   keys = {
-    { mode = "n", "<leader>ci", "<cmd>Telescope import<cr>", "Telescope Imports" },
+    { mode = "n", "<leader>ci", "<cmd>Telescope import<cr>", desc = icons.ui.Package .. " Telescope Imports" },
   },
 }

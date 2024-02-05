@@ -28,10 +28,10 @@ return {
   },
 
   statusline = {
-    theme = "minimal", -- default/vscode/vscode_colored/minimal
+    theme = "default", -- default/vscode/vscode_colored/minimal
     -- default/round/block/arrow separators work only for default statusline theme
     -- round and block will work for minimal theme only
-    separator_style = "round",
+    separator_style = "default",
 
     overriden_modules = function(modules)
       table.insert(
@@ -80,28 +80,28 @@ return {
         end,
       },
       {
+        "  Zoxide",
+        "Spc z x",
+        ":lua require('telescope').extensions.zoxide.list()",
+      },
+      {
         "  Find File",
-        "Spc f f",
+        "Spc f",
         "Telescope find_files",
       },
       {
-        "  Find Project",
-        "Spc f p",
-        "lua require('telescope').extensions.project.project({display_type = 'full'})",
-      },
-      {
         "󰈚  Recent Files",
-        "Spc f r",
+        "Spc s o",
         "Telescope oldfiles",
       },
       {
         "  Bookmarks",
-        "Spc m a",
+        "Spc s m",
         "Telescope marks",
       },
       {
         "  Themes",
-        "Spc h t",
+        "Spc t h",
         "Telescope themes",
       },
       {
