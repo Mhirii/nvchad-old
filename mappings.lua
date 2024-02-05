@@ -465,6 +465,13 @@ M.multiplexer = {
   },
 }
 
+M.nerdy = {
+  plugin = true,
+  n = {
+    ["<leader>sn"] = { "<cmd>Nerdy<CR>", "󰓠 Nerd Fonts" },
+  },
+}
+
 M.notify = {
   n = {
     ["<leader>nd"] = { "<cmd> NoiceDismiss <CR>", " Dismiss Notifications" },
@@ -754,6 +761,7 @@ local plugins = {
   { name = "hop", setting = settings.motions.hop },
   { name = "lsp_lines", setting = settings.utilities.lsplines },
   { name = "rest", setting = settings.utilities.rest },
+  { name = "nerdy", setting = settings.utilities.nerdy },
 }
 
 for _, plugin in ipairs(plugins) do

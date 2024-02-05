@@ -110,6 +110,8 @@ local plugins = {
   { import = "custom.configs.hawtkeys", enabled = true },
   -- send http requests
   { import = "custom.configs.rest", enabled = utils.rest },
+  -- Nerd Glyphs explorer
+  { import = "custom.configs.nerdy", enabled = true },
   --}
 
   -- ── Motions ─────────────────────────────────────────────────────{

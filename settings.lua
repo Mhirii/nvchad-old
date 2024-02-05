@@ -33,7 +33,7 @@ M.ai = { -- TODO: add Tabnine
 M.motions = {
   harpoon = true,
   bookmarks = true,
-  hop = true,
+  hop = false,
 }
 
 M.utilities = {
@@ -41,6 +41,7 @@ M.utilities = {
   lsplines = true,
   rest = true,
   cheat = false,
+  nerdy = true,
 }
 
 M.lspzero = false
