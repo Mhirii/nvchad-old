@@ -4,7 +4,7 @@ return {
   event = "VeryLazy",
   dependencies = {
     "nvim-lua/plenary.nvim",
-    "kevinhwang91/nvim-bqf",
+    -- "kevinhwang91/nvim-bqf",
   }, -- bqf is optional
   keys = {
     {

@@ -1,7 +1,7 @@
 return {
   "chentoast/marks.nvim",
   -- lazy = false,
-  dependencies = { "kevinhwang91/nvim-bqf" },
+  -- dependencies = { "kevinhwang91/nvim-bqf" },
   event = "BufRead",
   config = function(_, opts)
     require("marks").setup(opts)
