@@ -1,6 +1,7 @@
----@diagnostic disable: inject-field
+---@dijgnostic disable: inject-field
 local M = {}
 
+local icons = require "custom.icons"
 local settings = require "custom.settings"
 
 M.general = {
@@ -34,44 +35,44 @@ M.buffer = {
     -- quit buffer
     ["<leader>bd"] = {
       "<cmd> q<CR>",
-      "󱪠 Close buffer", -- Terminals are hidden
+      icons.ui.Close .. " Close buffer", -- Terminals are hidden
     },
     -- close buffer + hide terminal buffer
     ["<leader>bk"] = {
       function()
         require("nvchad.tabufline").close_buffer()
       end,
-      "󱪠 Close buffer", -- Terminals are hidden
+      icons.ui.Close .. " Close buffer", -- Terminals are hidden
     },
     ["<leader>bo"] = {
       function()
         require("nvchad.tabufline").closeOtherBufs()
       end,
-      "󰱞 Close other buffers",
+      icons.ui.BoldClose .. " Close other buffers",
     },
     ["<leader>bh"] = {
       function()
         require("nvchad.tabufline").move_buf(-1)
       end,
-      "󱨻 Move buffer to left",
+      icons.ui.Move .. " Move buffer to left",
     },
     ["<leader>bl"] = {
       function()
         require("nvchad.tabufline").move_buf(1)
       end,
-      "󱨽 Move buffer to right",
+      icons.ui.Move .. " Move buffer to right",
     },
     ["<S-L>"] = {
       function()
         require("nvchad.tabufline").tabuflineNext()
       end,
-      "󰁔 Goto next buffer",
+      icons.ui.ChevronRight .. " Goto next buffer",
     },
     ["<S-H>"] = {
       function()
         require("nvchad.tabufline").tabuflinePrev()
       end,
-      "󰁍 Goto prev buffer",
+      icons.ui.ChevronRight .. " Goto prev buffer",
     },
   },
 }
@@ -82,7 +83,7 @@ M.code = {
       function()
         vim.lsp.buf.code_action()
       end,
-      "󱃸 Code Action",
+      icons.ui.Action .. " Code Action",
     },
   },
   n = {
@@ -90,7 +91,7 @@ M.code = {
       function()
         vim.lsp.buf.code_action()
       end,
-      "󱃸 Code Action",
+      icons.ui.Action .. " Code Action",
     },
     -- ["<leader>sr"] = {
     --   function()
@@ -102,13 +103,28 @@ M.code = {
       function()
         require("nvchad.renamer").open()
       end,
-      "󰑕 LSP rename",
+      icons.ui.Pencil .. " LSP rename",
     },
     ["<leader>cd"] = {
       function()
         vim.diagnostic.open_float { border = "rounded" }
       end,
-      "󰨰 Floating diagnostic",
+      icons.ui.DebugConsole .. " diagnostic",
+    },
+    ["<leader>cc"] = {
+      function()
+        local ok, start = require("indent_blankline.utils").get_current_context(
+          vim.g.indent_blankline_context_patterns,
+          vim.g.indent_blankline_use_treesitter_scope
+        )
+
+        if ok then
+          vim.api.nvim_win_set_cursor(vim.api.nvim_get_current_win(), { start, 0 })
+          vim.cmd [[normal! _]]
+        end
+      end,
+
+      icons.kind.Namespace .. " Jump to current context",
     },
   },
 }
@@ -568,7 +584,7 @@ M.telescope = {
       "Find all",
     },
     ["<leader>sc"] = { ":Telescope builtin<CR>", " Find Editor Command" },
-    ["<leader>sr"] = { "<cmd> Telescope oldfiles<CR>", " Recent Files" },
+    ["<leader>so"] = { "<cmd> Telescope oldfiles<CR>", " Old Files" },
     ["<leader>/"] = { "<cmd> Telescope live_grep <CR>", " Live grep" },
     ["<leader>sF"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", " Find in current buffer" },
     ["<leader>sm"] = { "<cmd> Telescope marks <CR>", "󰸖 telescope bookmarks" },
@@ -578,7 +594,6 @@ M.telescope = {
       "<cmd> Telescope lsp_document_symbols <CR>",
       "󰊕 Search Symbols",
     },
-    ["<leader>so"] = { "<cmd> Telescope oldfiles <CR>", "Find oldfiles" },
     ["<leader>sb"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
     ["<leader>sl"] = { "<cmd>Telescope resume<cr>", "Resume last search" },
   },
@@ -657,10 +672,14 @@ M.toggle = {
 M.trouble = {
   plugin = true,
   n = {
-    ["<leader>tb"] = { ":TroubleToggle<CR>", "󱂩 Toggle Trouble" },
-    ["<leader>wd"] = { ":TroubleToggle workspace_diagnostics<CR>", "󱂩 Workspace Diagnostics" },
-    ["<leader>cq"] = { "<CMD>TroubleToggle quickfix<CR>", "󰁨 Quickfix" },
-    ["<leader>td"] = { "<CMD>TodoTrouble<CR>", " Todo" },
+    ["<leader>tb"] = { ":TroubleToggle<CR>", icons.ui.SplitVertical .. " Toggle Trouble" },
+    ["<leader>wd"] = { ":TroubleToggle workspace_diagnostics<CR>", icons.ui.SplitVertical .. " Workspace Diagnostics" },
+    ["<leader>cq"] = { "<CMD>TroubleToggle quickfix<CR>", icons.ui.LightbulbAutofix .. " Quickfix" },
+    ["<leader>td"] = { "<CMD>TodoTrouble<CR>", icons.ui.CheckList .. " Todo" },
+    ["gd"] = { "<CMD>Trouble lsp_definitions<CR>", "Definition" },
+    ["gr"] = { "<CMD>Trouble lsp_references<CR>", "References" },
+    ["gi"] = { "<CMD>Trouble lsp_implementations<CR>", "Implementations" },
+    ["gD"] = { "<CMD>Trouble lsp_type_definitions<CR>", "Type definition" },
   },
 }
 
