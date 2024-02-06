@@ -1,3 +1,4 @@
+local icons = require "custom.icons"
 return {
   "nguyenvukhang/nvim-toggler",
   config = function()
@@ -14,7 +15,7 @@ return {
       function()
         require("nvim-toggler").toggle()
       end,
-      desc = "Toggle",
+      desc = icons.kind.Boolean .. " Toggle",
     },
   },
 }

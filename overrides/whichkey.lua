@@ -1,4 +1,5 @@
 local wk = require "which-key"
+local icons = require "custom.icons"
 
 return {
   "folke/which-key.nvim",
@@ -10,27 +11,23 @@ return {
       ["<leader>"] = {
         -- stylua: ignore start
         [" "] = { name = " Quick" },
-        b     = { name = "󱂬 Buffer" },
-        c     = { name = "󱃖 Code" },
-        cx    = { name = "󱣘 Cargo.toml" },
-        cz    = { name = " Snippet" },
-        f     = { name = " Find" },
-        g     = { name = " Git" },
+        b     = { name = icons.ui.File .. " Buffer" },
+        c     = { name = icons.ui.Code .. " Code" },
+        f     = { name = icons.ui.Telescope .. " Find" },
+        g     = { name = icons.git.Branch .. " Git" },
         h     = { name = "󱕘 Hop" },
         l     = { name = "󱃕 Lists" },
-        lt    = { name = " TODO" },
-        m     = { name = "󰍎 Marks" },
-        nt    = { name = "󱘎 TreeSitter" },
-        o     = { name = " Open" },
-        p     = { name = " Preview" },
-        q     = { name = "󰗼 Quit" },
-        r     = { name = " Refactor" },
-        s     = { name = " LSP" }, -- TODO: this should be Search
-        t     = { name = " Toggle" },
+        m     = { name = icons.ui.BookMark .. " Marks" },
+        o     = { name = icons.ui.EmptyFolderOpen .. " Open" },
+        p     = { name = icons.ui.OpenPreview .. " Preview" },
+        q     = { name = icons.ui.History .. " Session" },
+        r     = { name = icons.ui.Refresh .. " Refactor" },
+        s     = { name = icons.ui.Telescope .. " Search" },
+        t     = { name = icons.kind.Boolean .. " Toggle" },
         tn    = { name = " Line number" },
-        u     = { name = "󰚰 Update" },
-        w     = { name = " Workspace" },
-        z     = { name = "󰇘 Extras" },
+        u     = { name = icons.ui.Download .. " Update" },
+        w     = { name = icons.ui.FolderOpen .. " Workspace" },
+        z     = { name = icons.ui.Ellipsis .. " Extras" },
       },
     }
   end,

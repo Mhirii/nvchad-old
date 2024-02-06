@@ -577,25 +577,25 @@ M.telescope = {
 
     ["<leader>f"] = {
       "<cmd> Telescope find_files follow=true no_ignore=true hidden=true theme=dropdown previewer=false <CR>",
-      "Find all",
+      icons.ui.Telescope .. " Find File",
     },
     ["<leader>sf"] = {
       "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>",
-      "Find all",
+      icons.ui.File .. " Find File",
     },
-    ["<leader>sc"] = { ":Telescope builtin<CR>", " Find Editor Command" },
-    ["<leader>so"] = { "<cmd> Telescope oldfiles<CR>", " Old Files" },
-    ["<leader>/"] = { "<cmd> Telescope live_grep <CR>", " Live grep" },
-    ["<leader>sF"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", " Find in current buffer" },
-    ["<leader>sm"] = { "<cmd> Telescope marks <CR>", "󰸖 telescope bookmarks" },
-    ["<leader>sz"] = { "<CMD>Telescope zoxide list<CR>", "󰥩 Zoxide" },
-    ["<leader>zx"] = { "<CMD>Telescope zoxide list<CR>", "󰥩 Zoxide" },
+    ["<leader>sc"] = { ":Telescope builtin<CR>", icons.ui.Terminal .. " Editor Commands" },
+    ["<leader>so"] = { "<cmd> Telescope oldfiles<CR>", icons.ui.History .. " Old Files" },
+    ["<leader>/"] = { "<cmd> Telescope live_grep <CR>", icons.ui.Search .. " Grep" },
+    ["<leader>sF"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", icons.ui.Text .. " Find in current buffer" },
+    ["<leader>sm"] = { "<cmd> Telescope marks <CR>", icons.ui.BookMark .. " bookmarks" },
+    ["<leader>sz"] = { "<CMD>Telescope zoxide list<CR>", icons.ui.FolderSymlink .. " Zoxide" },
+    ["<leader>zx"] = { "<CMD>Telescope zoxide list<CR>", icons.ui.FolderSymlink .. " Zoxide" },
     ["<leader>ss"] = {
       "<cmd> Telescope lsp_document_symbols <CR>",
-      "󰊕 Search Symbols",
+      icons.kind.Class .. " Symbols",
     },
-    ["<leader>sb"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
-    ["<leader>sl"] = { "<cmd>Telescope resume<cr>", "Resume last search" },
+    ["<leader>sb"] = { "<cmd> Telescope buffers <CR>", icons.ui.Files .. " Buffers" },
+    ["<leader>sl"] = { "<cmd>Telescope resume<cr>", icons.ui.Search .. " Resume last search" },
   },
 }
 

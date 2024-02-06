@@ -3,7 +3,6 @@ return {
   {
     {
       "Fildo7525/pretty_hover",
-      keys = { "<leader>k" },
       config = function()
         require("pretty_hover").setup {
           -- Tables grouping the detected strings and using the markdown highlighters.
