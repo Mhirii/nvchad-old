@@ -20,11 +20,12 @@ return {
     persist_size = true,
     direction = "horizontal", --"vertical" | "horizontal" | "tab" | "float",
     close_on_exit = true,
-    shell = vim.o.shell,
+    -- shell = vim.o.shell,
+    shell = "fish",
     autochdir = true,
     terminal_mappings = true, -- whether or not the open mapping applies in the opened terminals
-    persist_mode = true,      -- if set to true (default) the previous terminal mode will be remembered
-    auto_scroll = true,       -- automatically scroll to the bottom on terminal output
+    persist_mode = true, -- if set to true (default) the previous terminal mode will be remembered
+    auto_scroll = true, -- automatically scroll to the bottom on terminal output
     highlights = {
       Normal = {
         guibg = "#1A1B26",

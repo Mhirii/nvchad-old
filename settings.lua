@@ -56,7 +56,7 @@ M.extras = {
   persist = true,
   git = true,
   projects = false,
-  terms = true,
+  terms = false,
   recorder = false,
   neorg = true,
 }

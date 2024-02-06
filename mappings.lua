@@ -495,7 +495,68 @@ M.nvimtree = {
 }
 
 M.nvterm = {
+  plugin = true,
+
+  t = {
+    -- toggle in terminal mode
+    ["<A-i>"] = {
+      function()
+        require("nvterm.terminal").toggle "float"
+      end,
+      "Toggle floating term",
+    },
+
+    ["<A-1>"] = {
+      function()
+        require("nvterm.terminal").toggle "horizontal"
+      end,
+      "Toggle horizontal term",
+    },
+
+    ["<A-2>"] = {
+      function()
+        require("nvterm.terminal").toggle "vertical"
+      end,
+      "Toggle vertical term",
+    },
+    ["<A-3>"] = {
+      function()
+        require("nvterm.terminal").toggle "float"
+      end,
+      "Toggle floating term",
+    },
+  },
+
   n = {
+    -- toggle in normal mode
+    ["<A-i>"] = {
+      function()
+        require("nvterm.terminal").toggle "float"
+      end,
+      "Toggle floating term",
+    },
+
+    ["<A-1>"] = {
+      function()
+        require("nvterm.terminal").toggle "horizontal"
+      end,
+      "Toggle horizontal term",
+    },
+
+    ["<A-2>"] = {
+      function()
+        require("nvterm.terminal").toggle "vertical"
+      end,
+      "Toggle vertical term",
+    },
+    ["<A-3>"] = {
+      function()
+        require("nvterm.terminal").toggle "float"
+      end,
+      "Toggle floating term",
+    },
+
+    -- new
     ["<leader>hh"] = {
       function()
         require("nvterm.terminal").new "horizontal"
@@ -775,6 +836,8 @@ local plugins = {
   { name = "lsp_lines", setting = settings.utilities.lsplines },
   { name = "rest", setting = settings.utilities.rest },
   { name = "nerdy", setting = settings.utilities.nerdy },
+  { name = "terms", setting = settings.extras.terms },
+  { name = "nvterm", setting = not settings.extras.terms },
 }
 
 for _, plugin in ipairs(plugins) do
