@@ -18,7 +18,8 @@ return {
         sh = { "shfmt" },
         fish = { "fish_indent" },
 
-        go = { "goimports", "gofmt", "golines" },
+        -- go = { "goimports", "gofmt", "golines" },
+        go = {},
 
         ["*"] = { "codespell" },
         -- "_" filetype to format on filetypes that aren't configured.
