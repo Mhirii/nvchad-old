@@ -586,6 +586,7 @@ M.oil = {
 -- end
 
 M.refactor = {
+  plugin = true,
   n = {
     ["<leader>re"] = { ":Refactor extract<CR>", "Extract" },
     ["<leader>rE"] = { ":Refactor extract_to_file<CR>", "Extract to file" },
@@ -838,6 +839,7 @@ local plugins = {
   { name = "nerdy", setting = settings.utilities.nerdy },
   { name = "terms", setting = settings.extras.terms },
   { name = "nvterm", setting = not settings.extras.terms },
+  { name = "refactor", setting = settings.refactoring },
 }
 
 for _, plugin in ipairs(plugins) do

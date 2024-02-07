@@ -32,5 +32,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 -- This sets cmdheight to 1 when you record macros
 -- then change it back to 0 when youre not
-vim.cmd [[ autocmd RecordingEnter * set cmdheight=1 ]]
-vim.cmd [[ autocmd RecordingLeave * set cmdheight=0 ]]
+-- WARNING: This will shift the whole window
+-- vim.cmd [[ autocmd RecordingEnter * set cmdheight=1 ]]
+-- vim.cmd [[ autocmd RecordingLeave * set cmdheight=0 ]]
