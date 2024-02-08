@@ -29,8 +29,7 @@ return {
       },
       icons = { breakpoint = "", currentpos = "" },
       gocoverage_sign = "│",
-      -- lsp_diag_virtual_text = { space = 0, prefix = "" },
-      -- luasnip = true,
+      luasnip = true,
     }
   end,
   event = { "CmdlineEnter" },
