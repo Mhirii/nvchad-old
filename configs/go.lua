@@ -30,9 +30,20 @@ return {
       icons = { breakpoint = "", currentpos = "" },
       gocoverage_sign = "│",
       luasnip = true,
+      lsp_codelens = true,
+    }
+
+    require("core.utils").load_mappings "golang"
+
+    local wk = require "which-key"
+    local icons = require "custom.icons"
+    wk.register {
+      ["<leader>"] = {
+        a = { name = "󰟓 Actions" },
+        at = { name = icons.kind.Event .. " Test" },
+      },
     }
   end,
-  event = { "CmdlineEnter" },
   ft = { "go", "gomod" },
   build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
 }

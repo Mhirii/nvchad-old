@@ -154,6 +154,29 @@ M.extra = {
   },
 }
 
+M.golang = {
+  plugin = true,
+  n = {
+    ["<leader>cr"] = { "<CMD>GoRename<CR>", "󰟓 Rename" },
+    ["<leader>cl"] = { "<CMD>GoCodeLensAct<CR>", "󰟓 Code Lens This Line" },
+    ["<leader>ln"] = { "<CMD>GoLint<CR>", "󰟓 Lint" },
+
+    ["<leader>ab"] = { "<CMD>GoBuild<CR>", icons.ui.Gear .. " Build" },
+    ["<leader>ar"] = { "<CMD>GoRun<CR>", icons.ui.Triangle .. " Run" },
+
+    ["<leader>atb"] = { "<CMD>GoTestFile<CR>", icons.ui.File .. " Test this File" },
+    ["<leader>atp"] = { "<CMD>GoTestPkg<CR>", icons.kind.Package .. " Test this Package" },
+    ["<leader>atf"] = { "<CMD>GoTestFunc<CR>", icons.kind.Function .. " Test this Function" },
+    ["<leader>ata"] = { "<CMD>GoAddTest<CR>", icons.ui.Action .. " Add Test for this Function" },
+    ["<leader>ate"] = { "<CMD>GoAddAllTest<CR>", icons.ui.Action .. " Add Tests for all Functions" },
+    ["<leader>ac"] = { "<CMD>GoCheat<CR>", icons.ui.Book .. " Cheatsheet" },
+    ["<leader>ao"] = { "<CMD>GoCheat<CR>", icons.ui.Book .. " Cheatsheet" },
+    ["<leader>al"] = { "<CMD>GoLint<CR>", icons.ui.Watches .. " Lint" },
+    ["<leader>as"] = { "<CMD>GoCodeLensAct<CR>", icons.ui.Fire .. " Code Lens This Line" }, --TODO: Change Icon
+    ["<leader>ah"] = { "<CMD>GoToggleInlay<CR>", icons.diagnostics.Hint .. " Inlay Hints" },
+  },
+}
+
 M.lazy = {
   n = {
     ["<leader>ll"] = { ":Lazy<CR>", "󰒲 Open Plugin Manager" },
@@ -850,6 +873,8 @@ local plugins = {
   { name = "terms", setting = settings.extras.terms },
   { name = "nvterm", setting = not settings.extras.terms },
   { name = "refactor", setting = settings.refactoring },
+  -- This will be loaded from custom.configs.go only when the go plugin is loaded
+  { name = "golang", setting = false },
 }
 
 for _, plugin in ipairs(plugins) do
