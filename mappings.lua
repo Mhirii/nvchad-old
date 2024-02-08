@@ -158,7 +158,7 @@ M.golang = {
   plugin = true,
   n = {
     ["<leader>cr"] = { "<CMD>GoRename<CR>", "󰟓 Rename" },
-    ["<leader>cl"] = { "<CMD>GoCodeLensAct<CR>", "󰟓 Code Lens This Line" },
+    ["<leader>cl"] = { "<CMD>GoCodeLenAct<CR>", "󰟓 Code Lens This Line" },
     ["<leader>ln"] = { "<CMD>GoLint<CR>", "󰟓 Lint" },
 
     ["<leader>ab"] = { "<CMD>GoBuild<CR>", icons.ui.Gear .. " Build" },
@@ -172,7 +172,7 @@ M.golang = {
     ["<leader>ac"] = { "<CMD>GoCheat<CR>", icons.ui.Book .. " Cheatsheet" },
     ["<leader>ao"] = { "<CMD>GoCheat<CR>", icons.ui.Book .. " Cheatsheet" },
     ["<leader>al"] = { "<CMD>GoLint<CR>", icons.ui.Watches .. " Lint" },
-    ["<leader>as"] = { "<CMD>GoCodeLensAct<CR>", icons.ui.Fire .. " Code Lens This Line" }, --TODO: Change Icon
+    ["<leader>as"] = { "<CMD>GoCodeLenAct<CR>", icons.ui.Fire .. " Code Lens This Line" }, --TODO: Change Icon
     ["<leader>ah"] = { "<CMD>GoToggleInlay<CR>", icons.diagnostics.Hint .. " Inlay Hints" },
   },
 }
