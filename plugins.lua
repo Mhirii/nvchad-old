@@ -142,6 +142,8 @@ local plugins = {
   { import = "custom.configs.recorder", enabled = x.recorder },
   -- Note taking and more
   { import = "custom.configs.neorg", enabled = x.neorg },
+  -- Ai
+  { import = "custom.configs.gen", enabled = settings.ai.gen },
   --}
 
   -- ── Extra ───────────────────────────────────────────────────────{

@@ -26,8 +26,9 @@ M.ui = {
   illuminate = true,
 }
 
-M.ai = { -- TODO: add Tabnine
+M.ai = {
   codeium = true,
+  gen = true,
 }
 
 M.motions = {
