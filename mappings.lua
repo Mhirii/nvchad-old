@@ -6,7 +6,6 @@ local settings = require "custom.settings"
 
 M.general = {
   n = {
-    --  format with conform
     ["<C-d>"] = { "<C-d>zz", " Scroll down", opts = { silent = true } },
     ["<C-u>"] = { "<C-u>zz", " Scroll up", opts = { silent = true } },
   },
@@ -15,10 +14,17 @@ M.general = {
   },
 }
 
+M.conform = {
   n = {
+    ["<leader>cf"] = {
       function()
+        require("conform").format()
       end,
+      icons.ui.List .. " Format",
     },
+  },
+}
+
 M.buffer = {
   n = {
     ["<leader>nb"] = { "<cmd> new <CR>", icons.ui.NewFile .. " New buffer" },
