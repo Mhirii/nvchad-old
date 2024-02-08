@@ -18,6 +18,7 @@ return {
         h     = { name = "󱕘 Hop" },
         l     = { name = "󱃕 Lists" },
         m     = { name = icons.ui.BookMark .. " Marks" },
+        n     = { name = icons.ui.Plus .. " new" },
         o     = { name = icons.ui.EmptyFolderOpen .. " Open" },
         p     = { name = icons.ui.OpenPreview .. " Preview" },
         q     = { name = icons.ui.History .. " Session" },

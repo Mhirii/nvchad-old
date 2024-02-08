@@ -15,23 +15,13 @@ M.general = {
   },
 }
 
-local toggled = false
+  n = {
+      function()
+      end,
+    },
 M.buffer = {
   n = {
-    ["<leader>bf"] = {
-      function()
-        vim.opt.concealcursor = "nc"
-        if toggled then
-          vim.opt.conceallevel = 0
-          toggled = false
-        else
-          vim.opt.conceallevel = 2
-          toggled = true
-        end
-      end,
-      "Toggle Conceal",
-    },
-    ["<leader>bn"] = { "<cmd> new <CR>", "󰻭 New buffer" },
+    ["<leader>nb"] = { "<cmd> new <CR>", icons.ui.NewFile .. " New buffer" },
     -- quit buffer
     ["<leader>bd"] = {
       "<cmd> q<CR>",
@@ -557,17 +547,17 @@ M.nvterm = {
     },
 
     -- new
-    ["<leader>hh"] = {
+    ["<leader>nh"] = {
       function()
         require("nvterm.terminal").new "horizontal"
       end,
-      "󱂩 New horizontal term",
+      icons.ui.SplitHorizontal .. " New horizontal term",
     },
-    ["<leader>vv"] = {
+    ["<leader>nv"] = {
       function()
         require("nvterm.terminal").new "vertical"
       end,
-      "󱂫 New vertical term",
+      icons.ui.SplitVertical .. " New vertical term",
     },
   },
 }
@@ -703,8 +693,22 @@ M.terms = {
   },
 }
 
+local toggled = false
 M.toggle = {
   n = {
+    ["<leader>ta"] = {
+      function()
+        vim.opt.concealcursor = "nc"
+        if toggled then
+          vim.opt.conceallevel = 0
+          toggled = false
+        else
+          vim.opt.conceallevel = 2
+          toggled = true
+        end
+      end,
+      icons.kind.Namespace .. " Toggle Conceal",
+    },
     ["<leader>tnl"] = { "<cmd> set nu! <CR>", "Toggle line number" },
     ["<leader>tnr"] = { "<cmd> set rnu! <CR>", "Toggle relative number" },
     ["<leader>tD"] = {
@@ -734,7 +738,7 @@ M.toggle = {
 M.trouble = {
   plugin = true,
   n = {
-    ["<leader>tb"] = { ":TroubleToggle<CR>", icons.ui.SplitVertical .. " Toggle Trouble" },
+    ["<leader>tr"] = { ":TroubleToggle<CR>", icons.ui.SplitVertical .. " Toggle Trouble" },
     ["<leader>wd"] = { ":TroubleToggle workspace_diagnostics<CR>", icons.ui.SplitVertical .. " Workspace Diagnostics" },
     ["<leader>cq"] = { "<CMD>TroubleToggle quickfix<CR>", icons.ui.LightbulbAutofix .. " Quickfix" },
     ["<leader>td"] = { "<CMD>TodoTrouble<CR>", icons.ui.CheckList .. " Todo" },
