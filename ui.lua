@@ -6,7 +6,8 @@ local themes = require "custom.themes"
 local highlights = require "custom.highlights"
 
 return {
-  theme = "tokyodark",
+  theme = "hypr",
+  -- theme = "tokyodark",
   theme_toggle = { "tokyonight", "rosepine" },
 
   changed_themes = themes,

@@ -9,9 +9,9 @@ M.override = {
   Comment = {
     italic = false,
   },
-  ["@string"] = {
-    fg = "#6aadc8",
-  },
+  -- ["@string"] = {
+  --   fg = "#6aadc8",
+  -- },
 }
 
 ---@type HLTable
