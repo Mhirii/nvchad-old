@@ -174,6 +174,20 @@ M.golang = {
     ["<leader>al"] = { "<CMD>GoLint<CR>", icons.ui.Watches .. " Lint" },
     ["<leader>as"] = { "<CMD>GoCodeLenAct<CR>", icons.ui.Fire .. " Code Lens This Line" }, --TODO: Change Icon
     ["<leader>ah"] = { "<CMD>GoToggleInlay<CR>", icons.diagnostics.Hint .. " Inlay Hints" },
+
+    ["[d"] = {
+      function()
+        vim.diagnostic.goto_prev { float = { border = "rounded" } }
+      end,
+      "Goto prev",
+    },
+
+    ["]d"] = {
+      function()
+        vim.diagnostic.goto_next { float = { border = "rounded" } }
+      end,
+      "Goto next",
+    },
   },
 }
 
