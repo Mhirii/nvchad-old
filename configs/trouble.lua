@@ -58,6 +58,7 @@ return {
   event = "VeryLazy",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
+    dofile(vim.g.base46_cache .. "trouble")
     require("trouble").setup(setup)
     local actions = require "telescope.actions"
     local trouble = require "trouble.providers.telescope"

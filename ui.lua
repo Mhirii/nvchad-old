@@ -6,10 +6,11 @@ local themes = require "custom.themes"
 local highlights = require "custom.highlights"
 
 return {
-  theme = "hypr",
+  theme = "nero",
   -- theme = "tokyodark",
-  theme_toggle = { "tokyonight", "rosepine" },
+  theme_toggle = { "nero", "tokyodark" },
 
+  extended_integrations = { "trouble", "hop", "todo", "notify" },
   changed_themes = themes,
 
   hl_override = highlights.override,

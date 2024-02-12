@@ -78,6 +78,6 @@ return {
         },
       },
     }
-    require("reactive").load_preset "hypr"
+    -- require("reactive").load_preset "hypr"
   end,
 }

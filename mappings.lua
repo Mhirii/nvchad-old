@@ -753,6 +753,12 @@ M.toggle = {
       end,
       "󰂵 Toggle transparency",
     },
+    ["<leader>tt"] = {
+      function()
+        require("base46").toggle_theme()
+      end,
+      icons.kind.Boolean .. " Toggle theme",
+    },
   },
 }
 
