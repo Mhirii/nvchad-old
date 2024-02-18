@@ -149,6 +149,8 @@ local plugins = {
   -- ── Extra ───────────────────────────────────────────────────────{
   -- Smart Splits
   { import = "custom.configs.smart-splits", enabled = mux == "wezterm" },
+  -- Copilot
+  { import = "custom.configs.copilot", enabled = settings.ai.copilot },
   -- }
 }
 
