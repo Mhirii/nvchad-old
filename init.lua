@@ -9,6 +9,9 @@
 vim.filetype.add {
   pattern = { [".*.conf"] = "hyprlang" },
 }
+vim.filetype.add {
+  pattern = { [".*/hyprland%.conf"] = "hypr" },
+}
 vim.opt.relativenumber = true
 vim.g.vscode_snippets_path = "~/.config/nvim/lua/custom/snippets/json"
 vim.g.lua_snippets_path = "~/.config/nvim/lua/custom/snippets/lua"
