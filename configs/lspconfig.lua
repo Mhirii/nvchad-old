@@ -343,8 +343,8 @@ lspconfig.volar = {
   },
 }
 
-vim.lsp.handlers["textDocument/hover"] = require("noice").hover
-vim.lsp.handlers["textDocument/signatureHelp"] = require("noice").signature
+-- vim.lsp.handlers["textDocument/hover"] = require("noice").hover
+-- vim.lsp.handlers["textDocument/signatureHelp"] = require("noice").signature
 
 -- If the buffer has been edited before formatting has completed, do not try to apply the changes
 vim.lsp.handlers["textDocument/formatting"] = function(err, result, ctx, _)
