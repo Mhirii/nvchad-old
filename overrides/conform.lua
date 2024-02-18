@@ -10,6 +10,7 @@ return {
 
         -- Use a sub-list to run only the first available formatter
         javascript = { "biome" },
+        typescript = { "biome" },
         vue = { { "prettierd", "prettier" } },
 
         css = { "prettier" },
@@ -21,7 +22,7 @@ return {
         -- go = { "goimports", "gofmt", "golines" },
         go = {},
 
-        ["*"] = { "codespell" },
+        -- ["*"] = { "codespell" },
         -- "_" filetype to format on filetypes that aren't configured.
         ["_"] = { "trim_whitespace" },
       },
