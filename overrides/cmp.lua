@@ -1,3 +1,4 @@
+local settings = require "settings"
 return {
   "hrsh7th/nvim-cmp",
   dependencies = {
@@ -21,6 +22,7 @@ return {
       cmd = "Codeium",
       build = ":Codeium Auth",
       opts = {},
+      enabled = settings.ai.codeium,
     },
 
     {

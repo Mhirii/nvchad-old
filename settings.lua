@@ -18,7 +18,7 @@ M.ui = {
   lens = true,
   split_animation = true,
   mode_indicator = "reactive", -- modicator or reactive
-  hover = true,
+  hover = false,
   glance = true,
   notify = true,
   fidget = false,
@@ -27,8 +27,9 @@ M.ui = {
 }
 
 M.ai = {
-  codeium = true,
+  codeium = false,
   gen = true,
+  copilot = true,
 }
 
 M.motions = {
