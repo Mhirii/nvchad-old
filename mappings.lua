@@ -1,4 +1,4 @@
----@dijgnostic disable: inject-field
+---@dijgnostic disable: inject-fieldmappings
 local M = {}
 
 local icons = require "custom.icons"
@@ -188,6 +188,8 @@ M.golang = {
       end,
       "Goto next",
     },
+
+    ["K"] = { "<CMD>GoDoc<CR>", "Go Hover" },
   },
 }
 
@@ -296,17 +298,21 @@ M.lspconfig = {
 
     ["gd"] = {
       function()
-        vim.lsp.buf.definition()
+        if settings.ui.trouble then
+          require("trouble").toggle "lsp_definitions"
+        else
+          vim.lsp.buf.definition()
+        end
       end,
       "LSP definition",
     },
 
-    -- ["K"] = {
-    --   function()
-    --     vim.lsp.buf.hover()
-    --   end,
-    --   "LSP hover",
-    -- },
+    ["K"] = {
+      function()
+        vim.lsp.buf.hover()
+      end,
+      "LSP hover",
+    },
 
     ["gi"] = {
       function()
@@ -338,7 +344,11 @@ M.lspconfig = {
 
     ["gr"] = {
       function()
-        vim.lsp.buf.references()
+        if settings.ui.trouble then
+          require("trouble").toggle "lsp_references"
+        else
+          vim.lsp.buf.references()
+        end
       end,
       "LSP references",
     },
