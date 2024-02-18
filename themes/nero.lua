@@ -25,7 +25,7 @@ M.base_30 = {
   purple = "#b291f3",
   dark_purple = "#9e75f0",
   teal = "#47b2d1",
-  orange = "#e0a352",
+  orange = "#fa7a55",
   cyan = "#3df5de",
   statusline_bg = "#17304d",
   lightbg = "#1a3759",
@@ -51,7 +51,6 @@ M.base_16 = {
   base0E = "#9e75f0",
   base0F = "#0da8f2",
 }
-
 
 M.type = "dark" -- light / dark
 
