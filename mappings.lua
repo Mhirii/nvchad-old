@@ -170,7 +170,6 @@ M.golang = {
     ["<leader>ata"] = { "<CMD>GoAddTest<CR>", icons.ui.Action .. " Add Test for this Function" },
     ["<leader>ate"] = { "<CMD>GoAddAllTest<CR>", icons.ui.Action .. " Add Tests for all Functions" },
     ["<leader>ac"] = { "<CMD>GoCheat<CR>", icons.ui.Book .. " Cheatsheet" },
-    ["<leader>ao"] = { "<CMD>GoCheat<CR>", icons.ui.Book .. " Cheatsheet" },
     ["<leader>al"] = { "<CMD>GoLint<CR>", icons.ui.Watches .. " Lint" },
     ["<leader>as"] = { "<CMD>GoCodeLenAct<CR>", icons.ui.Fire .. " Code Lens This Line" }, --TODO: Change Icon
     ["<leader>ah"] = { "<CMD>GoToggleInlay<CR>", icons.diagnostics.Hint .. " Inlay Hints" },
