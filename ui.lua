@@ -6,9 +6,9 @@ local themes = require "custom.themes"
 local highlights = require "custom.highlights"
 
 return {
-  theme = "nero",
+  theme = "idx",
   -- theme = "tokyodark",
-  theme_toggle = { "nero", "tokyodark" },
+  theme_toggle = { "nero", "idx" },
 
   extended_integrations = { "trouble", "hop", "todo", "notify" },
   changed_themes = themes,

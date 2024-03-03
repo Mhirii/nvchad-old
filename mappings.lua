@@ -25,6 +25,17 @@ M.conform = {
   },
 }
 
+M.copilot = {
+  n = {
+    ["<leader>tp"] = {
+      function()
+        require "copilot"
+      end,
+      icons.git.Octoface .. " Enable Copilot",
+    },
+  },
+}
+
 M.buffer = {
   n = {
     ["<leader>nb"] = { "<cmd> new <CR>", icons.ui.NewFile .. " New buffer" },

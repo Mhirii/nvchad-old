@@ -1,5 +1,6 @@
-local settings = require "settings"
+local settings = require "custom.settings"
 return {
+
   "hrsh7th/nvim-cmp",
   dependencies = {
     {

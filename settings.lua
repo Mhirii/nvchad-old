@@ -30,6 +30,7 @@ M.ai = {
   codeium = false,
   gen = true,
   copilot = true,
+  copilot_cmp = true,
 }
 
 M.motions = {

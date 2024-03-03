@@ -43,12 +43,12 @@ M.base_16 = {
   base06 = "#a9c7d6",
   base07 = "#5d6a7d",
   base08 = "#a87ffb",
-  base09 = "#d9dfe7",
-  base0A = "#FD8DA3",
+  base09 = "#3399cc",
+  base0A = "#FFD395",
   base0B = "#85CDF1",
   base0C = "#BD9CFE", -- curly braces
-  base0D = "#17b877",
-  base0E = "#75beff",
+  base0D = "#77D5A3",
+  base0E = "#FD8DA3",
   base0F = "#8964e8",
 }
 
