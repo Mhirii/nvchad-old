@@ -2,7 +2,7 @@ vim.g.neovide_confirm_quit = true
 vim.g.neovide_profiler = false
 vim.g.neovide_remember_window_size = false
 
-vim.o.guifont = "MonaspiceNe Nerd Font:h14"
+vim.o.guifont = "MonaspiceNe Nerd Font:h12"
 vim.opt.linespace = 0
 vim.g.neovide_scale_factor = 1.0
 vim.g.neovide_theme = "auto"
