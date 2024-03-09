@@ -8,6 +8,15 @@ return {
         auto_trigger = true,
       },
     },
+    keys = {
+      {
+        mode = { "i" },
+        "<A-c>",
+        function()
+          require("copilot.suggestion").accept_line()
+        end,
+      },
+    },
     config = function()
       require("copilot").setup {
         panel = {
@@ -16,7 +25,7 @@ return {
           keymap = {
             jump_prev = "[[",
             jump_next = "]]",
-            accept = "<CR>",
+            accept = "<M-CR>",
             refresh = "gr",
             open = "<M-CR>",
           },
