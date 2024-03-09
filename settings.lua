@@ -36,7 +36,7 @@ M.ai = {
 M.motions = {
   harpoon = true,
   bookmarks = true,
-  hop = false,
+  hop = true,
 }
 
 M.utilities = {
