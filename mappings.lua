@@ -3,11 +3,8 @@ require("nvchad.mappings")
 local icons = require("icons")
 local settings = require("settings")
 
--- add yours here
 
 local map = vim.keymap.set
--- local nomap = vim.keymap.del
--- nomap("n", "<S-H>")
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 
@@ -17,26 +14,26 @@ end, { desc = "File Format with conform" })
 
 map("i", "jk", "<ESC>", { desc = "Escape insert mode" })
 
--- General
+-- ── General ───────────────────────────────────────────────────
 map("n", "<C-d>", "<C-d>zz", { desc = " Scroll down" })
 map("n", "<C-u>", "<C-u>zz", { desc = " Scroll up" })
 map("v", ">", ">gv", { desc = "indent" })
 
--- conform
+-- ── conform ───────────────────────────────────────────────────
 if settings.formatter == "conform" then
 	map("n", "<leader>cf", function()
 		require("conform").format()
 	end, { desc = "Format" })
 end
 
--- Copilot
+-- ── Copilot ───────────────────────────────────────────────────
 if settings.ai.copilot then
 	map("n", "<leader>tp", function()
 		require("copilot")
 	end, { desc = icons.git.Octoface .. "Enable Copilot" })
 end
 
--- Buffer
+-- ── Buffer ────────────────────────────────────────────────────
 map("n", "<leader>nb", "<cmd> new <CR>", { desc = icons.ui.NewFile .. " New buffer" })
 map("n", "<leader>bd", "<cmd> q <CR>", { desc = icons.ui.Close .. " Close buffer" })
 
@@ -64,7 +61,7 @@ map("n", "<S-H>", function()
 	require("nvchad.tabufline").prev()
 end, { desc = icons.ui.ChevronRight .. " Goto previous buffer" })
 
--- Code
+-- ── Code ──────────────────────────────────────────────────────
 map("v", "< leader >ca", function()
 	vim.lsp.buf.code_action()
 end, { desc = icons.ui.Action .. " Code Action" })
@@ -95,12 +92,12 @@ map("n", "<leader>cp", function()
 	require("actions-preview").code_actions()
 end, { desc = icons.ui.Action .. " Code Action Preview" })
 
--- Dashboard
+-- ── Dashboard ─────────────────────────────────────────────────
 map("n", "<leader>;", function()
 	require("nvchad.dashboard").open()
 end, { desc = "Open Dashboard" })
 
--- Golang
+-- ── Golang ────────────────────────────────────────────────────
 if settings.lang.go then
 	map("n", "<leader>cr", "<CMD>GoRename<CR>", { desc = "󰟓 Rename" })
 	map("n", "<leader>cl", "<CMD>GoCodeLenAct<CR>", { desc = "󰟓 Code Lens This Line" })
@@ -128,16 +125,15 @@ if settings.lang.go then
 	map("n", "K", "<CMD>GoDoc<CR>", { desc = "Go Hover" })
 end
 
--- Lazy
+-- ── Lazy ──────────────────────────────────────────────────────
 map("n", "<leader>pl", ":Lazy<CR>", { desc = "󰒲 Open Plugin Manager" })
 
--- migrate this to map
---  lsp_lines
+-- ── lsp_lines ─────────────────────────────────────────────────
 if settings.utilities.lsplines then
 	map("n", "<leader>ti", "<CMD>lua require('lsp_lines').toggle()<CR>", { desc = "∥ Toggle LspLines" })
 end
 
--- Glance
+-- ── Glance ────────────────────────────────────────────────────
 if settings.ui.glance then
 	map("n", "<leader>pd", "<CMD>Glance definitions<CR>", { desc = "⊶ Preview definition" })
 	map("n", "<leader>pr", ":Glance references<CR>", { desc = " Preview references" })
@@ -148,7 +144,7 @@ if settings.ui.glance then
 	map("n", "gY", ":Glance type_definitions<CR>", { desc = "⊶ Preview type_definitions" })
 end
 
--- Hop
+-- ── Hop ───────────────────────────────────────────────────────
 if settings.motions.hop then
 	map("v", "<leader>h/", "<Cmd>HopPattern <cr>", { desc = " Hop Pattern" })
 	map("v", "<leader>hc", "<Cmd>HopChar1 <cr>", { desc = "󰾺 Hop Character" })
@@ -159,17 +155,17 @@ if settings.motions.hop then
 	map("n", "<leader>h/", "<Cmd>HopPattern <cr>", { desc = "󱡮 Hop Pattern" })
 	map("n", "<leader>hc", "<Cmd>HopChar1 <cr>", { desc = "󱡮 Hop Character" })
 	map("n", "<leader>hs", "<Cmd>HopChar2 <cr>", { desc = "󱡮 Hop 2 Characters" })
-	map("n", "<M-f>", "<Cmd>HopChar1 <cr>", { desc = "󱡮 Hop Character" })
+	map("n", "<M-f>", "<Cmd>HopChar1CurrentLine <cr>", { desc = "󱡮 Hop Character" })
 end
 
--- hover
+-- ── hover ─────────────────────────────────────────────────────
 if settings.ui.hover then
 	map("n", "K", function()
 		require("pretty_hover").hover()
 	end, { desc = "󱤇 hover" })
 end
 
--- lspconfig
+-- ── lspconfig ─────────────────────────────────────────────────
 map("n", "gD", function()
 	vim.lsp.buf.declaration()
 end, { desc = "LSP declaration" })
@@ -234,7 +230,7 @@ map("n", "<leader>wl", function()
 	print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 end, { desc = "List workspace folders" })
 
--- harpoon
+-- ── harpoon ───────────────────────────────────────────────────
 if settings.motions.harpoon then
 	map("n", "<leader>hr", function()
 		local harpoon = require("harpoon")
@@ -247,7 +243,7 @@ if settings.motions.harpoon then
 	map("n", "<leader>sh", "<cmd>Telescope harpoon marks<cr>", { desc = "󰛢 Telescope Harpoon Marks" })
 end
 
--- bookmarks
+-- ── bookmarks ─────────────────────────────────────────────────
 if settings.motions.bookmarks then
 	map("n", "<leader>mb", function()
 		require("bookmarks").add_bookmarks()
@@ -257,10 +253,10 @@ if settings.motions.bookmarks then
 	end, { desc = "󰧏 Toggle Bookmarks" })
 end
 
--- mason
+-- ── mason ─────────────────────────────────────────────────────
 map("n", "<leader>om", ":Mason<CR>", { desc = "󰟾 Open Mason" })
 
--- multiplexer
+-- ── multiplexer ───────────────────────────────────────────────
 map("n", "<C-h>", function()
 	require("smart-splits").move_cursor_left()
 end, { desc = "󱂪 move cursor left" })
@@ -298,19 +294,20 @@ map("n", "<leader><leader>l", function()
 	require("smart-splits").swap_buf_right()
 end, { desc = "󰯍 Swap buffer right" })
 
--- nerdy
+-- ── nerdy ─────────────────────────────────────────────────────
 if settings.utilities.nerdy then
 	map("n", "<leader>sn", "<cmd>Nerdy<CR>", { desc = "󰓠 Nerd Fonts" })
 end
 
--- notify
+-- ── notify ────────────────────────────────────────────────────
 map("n" ,"<leader>nd", "<cmd> NoiceDismiss <CR>", { desc = " Dismiss Notifications" })
 
+-- ── NvimTree ──────────────────────────────────────────────────
 map("n", "<leader>e", "<cmd> NvimTreeToggle <CR>", { desc = "󱏒 Toggle nvimtree" })
 
 -- TODO: nvterm
 
--- oil
+-- ── oil ───────────────────────────────────────────────────────
 if settings.ui.oil then
 	map("n", "<leader>to", ':lua require("oil").toggle_float()<CR>', { desc = "󱏒 Open oil" })
 	map("n", "<leader>oi", ":Oil<CR>", { desc = "󱏒 Open oil" })
@@ -327,7 +324,7 @@ if settings.utilities.rest then
 	end, { desc = "󱅣 reRun Last HTTP Request" })
 end
 
--- Telescope
+-- ── Telescope ─────────────────────────────────────────────────
 map(
 	"n",
 	"<leader>f",
@@ -356,10 +353,10 @@ map("n", "<leader>ss", "<cmd> Telescope lsp_document_symbols <CR>", { desc = ico
 map("n", "<leader>sb", "<cmd> Telescope buffers <CR>", { desc = icons.ui.Files .. " Buffers" })
 map("n", "<leader>sl", "<cmd>Telescope resume<cr>", { desc = icons.ui.Search .. " Resume last search" })
 
--- Todo
+-- ── Todo ──────────────────────────────────────────────────────
 map("n", "<leader>sd", "<cmd>TodoTelescope<cr>", { desc = "Telescope TODOs" })
 
--- Toggle
+-- ── Toggle ────────────────────────────────────────────────────
 local toggled = false
 map("n", "<leader>ta", function()
 	vim.opt.concealcursor = "nc"
@@ -384,7 +381,7 @@ map("n", "<leader>tt", function()
 	require("base46").toggle_theme()
 end, { desc = icons.kind.Boolean .. " Toggle theme" })
 
--- Trouble
+-- ── Trouble ───────────────────────────────────────────────────
 if settings.ui.trouble then
 	map("n", "<leader>tr", ":TroubleToggle<CR>", { desc = icons.ui.SplitVertical .. " Toggle Trouble" })
 	map(
@@ -401,12 +398,12 @@ if settings.ui.trouble then
 	map("n", "gD", "<CMD>Trouble lsp_type_definitions<CR>", { desc = "Type definition" })
 end
 
--- Window
+-- ── Window ────────────────────────────────────────────────────
 
 map("n", "<leader>|", "<CMD>vs <CR>", { desc = "󰤼 Vertical split" })
 map("n", "<leader>-", "<CMD>sp <CR>", { desc = "󰤻 Horizontal split" })
 
--- unmap
+-- ── unmap ─────────────────────────────────────────────────────
 local nomap = vim.keymap.del
 nomap("t", "<A-h>")
 nomap("t", "<A-v>")
