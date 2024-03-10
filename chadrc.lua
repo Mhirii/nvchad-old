@@ -1,5 +1,6 @@
 local M = {}
 
+require("init")
 local utils = require("utils")
 local group_margin = "  "
 -- M.ui = {
