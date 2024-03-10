@@ -146,5 +146,6 @@ return {
 	{ import = "configs.smart-splits", enabled = mux == "wezterm" },
 	-- Copilot
 	{ import = "configs.copilot", enabled = settings.ai.copilot },
+	{ import = "configs.copilot-chat", enabled = settings.ai.copilot_chat },
 	-- }
 }
