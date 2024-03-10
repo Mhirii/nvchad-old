@@ -1,20 +1,19 @@
-
-
-local wk = require "which-key"
-local icons = require "icons"
+local wk = require("which-key")
+local icons = require("icons")
 
 return {
-  "folke/which-key.nvim",
-  config = function(_, opts)
-    dofile(vim.g.base46_cache .. "whichkey")
-    require("which-key").setup(opts)
+	"folke/which-key.nvim",
+	config = function(_, opts)
+		dofile(vim.g.base46_cache .. "whichkey")
+		require("which-key").setup(opts)
 
-    wk.register {
-      ["<leader>"] = {
+		wk.register({
+			["<leader>"] = {
         -- stylua: ignore start
         [" "] = { name = " Quick" },
         b     = { name = icons.ui.File .. " Buffer" },
         c     = { name = icons.ui.Code .. " Code" },
+        co    = { name = icons.git.Octoface .. " Copilot" },
         f     = { name = icons.ui.Telescope .. " Find" },
         g     = { name = icons.git.Branch .. " Git" },
         h     = { name = "󱕘 Hop" },
@@ -31,12 +30,12 @@ return {
         u     = { name = icons.ui.Download .. " Update" },
         w     = { name = icons.ui.FolderOpen .. " Workspace" },
         z     = { name = icons.ui.Ellipsis .. " Extras" },
-      },
-    }
-  end,
-  opts = {
-    icons = {
-      group = "", -- disable + to make Nerf fonts usable
-    },
-  },
+			},
+		})
+	end,
+	opts = {
+		icons = {
+			group = "", -- disable + to make Nerf fonts usable
+		},
+	},
 }
