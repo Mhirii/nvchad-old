@@ -323,8 +323,6 @@ map("n", "<leader>nd", "<cmd> NoiceDismiss <CR>", { desc = " Dismiss Notifica
 -- ── NvimTree ──────────────────────────────────────────────────
 map("n", "<leader>e", "<cmd> NvimTreeToggle <CR>", { desc = "󱏒 Toggle nvimtree" })
 
--- TODO: nvterm
-
 -- ── Term ──────────────────────────────────────────────────────
 map({ "n", "t" }, "<A-2>", function()
 	require("nvchad.term").toggle({ pos = "vsp", id = "floatTerm", size = 0.3 })
@@ -368,6 +366,7 @@ map(
 map("n", "<leader>sc", ":Telescope builtin<CR>", { desc = icons.ui.Terminal .. " Editor Commands" })
 map("n", "<leader>so", "<cmd> Telescope oldfiles<CR>", { desc = icons.ui.History .. " Old Files" })
 map("n", "<leader>/", "<cmd> Telescope live_grep <CR>", { desc = icons.ui.Search .. " Grep" })
+map("n", "<leader>sg", "<cmd> Telescope live_grep <CR>", { desc = icons.ui.Search .. " Grep" })
 map(
 	"n",
 	"<leader>sF",
