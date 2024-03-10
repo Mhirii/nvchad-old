@@ -4,13 +4,13 @@ require("init")
 local utils = require("utils")
 local group_margin = "  "
 -- M.ui = {
---   theme = "onedark",
+--   theme = "tokyonight",
 -- }
 
 M.ui = {
-	theme = "nero", -- sed mark
+	theme = "tokyonight", -- sed mark
 	-- theme = "tokyodark",
-	theme_toggle = { "nero", "nero" },
+	theme_toggle = { "tokyonight", "tokyonight" },
 
 	extended_integrations = { "trouble", "hop", "todo", "notify" },
 
