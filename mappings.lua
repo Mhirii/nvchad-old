@@ -325,6 +325,16 @@ map("n", "<leader>e", "<cmd> NvimTreeToggle <CR>", { desc = "󱏒 Toggle nvimtre
 
 -- TODO: nvterm
 
+-- ── Term ──────────────────────────────────────────────────────
+map({ "n", "t" }, "<A-2>", function()
+	require("nvchad.term").toggle({ pos = "vsp", id = "floatTerm", size = 0.3 })
+end)
+map({ "n", "t" }, "<A-1>", function()
+	require("nvchad.term").toggle({ pos = "sp", id = "floatTerm", size = 0.3 })
+end)
+map({ "n", "t" }, "<A-i>", function()
+	require("nvchad.term").toggle({ pos = "float", id = "floatTerm" })
+end)
 -- ── oil ───────────────────────────────────────────────────────
 if settings.ui.oil then
 	map("n", "<leader>to", ':lua require("oil").toggle_float()<CR>', { desc = "󱏒 Open oil" })
