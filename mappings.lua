@@ -3,7 +3,6 @@ require("nvchad.mappings")
 local icons = require("icons")
 local settings = require("settings")
 
-
 local map = vim.keymap.set
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
@@ -319,7 +318,7 @@ if settings.utilities.nerdy then
 end
 
 -- ── notify ────────────────────────────────────────────────────
-map("n" ,"<leader>nd", "<cmd> NoiceDismiss <CR>", { desc = " Dismiss Notifications" })
+map("n", "<leader>nd", "<cmd> NoiceDismiss <CR>", { desc = " Dismiss Notifications" })
 
 -- ── NvimTree ──────────────────────────────────────────────────
 map("n", "<leader>e", "<cmd> NvimTreeToggle <CR>", { desc = "󱏒 Toggle nvimtree" })
