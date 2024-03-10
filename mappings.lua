@@ -518,6 +518,8 @@ nomap("n", "<leader>ls")
 nomap("n", "<leader>ra")
 nomap("n", "<leader>so")
 nomap("n", "<leader>rn")
+nomap("n", "<Tab>")
+nomap("n", "<S-Tab>")
 
 nomap("n", "<leader>fa")
 nomap("n", "<leader>fb")
