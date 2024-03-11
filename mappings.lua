@@ -4,6 +4,7 @@ local icons = require("icons")
 local settings = require("settings")
 
 local map = vim.keymap.set
+local nomap = vim.keymap.del
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 
@@ -159,32 +160,7 @@ map("n", "<leader>;", function()
 end, { desc = "Open Dashboard" })
 
 -- ── Golang ────────────────────────────────────────────────────
-if settings.lang.go then
-	map("n", "<leader>cr", "<CMD>GoRename<CR>", { desc = "󰟓 Rename" })
-	map("n", "<leader>cl", "<CMD>GoCodeLenAct<CR>", { desc = "󰟓 Code Lens This Line" })
-	map("n", "<leader>ln", "<CMD>GoLint<CR>", { desc = "󰟓 Lint" })
-
-	map("n", "<leader>ab", "<CMD>GoBuild<CR>", { desc = icons.ui.Gear .. " Build" })
-	map("n", "<leader>ar", "<CMD>GoRun<CR>", { desc = icons.ui.Triangle .. " Run" })
-
-	map("n", "<leader>atb", "<CMD>GoTestFile<CR>", { desc = icons.ui.File .. " Test this File" })
-	map("n", "<leader>atp", "<CMD>GoTestPkg<CR>", { desc = icons.kind.Package .. " Test this Package" })
-	map("n", "<leader>atf", "<CMD>GoTestFunc<CR>", { desc = icons.kind.Function .. " Test this Function" })
-	map("n", "<leader>ata", "<CMD>GoAddTest<CR>", { desc = icons.ui.Action .. " Add Test for this Function" })
-	map("n", "<leader>ate", "<CMD>GoAddAllTest<CR>", { desc = icons.ui.Action .. " Add Tests for all Functions" })
-	map("n", "<leader>ac", "<CMD>GoCheat<CR>", { desc = icons.ui.Book .. " Cheatsheet" })
-	map("n", "<leader>al", "<CMD>GoLint<CR>", { desc = icons.ui.Watches .. " Lint" })
-	map("n", "<leader>as", "<CMD>GoCodeLenAct<CR>", { desc = icons.ui.Fire .. " Code Lens This Line" })
-	map("n", "<leader>ah", "<CMD>GoToggleInlay<CR>", { desc = icons.diagnostics.Hint .. " Inlay Hints" })
-
-	map("n", "]d", function()
-		vim.diagnostic.goto_prev({ float = { border = "rounded" } })
-	end, { desc = "Goto prev" })
-	map("n", "[d", function()
-		vim.diagnostic.goto_next({ float = { border = "rounded" } })
-	end, { desc = "Goto next" })
-	map("n", "K", "<CMD>GoDoc<CR>", { desc = "Go Hover" })
-end
+-- check configs/go.lua
 
 -- ── Lazy ──────────────────────────────────────────────────────
 map("n", "<leader>pl", ":Lazy<CR>", { desc = "󰒲 Open Plugin Manager" })
@@ -493,7 +469,6 @@ map("n", "<leader>|", "<CMD>vs <CR>", { desc = "󰤼 Vertical split" })
 map("n", "<leader>-", "<CMD>sp <CR>", { desc = "󰤻 Horizontal split" })
 
 -- ── unmap ─────────────────────────────────────────────────────
-local nomap = vim.keymap.del
 nomap("t", "<A-h>")
 nomap("t", "<A-v>")
 
