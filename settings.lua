@@ -15,6 +15,7 @@ M.ui = {
 	tree = "nvimtree",
 	oil = true,
 	trouble = true,
+	bqf = true,
 	code_actions = true,
 	scroll = true,
 	context = true,

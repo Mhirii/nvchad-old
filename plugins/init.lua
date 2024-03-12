@@ -68,6 +68,7 @@ return {
 	{ import = "configs.noice", enabled = ui.noice },
 	-- Diagnostics and more
 	{ import = "configs.trouble", enabled = ui.trouble },
+	{ import = "configs.bqf", enabled = ui.bqf },
 	-- Helpful lens
 	{ import = "configs.lsp-lens", enabled = ui.lens },
 	-- Awesome UI changes based on mode
