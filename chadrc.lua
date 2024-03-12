@@ -4,13 +4,13 @@ require("init")
 local utils = require("utils")
 local group_margin = "  "
 -- M.ui = {
---   theme = "tokyonight",
+--   theme = "nero",
 -- }
 
 M.ui = {
-	theme = "tokyonight", -- sed mark
+	theme = "nero", -- sed mark
 	-- theme = "tokyodark",
-	theme_toggle = { "tokyonight", "tokyonight" },
+	theme_toggle = { "nero", "nero" },
 
 	extended_integrations = { "trouble", "hop", "todo", "notify" },
 
@@ -20,6 +20,27 @@ M.ui = {
 	},
 
 	transparency = false,
+
+	hl_add = {
+		FoldColumnLine = {
+			fg = "grey",
+			bg = "black",
+		},
+		FoldColumnSymbol = {
+			fg = "grey_fg",
+			bg = "black",
+		},
+		CursorLineFold = {
+			fg = { "blue", 2 },
+			bg = "black",
+		},
+	},
+	hl_override = {
+		FoldColumn = {
+			fg = "grey",
+			bg = "black",
+		},
+	},
 
 	tabufline = {
 		order = { "buffers", "tabs" },

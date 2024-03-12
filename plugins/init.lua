@@ -88,6 +88,10 @@ return {
 	{ import = "configs.illuminate", enabled = ui.illuminate },
 	--}
 
+	-- ── Fold ──────────────────────────────────────────────────────{
+	{ import = "configs.ufo", enabled = settings.fold.ufo },
+	-- }
+
 	-- ── Utility ─────────────────────────────────────────────────────{
 	-- Change case with Alt Shift S
 	{ import = "configs.case-change", enabled = true },

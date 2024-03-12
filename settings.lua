@@ -7,6 +7,9 @@ M.lang = { -- TODO: add cpp
 	cpp = false,
 	hyprland = true,
 }
+M.fold = {
+	ufo = true,
+}
 
 M.ui = {
 	tree = "nvimtree",
