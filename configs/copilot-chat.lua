@@ -1,22 +1,3 @@
-local prompts = {
-	-- Code related prompts
-	Explain = "Please explain how the following code works.",
-	Review = "Please review the following code and provide suggestions for improvement.",
-	Tests = "Please explain how the selected code works, then generate unit tests for it.",
-	Refactor = "Please refactor the following code to improve its clarity and readability.",
-	FixCode = "Please fix the following code to make it work as intended.",
-	FixError = "Please explain the error in the following text and provide a solution.",
-	BetterNamings = "Please provide better names for the following variables and functions.",
-	Documentation = "Please provide documentation for the following code.",
-	SwaggerApiDocs = "Please provide documentation for the following API using Swagger.",
-	SwaggerJsDocs = "Please write JSDoc for the following API using Swagger.",
-	-- Text related prompts
-	Summarize = "Please summarize the following text.",
-	Spelling = "Please correct any grammar and spelling errors in the following text.",
-	Wording = "Please improve the grammar and wording of the following text.",
-	Concise = "Please rewrite the following text to make it more concise.",
-}
-
 return {
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
@@ -26,33 +7,10 @@ return {
 			{ "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
 			{ "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
 		},
-		opts = {
-			prompts = prompts,
-			auto_follow_cursor = false, -- Don't follow the cursor after getting response
-			mappings = {
-				close = "q", -- Close chat
-				reset = "<C-l>", -- Clear the chat buffer
-				complete = "<Tab>", -- Change to insert mode and press tab to get the completion
-				submit_prompt = "<CR>", -- Submit question to Copilot Chat
-				accept_diff = "<C-a>", -- Accept the diff
-				show_diff = "<C-s>", -- Show the diff
-			},
-		},
 		config = function(_, opts)
 			local chat = require("CopilotChat")
+			local prompts = require("CopilotChat.prompts")
 			local select = require("CopilotChat.select")
-			opts.selection = select.unnamed
-
-			opts.prompts.Commit = {
-				prompt = "Write commit message for the change with commitizen convention",
-				selection = select.gitdiff,
-			}
-			opts.prompts.CommitStaged = {
-				prompt = "Write commit message for the change with commitizen convention",
-				selection = function(source)
-					return select.gitdiff(source, true)
-				end,
-			}
 
 			chat.setup(opts)
 
@@ -78,6 +36,105 @@ return {
 			vim.api.nvim_create_user_command("CopilotChatBuffer", function(args)
 				chat.ask(args.args, { selection = select.buffer })
 			end, { nargs = "*", range = true })
+
+			prompts.Explain = {
+				prompt = "/COPILOT_EXPLAIN Write an explanation for the code above as paragraphs of text.",
+			}
+			prompts.Tests = {
+				prompt = "/COPILOT_TESTS Write a set of detailed unit test functions for the code above.",
+			}
+			prompts.Fix = {
+				prompt = "/COPILOT_FIX There is a problem in this code. Rewrite the code to show it with the bug fixed.",
+			}
+			prompts.Optimize = {
+				prompt = "/COPILOT_REFACTOR Optimize the selected code to improve performance and readablilty.",
+			}
+			prompts.Docs = {
+				prompt = "/COPILOT_REFACTOR Write documentation for the selected code. The reply should be a codeblock containing the original code with the documentation added as comments. Use the most appropriate documentation style for the programming language used (e.g. JSDoc for JavaScript, docstrings for Python etc.",
+			}
+			prompts.FixDiagnostic = {
+				prompt = "Please assist with the following diagnostic issue in file:",
+				selection = select.diagnostics,
+			}
+			prompts.Commit = {
+				prompt = "Write commit message for the change with commitizen convention. Make sure the title has maximum 50 characters and message is wrapped at 72 characters. Wrap the whole message in code block with language gitcommit.",
+				selection = select.gitdiff,
+			}
+			prompts.CommitStaged = {
+				prompt = "Write commit message for the change with commitizen convention. Make sure the title has maximum 50 characters and message is wrapped at 72 characters. Wrap the whole message in code block with language gitcommit.",
+				selection = function(source)
+					return select.gitdiff(source, true)
+				end,
+			}
+
+			return {
+				debug = false, -- Enable debug logging
+				proxy = nil, -- [protocol://]host[:port] Use this proxy
+				allow_insecure = false, -- Allow insecure server connections
+
+				system_prompt = prompts.COPILOT_INSTRUCTIONS, -- System prompt to use
+				model = "gpt-4", -- GPT model to use, 'gpt-3.5-turbo' or 'gpt-4'
+				temperature = 0.1, -- GPT temperature
+
+				name = "CopilotChat", -- Name to use in chat
+				separator = "---", -- Separator to use in chat
+				show_folds = true, -- Shows folds for sections in chat
+				show_help = true, -- Shows help message as virtual lines when waiting for user input
+				auto_follow_cursor = true, -- Auto-follow cursor in chat
+				auto_insert_mode = false, -- Automatically enter insert mode when opening window and if auto follow cursor is enabled on new prompt
+				clear_chat_on_new_prompt = false, -- Clears chat on every new prompt
+
+				selection = function(source)
+					return select.visual(source) or select.line(source)
+				end,
+
+				prompts = prompts,
+
+				window = {
+					layout = "vertical", -- 'vertical', 'horizontal', 'float'
+					-- Options below only apply to floating windows
+					relative = "editor", -- 'editor', 'win', 'cursor', 'mouse'
+					border = "single", -- 'none', single', 'double', 'rounded', 'solid', 'shadow'
+					width = 0.8, -- fractional width of parent
+					height = 0.6, -- fractional height of parent
+					row = nil, -- row position of the window, default is centered
+					col = nil, -- column position of the window, default is centered
+					title = "Copilot Chat", -- title of chat window
+					footer = nil, -- footer of chat window
+					zindex = 1, -- determines if window is on top or below other floating windows
+				},
+				mappings = {
+					complete = {
+						detail = "Use @<Tab> or /<Tab> for options.",
+						insert = "<Tab>",
+					},
+					close = {
+						normal = "q",
+						insert = "<C-c>",
+					},
+					reset = {
+						normal = "<C-l>",
+						insert = "<C-l>",
+					},
+					submit_prompt = {
+						normal = "<CR>",
+						insert = "<C-m>",
+					},
+					accept_diff = {
+						normal = "<C-y>",
+						insert = "<C-y>",
+					},
+					show_diff = {
+						normal = "gd",
+					},
+					show_system_prompt = {
+						normal = "gp",
+					},
+					show_user_selection = {
+						normal = "gs",
+					},
+				},
+			}
 		end,
 	},
 }
