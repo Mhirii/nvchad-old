@@ -1,3 +1,5 @@
+local settings = require("settings")
+
 vim.filetype.add({
 	pattern = { [".*.conf"] = "hyprlang" },
 })
@@ -24,3 +26,11 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 		require("conform").format({ bufnr = args.buf })
 	end,
 })
+
+if settings.lint then
+	vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+		callback = function()
+			require("lint").try_lint()
+		end,
+	})
+end

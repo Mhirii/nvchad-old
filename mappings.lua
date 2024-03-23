@@ -28,9 +28,8 @@ end
 
 -- ── Copilot ───────────────────────────────────────────────────
 if settings.ai.copilot then
-	map("n", "<leader>tp", function()
-		require("copilot")
-	end, { desc = icons.git.Octoface .. "Enable Copilot" })
+	map("n", "<leader>tC", "<CMD>Copilot enable<CR>", { desc = icons.git.Octoface .. "Enable Copilot" })
+	map("n", "<leader>tc", "<CMD>Copilot disable<CR>", { desc = icons.git.Octoface .. "Disable Copilot" })
 end
 
 -- ── Copilot Chat ──────────────────────────────────────────────
@@ -131,9 +130,14 @@ map("n", "< leader >ca", function()
 	vim.lsp.buf.code_action()
 end, { desc = icons.ui.Action .. " Code Action" })
 
-map("n", "<leader>cr", function()
-	require("nvchad.renamer").open()
-end, { desc = icons.ui.Pencil .. " LSP rename" })
+if settings.ui.inc_rename then
+	map("n", "<leader>cr", ":IncRename ", { desc = icons.ui.Pencil .. " Inc Rename" })
+else
+	map("n", "<leader>cr", function()
+		vim.lsp.buf.rename()
+	end, { desc = icons.ui.Pencil .. " LSP rename" })
+end
+
 map("n", "<leader>cd", function()
 	vim.diagnostic.open_float({ border = "rounded" })
 end, { desc = icons.ui.DebugConsole .. " diagnostic" })
@@ -235,13 +239,13 @@ map("n", "<leader>ra", function()
 	require("nvchad.renamer").open()
 end, { desc = "LSP rename" })
 
-map("n", "gr", function()
-	if settings.ui.trouble then
-		require("trouble").toggle("lsp_references")
-	else
+if settings.ui.trouble then
+	map("n", "gr", "<CMD>Trouble lsp_references<CR>", { desc = "References" })
+else
+	map("n", "gr", function()
 		vim.lsp.buf.references()
-	end
-end, { desc = "LSP references" })
+	end, { desc = "LSP references" })
+end
 
 map("n", "<leader>lf", function()
 	vim.diagnostic.open_float({ border = "rounded" })
@@ -458,7 +462,6 @@ if settings.ui.trouble then
 	map("n", "<leader>cq", "<CMD>TroubleToggle quickfix<CR>", { desc = icons.ui.LightbulbAutofix .. " Quickfix" })
 	map("n", "<leader>td", "<CMD>TodoTrouble<CR>", { desc = icons.ui.CheckList .. " Todo" })
 	map("n", "gd", "<CMD>Trouble lsp_definitions<CR>", { desc = "Definition" })
-	map("n", "gr", "<CMD>Trouble lsp_references<CR>", { desc = "References" })
 	map("n", "gi", "<CMD>Trouble lsp_implementations<CR>", { desc = "Implementations" })
 	map("n", "gD", "<CMD>Trouble lsp_type_definitions<CR>", { desc = "Type definition" })
 end
@@ -485,7 +488,6 @@ nomap("n", "<leader>sz")
 nomap("n", "K")
 nomap("n", "<leader>b")
 nomap("n", "<C-n>")
-nomap("n", "<leader>/")
 nomap("n", "<leader>cm")
 nomap("n", "<leader>n")
 nomap("n", "<leader>pt")

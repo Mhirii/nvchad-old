@@ -2,11 +2,14 @@ local M = {}
 
 M.lang = { -- TODO: add cpp
 	typescript = true,
-	rust = false,
-	go = false,
+	rust = true,
+	go = true,
 	cpp = false,
 	hyprland = true,
 }
+
+M.lint = true
+
 M.fold = {
 	ufo = true,
 }
@@ -15,7 +18,8 @@ M.ui = {
 	tree = "nvimtree",
 	oil = true,
 	trouble = true,
-	bqf = true,
+	inc_rename = true,
+	bqf = false,
 	code_actions = true,
 	scroll = true,
 	context = true,

@@ -41,6 +41,10 @@ return {
 	{ import = "configs.refactoring", enabled = settings.refactoring },
 	-- Explanation Lines below errors
 	{ import = "configs.lsplines", enabled = utils.lsplines },
+	-- Lint
+	{ import = "configs.lint", enabled = settings.lint },
+	-- Rename
+	{ import = "configs.inc-rename", enabled = ui.inc_rename },
 	--}
 
 	-- ── Lang ────────────────────────────────────────────────────────{
@@ -48,6 +52,7 @@ return {
 	{ import = "configs.ts", enabled = typescipt },
 	{ import = "configs.imports", enabled = typescipt },
 	{ import = "configs.error-translator", enabled = typescipt },
+	{ import = "configs.autoFoldImports", enabled = typescipt },
 	-- Typechecking
 	{ import = "configs.tsc", enabled = typescipt },
 	{ import = "configs.ts-autotag", enabled = typescipt },

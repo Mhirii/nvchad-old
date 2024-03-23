@@ -33,8 +33,6 @@ return {
 			lsp_codelens = true,
 		})
 
-		require("core.utils").load_mappings("golang")
-
 		local wk = require("which-key")
 		local icons = require("icons")
 		wk.register({
