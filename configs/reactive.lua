@@ -12,7 +12,7 @@ return {
 				winhl = {
 					inactive = {
 						CursorLine = { bg = colors.darker_black },
-						CursorLineNr = { fg = colors.white, bg = colors.darker_black },
+						CursorLineNr = { fg = colors.white, bg = colors.black },
 					},
 				},
 			},
