@@ -422,6 +422,11 @@ map("n", "<leader>ss", "<cmd> Telescope lsp_document_symbols <CR>", { desc = ico
 map("n", "<leader>sb", "<cmd> Telescope buffers <CR>", { desc = icons.ui.Files .. " Buffers" })
 map("n", "<leader>sl", "<cmd>Telescope resume<cr>", { desc = icons.ui.Search .. " Resume last search" })
 
+nomap("n", "gr")
+map("n", "<leader>gr", "<cmd>Telescope lsp_references<CR>", { desc = "LSP references" })
+map("n", "<leader>so", "<cmd>Telescope oldfiles<CR>", { desc = "Open old files" })
+map("n", "<leader>sr", "<cmd>Telescope oldfiles<CR>", { desc = "Open recent files" })
+
 -- ── Todo ──────────────────────────────────────────────────────
 map("n", "<leader>sd", "<cmd>TodoTelescope<cr>", { desc = "Telescope TODOs" })
 
@@ -493,7 +498,6 @@ nomap("n", "<leader>n")
 nomap("n", "<leader>pt")
 nomap("n", "<leader>ls")
 nomap("n", "<leader>ra")
-nomap("n", "<leader>so")
 nomap("n", "<leader>rn")
 nomap("n", "<Tab>")
 nomap("n", "<S-Tab>")
