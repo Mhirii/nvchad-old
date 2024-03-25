@@ -30,7 +30,6 @@ return {
 	{ import = "overrides.conform", enabled = settings.formatter == "conform" },
 	--}
 	-- ── Lsp ─────────────────────────────────────────────────────────{
-	{ import = "configs.lsp-zero", enabled = settings.lspzero },
 	--" useful in nested code"
 	{ import = "configs.context-vt", enabled = ui.context },
 	-- leader c p
@@ -52,7 +51,6 @@ return {
 	{ import = "configs.ts", enabled = typescipt },
 	{ import = "configs.imports", enabled = typescipt },
 	{ import = "configs.error-translator", enabled = typescipt },
-	{ import = "configs.autoFoldImports", enabled = typescipt },
 	-- Typechecking
 	{ import = "configs.tsc", enabled = typescipt },
 	{ import = "configs.ts-autotag", enabled = typescipt },
@@ -67,8 +65,6 @@ return {
 
 	-- ── Ui ──────────────────────────────────────────────────────────{
 	{ import = "configs.dressing", enabled = true },
-	-- cool looking spinner animation for loading time
-	{ import = "configs.fidget", enabled = ui.fidget },
 	-- UI overhaul
 	{ import = "configs.noice", enabled = ui.noice },
 	-- Diagnostics and more
@@ -109,8 +105,6 @@ return {
 	{ import = "configs.todo-comments", enabled = true },
 	-- Eye Candy comments
 	{ import = "configs.comment-box", enabled = true },
-	-- Try this Leader f C
-	{ import = "configs.cheatsheet", enabled = utils.cheat },
 	-- keybindings
 	{ import = "configs.hawtkeys", enabled = true },
 	-- send http requests
@@ -139,16 +133,10 @@ return {
 	{ import = "configs.persistence", enabled = x.persist },
 	-- Git never been easier
 	{ import = "configs.lazygit", enabled = x.git },
-	-- project management
-	{ import = "configs.projects", enabled = x.projects },
 	-- use <number> Ctrl
 	{ import = "configs.toggleterm", enabled = x.terms },
-	-- better macro experience
-	{ import = "configs.recorder", enabled = x.recorder },
 	-- Note taking and more
 	{ import = "configs.neorg", enabled = x.neorg },
-	-- Ai
-	{ import = "configs.gen", enabled = settings.ai.gen },
 	--}
 
 	-- ── Extra ───────────────────────────────────────────────────────{

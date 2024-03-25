@@ -29,14 +29,12 @@ M.ui = {
 	hover = false,
 	glance = true,
 	notify = true,
-	fidget = false,
 	noice = true,
 	illuminate = true,
 }
 
 M.ai = {
 	codeium = false,
-	gen = true,
 	copilot = true,
 	copilot_cmp = true,
 	copilot_chat = true,
@@ -52,11 +50,8 @@ M.utilities = {
 	aerial = true,
 	lsplines = true,
 	rest = true,
-	cheat = false,
 	nerdy = true,
 }
-
-M.lspzero = false
 
 M.multiplexer = "wezterm" -- wezterm | tmux -- edit: the plugin works well with both
 
@@ -67,9 +62,7 @@ M.refactoring = false
 M.extras = {
 	persist = true,
 	git = true,
-	projects = false,
 	terms = false,
-	recorder = false,
 	neorg = true,
 }
 
