@@ -18,7 +18,7 @@ return {
 	-- },
 
 	-- ── Overrides ───────────────────────────────────────────────────{
-	{ import = "overrides.lspconfig" },
+	{ import = "configs.lspconfig" },
 	{ import = "overrides.mason" },
 	{ "williamboman/mason-lspconfig.nvim" },
 	{ import = "overrides.treesitter" },
@@ -27,7 +27,7 @@ return {
 	{ import = "overrides.cmp" },
 	{ import = "overrides.whichkey" },
 	-- { import = "overrides.nvterm" },
-	{ import = "overrides.conform", enabled = settings.formatter == "conform" },
+	{ import = "configs.conform", enabled = settings.formatter == "conform" },
 	--}
 	-- ── Lsp ─────────────────────────────────────────────────────────{
 	--" useful in nested code"
