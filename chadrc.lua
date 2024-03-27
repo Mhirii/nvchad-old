@@ -2,12 +2,11 @@ local M = {}
 
 require("init")
 local utils = require("utils")
-local group_margin = "  "
 
 M.ui = {
-	theme = "nero", -- sed mark
-	-- theme = "nero",
-	theme_toggle = { "nero", "nero" },
+	theme = "nero_soft", -- sed mark
+	-- theme = "nero_soft",
+	theme_toggle = { "nero_soft", "tokyonight" },
 
 	cmp = {
 		style = "atom_colored", -- flatt_dark | flat_light | default | atom | atom_colored
@@ -54,39 +53,24 @@ M.ui = {
 		-- round and block will work for minimal theme only
 		separator_style = "default",
 
-		overriden_modules = function(modules)
-			table.insert(
-				modules,
-				8,
-				(function()
-					local hl = "%#StBg#"
-					return hl .. " "
-				end)()
-			)
+		modules = {
+			pomo = function()
+				local icon = "󰄉 "
+				local ok, pomo = pcall(require, "pomo")
+				if not ok then
+					return ""
+				end
+				local timer = pomo.get_first_to_finish()
+				if not timer then
+					return ""
+				end
+				local text = tostring(timer)
+				local time = utils.extract_time(text)
+				return "%#St_Lsp#" .. " " .. icon .. time .. " "
+			end,
+		},
 
-			table.insert(
-				modules,
-				8,
-				(function()
-					local hl = "%#StCodeium#"
-					local icon = "" -- 󱜙  󰘦
-
-					if utils.cmp_source("codeium") then
-						icon = hl .. "󱜙" .. group_margin
-					end
-
-					return icon
-				end)()
-			)
-
-			table.insert(
-				modules,
-				4,
-				(function()
-					return "%#RecordHl#" .. utils.Get_record()
-				end)()
-			)
-		end,
+		order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "diagnostics", "lsp", "pomo", "cwd", "cursor" },
 	},
 
 	nvdash = {

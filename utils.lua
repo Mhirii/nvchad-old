@@ -34,4 +34,32 @@ function M.cmp_source(name)
 	end
 end
 
+function M.extract_time(text)
+	local time_str = ""
+	local found_space = false
+
+	-- Iterate from the end of the string
+	for i = string.len(text), 1, -1 do
+		local char = string.sub(text, i, i)
+
+		-- Check for whitespace or end of string
+		if char == " " or i == 1 then
+			found_space = true
+			break
+		end
+
+		-- Append character only if not whitespace and space not found yet
+		if char ~= " " and not found_space then
+			time_str = char .. time_str -- Prepend character to build the time string
+		end
+	end
+
+	-- Check if any time was extracted
+	if time_str ~= "" then
+		return time_str
+	else
+		return "" -- No time found
+	end
+end
+
 return M

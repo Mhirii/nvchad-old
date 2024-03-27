@@ -88,6 +88,8 @@ return {
 	{ import = "configs.oil", enabled = ui.oil },
 	-- Highlight occurrences of word under cursor
 	{ import = "configs.illuminate", enabled = ui.illuminate },
+	-- Pomodoro
+	{ import = "configs.pomo", enabled = true },
 	--}
 
 	-- ── Fold ──────────────────────────────────────────────────────{
