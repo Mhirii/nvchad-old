@@ -2,6 +2,7 @@ local s = require "settings"
 
 return {
   { import = "configs.lspconfig" },
+  { import = "configs.whichkey" },
   { "williamboman/mason-lspconfig.nvim" },
 
   -- Editor
@@ -27,6 +28,7 @@ return {
   -- Motions
   { import = "configs.motions.hop", enabled = s.motions.hop },
   { import = "configs.motions.marks", enabled = s.motions.marks },
+  { import = "configs.motions.harpoon", enabled = s.motions.harpoon },
 
   -- UI
   { import = "configs.ui.dressing", enabled = true },
