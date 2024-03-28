@@ -6,6 +6,7 @@ return {
   { "williamboman/mason-lspconfig.nvim" },
 
   -- Editor
+  { import = "configs.editor.garbage_day", enabled = true },
   { import = "configs.editor.telescope", enabled = true },
   { import = "configs.editor.neotree", enabled = true },
   { import = "configs.editor.cmp", enabled = true },
