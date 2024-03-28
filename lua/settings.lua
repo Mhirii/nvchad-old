@@ -47,6 +47,7 @@ M.ui = {
   split_animation = true,
   illuminate = true,
   ufo = true,
+  hlslens = true,
 }
 
 M.motions = {

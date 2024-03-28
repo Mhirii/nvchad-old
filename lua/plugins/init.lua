@@ -41,6 +41,7 @@ return {
   { import = "configs.ui.trouble", enabled = s.ui.trouble },
   { import = "configs.ui.ufo", enabled = s.ui.ufo },
   { import = "configs.ui.windows", enabled = s.ui.windows },
+  { import = "configs.ui.hlslens", enabled = s.ui.hlslens },
 
   -- Utility
   { import = "configs.utility.lazygit", enabled = true },
