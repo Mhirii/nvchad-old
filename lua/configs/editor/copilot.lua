@@ -16,8 +16,8 @@ return {
           require("copilot.suggestion").accept_line()
         end,
       },
-      { mode = { "n" }, "<leader>Tc", "<CMD>Copilot enable<CR>", desc = "Copilot Enable" },
-      { mode = { "n" }, "<leader>TC", "<CMD>Copilot disable<CR>", desc = "Copilot Disable" },
+      { mode = { "n" }, "<leader>Tc", "<CMD>Copilot enable<CR>", desc = "Copilot - Enable" },
+      { mode = { "n" }, "<leader>TC", "<CMD>Copilot disable<CR>", desc = "Copilot - Disable" },
     },
     config = function()
       require("copilot").setup {
