@@ -2,9 +2,9 @@ return {
   "nvim-telescope/telescope.nvim",
   keys = {
     {
-      "<leader>P",
+      "<leader>sp",
       "<cmd> Telescope lazy<CR>",
-      desc = "Surf Plugins",
+      desc = "Lazy - Search Plugins",
     },
   },
   dependencies = {
