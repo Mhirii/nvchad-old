@@ -108,10 +108,13 @@ M.ui = {
     buttons = {
       {
         "󰁯  Restore Session",
-        "Spc q l",
-        function()
-          require("persistence").load { last = true }
-        end,
+        "Spc q s",
+        "SessionManager load_last_session",
+      },
+      {
+        "󱔘  Pick Session",
+        "Spc q p",
+        "SessionManager load_session",
       },
       {
         "  Zoxide",

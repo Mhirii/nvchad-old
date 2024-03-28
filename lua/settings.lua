@@ -33,6 +33,7 @@ M.editor = {
   hover = false,
   glance = true,
   oil = true,
+  sessions = true,
 }
 
 M.ui = {

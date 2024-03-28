@@ -5,11 +5,11 @@ return {
   { "williamboman/mason-lspconfig.nvim" },
 
   -- Editor
-  { import = "configs.editor.telescope" },
-  { import = "configs.editor.neotree" },
-  { import = "configs.editor.cmp" },
-  { import = "configs.editor.mini" },
-  { import = "configs.editor.conform", enabled = s.editor.formatter == "conform" },
+  { import = "configs.editor.telescope", enabled = true },
+  { import = "configs.editor.neotree", enabled = true },
+  { import = "configs.editor.cmp", enabled = true },
+  { import = "configs.editor.mini", enabled = true },
+  { import = "configs.editor.conform", enabled = true },
   { import = "configs.editor.lint", enabled = s.editor.linter },
   { import = "configs.editor.aerial", enabled = s.editor.aerial },
   { import = "configs.editor.copilot", enabled = s.editor.copilot },
@@ -17,6 +17,8 @@ return {
   { import = "configs.editor.inc_rename", enabled = s.editor.inc_rename },
   { import = "configs.editor.oil", enabled = s.editor.oil },
   { import = "configs.editor.smart_splits", enabled = s.editor.smart_splits },
+  { import = "configs.editor.session", enabled = s.editor.sessions },
+  { import = "configs.editor.workspaces", enabled = s.editor.sessions },
 
   -- Languages
   { import = "configs.lang.typescript", enabled = s.lang.typescript },
@@ -27,7 +29,8 @@ return {
   { import = "configs.motions.marks", enabled = s.motions.marks },
 
   -- UI
-  { import = "configs.ui.dressing" },
+  { import = "configs.ui.dressing", enabled = true },
+  { import = "configs.ui.bqf", enabled = true },
   { import = "configs.ui.illuminate", enabled = s.ui.illuminate },
   { import = "configs.ui.neoscroll", enabled = s.ui.smooth_scroll },
   { import = "configs.ui.noice", enabled = s.ui.noice },
@@ -36,12 +39,12 @@ return {
   { import = "configs.ui.windows", enabled = s.ui.windows },
 
   -- Utility
-  { import = "configs.utility.lazygit" },
-  { import = "configs.utility.numb" },
-  { import = "configs.utility.zoxide" },
-  { import = "configs.utility.hawtkey" },
-  { import = "configs.utility.toggler" },
-  { import = "configs.utility.better_escape" },
+  { import = "configs.utility.lazygit", enabled = true },
+  { import = "configs.utility.numb", enabled = true },
+  { import = "configs.utility.zoxide", enabled = true },
+  { import = "configs.utility.hawtkey", enabled = true },
+  { import = "configs.utility.toggler", enabled = true },
+  { import = "configs.utility.better_escape", enabled = true },
   { import = "configs.utility.comment_box", enabled = s.utility.comment_box },
   { import = "configs.utility.lsplines", enabled = s.utility.lsplines },
   { import = "configs.utility.nerdy", enabled = s.utility.nerdy },
