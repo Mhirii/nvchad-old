@@ -21,6 +21,7 @@ return {
   { import = "configs.editor.smart_splits", enabled = s.editor.smart_splits },
   { import = "configs.editor.session", enabled = s.editor.sessions },
   { import = "configs.editor.workspaces", enabled = s.editor.sessions },
+  { import = "configs.editor.goto_preview", enabled = s.editor.lsp_preview },
 
   -- Languages
   { import = "configs.lang.typescript", enabled = s.lang.typescript },

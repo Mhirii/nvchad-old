@@ -31,7 +31,7 @@ M.editor = {
   aerial = true,
   inc_rename = true,
   hover = false,
-  glance = true,
+  lsp_preview = true,
   oil = true,
   sessions = true,
 }
