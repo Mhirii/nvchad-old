@@ -25,6 +25,7 @@ return {
   -- Languages
   { import = "configs.lang.typescript", enabled = s.lang.typescript },
   { import = "configs.lang.hyprlang", enabled = s.lang.hyprlang },
+  { import = "configs.lang.markdown", enabled = s.lang.markdown },
 
   -- Motions
   { import = "configs.motions.hop", enabled = s.motions.hop },
