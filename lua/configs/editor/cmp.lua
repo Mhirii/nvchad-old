@@ -69,7 +69,21 @@ return {
     "hrsh7th/cmp-nvim-lsp-document-symbol",
   },
   opts = {
-    mapping = {},
+    mapping = {
+      ["<Tab>"] = require("cmp").mapping(function(fallback)
+        fallback()
+      end, {
+        "i",
+        "s",
+      }),
+
+      ["<S-Tab>"] = require("cmp").mapping(function(fallback)
+        fallback()
+      end, {
+        "i",
+        "s",
+      }),
+    },
 
     sources = {
       -- -- AI
