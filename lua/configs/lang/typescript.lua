@@ -1,4 +1,4 @@
-local lspconfig = require "nvchad.configs.lspconfig"
+local lspconfig = require "override.lspconfig"
 local on_attach = lspconfig.on_attach
 
 return {
