@@ -62,11 +62,11 @@ M.utility = {
   nerdy = true,
   persist = true,
   git = true,
-  terms = false,
   obsidian = false,
   todo_comments = true,
   comment_box = true,
   pomodoro = true,
+  notes = true,
 }
 
 return M

@@ -56,4 +56,5 @@ return {
   { import = "configs.utility.nerdy", enabled = s.utility.nerdy },
   { import = "configs.utility.pomo", enabled = s.utility.pomodoro },
   { import = "configs.utility.todo_comments", enabled = s.utility.todo_comments },
+  { import = "configs.utility.flote", enabled = s.utility.notes },
 }
