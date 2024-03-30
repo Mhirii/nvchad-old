@@ -1,12 +1,18 @@
 return {
   {
     "neovim/nvim-lspconfig",
+    dependencies = {
+      "artemave/workspace-diagnostics.nvim",
+    },
     config = function()
       local telescope = require "telescope"
       vim.keymap.set("n", "gr", ":Telescope lsp_references<CR>", { noremap = true, silent = true })
       local override = require "override.lspconfig"
       ---@diagnostic disable: undefined-global
-      local on_attach = override.on_attach
+      local on_attach = function(client, bufnr)
+        override.on_attach(client, bufnr)
+        require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
+      end
       local capabilities = override.capabilities
 
       local lspconfig = require "lspconfig"
