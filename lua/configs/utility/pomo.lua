@@ -49,6 +49,6 @@ return {
     end, { desc = "Pomo - Start new Timer", noremap = true, silent = true })
     map("n", "<leader>ps", function()
       pomo.stop_timer()
-    end, { desc = "Pomo - Start new Timer", noremap = true, silent = true })
+    end, { desc = "Pomo - Stop Timer", noremap = true, silent = true })
   end,
 }
