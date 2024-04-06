@@ -37,6 +37,8 @@ M.on_attach = function(client, bufnr)
   if conf.signature and client.server_capabilities.signatureHelpProvider then
     require("nvchad.lsp.signature").setup(client, bufnr)
   end
+
+  require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
 end
 
 -- disable semanticTokens
