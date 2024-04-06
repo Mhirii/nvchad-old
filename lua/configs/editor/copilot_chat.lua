@@ -1,3 +1,65 @@
+local load_keys = function()
+  local map = vim.keymap.set
+  map("n", "<A-c>", "<cmd>CopilotChat<CR>", { desc = "CopilotChat - Enable" })
+
+  -- Show help actions with telescope
+  map({ "v", "n" }, "<leader>ah", function()
+    local actions = require "CopilotChat.actions"
+    require("CopilotChat.integrations.telescope").pick(actions.help_actions())
+  end, { desc = "CopilotChat - Help actions" })
+
+  -- Show prompts actions with telescope
+  map({ "n", "v" }, "<leader>ap", function()
+    local actions = require "CopilotChat.actions"
+    require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
+  end, { desc = "CopilotChat - Prompt actions" })
+
+  map(
+    { "n", "v" },
+    "<leader>ap",
+    ":lua require('CopilotChat.integrations.telescope').pick(require('CopilotChat.actions').prompt_actions())<CR>",
+    { desc = "CopilotChat - Prompt actions" }
+  )
+
+  -- Code related commands
+  map({ "n", "v" }, "<leader>ae", "<cmd>CopilotChatExplain<cr>", { desc = "CopilotChat - Explain code" })
+  map({ "n", "v" }, "<leader>at", "<cmd>CopilotChatTests<cr>", { desc = "CopilotChat - Generate tests" })
+  map({ "n", "v" }, "<leader>af", "<cmd>CopilotChatFix<cr>", { desc = "CopilotChat - Fix code" })
+  map({ "n", "v" }, "<leader>ar", "<cmd>CopilotChatRefactor<cr>", { desc = "CopilotChat - Refactor code" })
+  map({ "n", "v" }, "<leader>ao", "<cmd>CopilotChatOptimize<cr>", { desc = "CopilotChat - Optimize code" })
+  map({ "n", "v" }, "<leader>ad", "<cmd>CopilotChatDocs<cr>", { desc = "CopilotChat - Generate Docs" })
+
+  -- Chat with Copilot in visual mode
+  map({ "n", "v" }, "<leader>av", ":CopilotChatVisual", { desc = "CopilotChat - Open in vertical split" })
+  map({ "n", "v" }, "<leader>ax", ":CopilotChatInline<cr>", { desc = "CopilotChat - Inline chat" })
+  -- Custom input for CopilotChat
+  map({ "n", "v" }, "<leader>ai", function()
+    local input = vim.fn.input "Ask Copilot: "
+    if input ~= "" then
+      vim.cmd("CopilotChat " .. input)
+    end
+  end, { desc = "CopilotChat - Ask input" })
+
+  -- Quick chat with Copilot
+  map({ "n", "v" }, "<leader>aq", function()
+    local input = vim.fn.input "Quick Chat: "
+    if input ~= "" then
+      vim.cmd("CopilotChatBuffer " .. input)
+    end
+  end, { desc = "CopilotChat - Quick chat" })
+
+  -- Git
+  map({ "n", "v" }, "<leader>ac", "<cmd>CopilotChatCommit<cr>", { desc = "CopilotChat - Commit Message" })
+  map({ "n", "v" }, "<leader>as", "<cmd>CopilotChatCommitStaged<cr>", { desc = "CopilotChat - Commit Message Staged" })
+
+  -- Fix the issue with diagnostic
+  map({ "n", "v" }, "<leader>aF", "<cmd>CopilotChatFixDiagnostic<cr>", { desc = "CopilotChat - Fix Diagnostic" })
+  -- Clear buffer and chat history
+  map({ "n", "v" }, "<leader>aR", "<cmd>CopilotChatReset<cr>", { desc = "CopilotChat - Clear buffer and chat history" })
+  -- Toggle Copilot Chat Vsplit
+  map({ "n", "v" }, "<leader>av", "<cmd>CopilotChatToggle<cr>", { desc = "CopilotChat - Toggle Vsplit" })
+end
+
 return {
   {
     "CopilotC-Nvim/CopilotChat.nvim",
@@ -67,6 +129,8 @@ return {
         end,
       }
 
+      load_keys()
+
       return {
         debug = false, -- Enable debug logging
         proxy = nil, -- [protocol://]host[:port] Use this proxy
@@ -76,13 +140,19 @@ return {
         model = "gpt-4", -- GPT model to use, 'gpt-3.5-turbo' or 'gpt-4'
         temperature = 0.1, -- GPT temperature
 
-        name = "CopilotChat", -- Name to use in chat
+        question_header = "", -- Header to use for user questions
+        answer_header = "**Copilot** ", -- Header to use for AI answers
+        error_header = "**Error** ", -- Header to use for errors
         separator = "---", -- Separator to use in chat
         show_folds = true, -- Shows folds for sections in chat
         show_help = true, -- Shows help message as virtual lines when waiting for user input
-        auto_follow_cursor = true, -- Auto-follow cursor in chat
+        auto_follow_cursor = false, -- Auto-follow cursor in chat
         auto_insert_mode = false, -- Automatically enter insert mode when opening window and if auto follow cursor is enabled on new prompt
         clear_chat_on_new_prompt = false, -- Clears chat on every new prompt
+
+        context = "buffers", -- Default context to use, 'buffers', 'buffer' or none (can be specified manually in prompt via @). default: nil
+        history_path = vim.fn.stdpath "data" .. "/copilotchat_history", -- Default path to stored history
+        callback = nil, -- Callback to use when ask response is received
 
         selection = function(source)
           return select.visual(source) or select.line(source)
