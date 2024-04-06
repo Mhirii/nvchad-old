@@ -9,10 +9,7 @@ return {
       vim.keymap.set("n", "gr", ":Telescope lsp_references<CR>", { noremap = true, silent = true })
       local override = require "override.lspconfig"
       ---@diagnostic disable: undefined-global
-      local on_attach = function(client, bufnr)
-        override.on_attach(client, bufnr)
-        require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
-      end
+      local on_attach = override.on_attach
       local capabilities = override.capabilities
 
       local lspconfig = require "lspconfig"
@@ -29,12 +26,15 @@ return {
         "jsonls",
         "dockerls",
         "lua_ls",
-        -- "bashls",
+        "bashls",
+        "biome",
+        "eslint",
       }
       --"rust_analyzer", "tsserver"
 
       require("mason-lspconfig").setup {
         ensure_installed = servers,
+        automatic_installation = true,
       }
 
       require("mason-lspconfig").setup_handlers {
@@ -265,6 +265,12 @@ return {
             },
           }
         end,
+        ["volar"] = function()
+          lspconfig["volar"].setup {
+            capabilities = capabilities,
+            on_attach = on_attach,
+          }
+        end,
       }
 
       for _, lsp in ipairs(servers) do
@@ -272,78 +278,7 @@ return {
           on_attach = on_attach,
           capabilities = capabilities,
         }
-        lspconfig["volar"].setup {
-          capabilities = capabilities,
-          on_attach = on_attach,
-          -- filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
-          filetypes = { "vue" },
-        }
       end
-
-      local volar_cmd = { "vue-language-server", "--stdio" }
-      local volar_root_dir = lspconfig.util.root_pattern "package.json"
-
-      local tsdk = "node_modules/typescript/lib"
-      local function on_new_config(new_config, workspace_dir)
-        new_config.init_options.typescript.serverPath = tsdk
-        new_config.init_options.typescript.tsdk = tsdk
-      end
-
-      lspconfig.volar = {
-
-        default_config = {
-          cmd = volar_cmd,
-          root_dir = volar_root_dir,
-          on_new_config = on_new_config,
-          filetypes = { "vue", "typescript", "javascript" },
-          -- If you want to use Volar's Take Over Mode (if you know, you know)
-          -- filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
-          init_options = {
-            typescript = {
-              tsdk = tsdk,
-            },
-            languageFeatures = {
-              implementation = true, -- new in @volar/vue-language-server v0.33
-              references = true,
-              definition = true,
-              typeDefinition = true,
-              callHierarchy = true,
-              hover = true,
-              rename = true,
-              renameFileRefactoring = true,
-              signatureHelp = true,
-              codeAction = true,
-              workspaceSymbol = true,
-              completion = {
-                defaultTagNameCase = "both",
-                defaultAttrNameCase = "kebabCase",
-                getDocumentNameCasesRequest = false,
-                getDocumentSelectionRequest = false,
-              },
-              -- doc
-              documentHighlight = true,
-              documentLink = true,
-              codeLens = { showReferencesNotification = true },
-              -- not supported - https://github.com/neovim/neovim/pull/15723
-              semanticTokens = false,
-              diagnostics = true,
-              schemaRequestService = true,
-            },
-            -- html
-            documentFeatures = {
-              selectionRange = true,
-              foldingRange = true,
-              linkedEditingRange = true,
-              documentSymbol = true,
-              -- not supported - https://github.com/neovim/neovim/pull/13654
-              documentColor = false,
-              documentFormatting = {
-                defaultPrintWidth = 100,
-              },
-            },
-          },
-        },
-      }
 
       -- vim.lsp.handlers["textDocument/hover"] = require("noice").hover
       -- vim.lsp.handlers["textDocument/signatureHelp"] = require("noice").signature
