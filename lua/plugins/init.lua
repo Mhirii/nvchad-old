@@ -27,6 +27,7 @@ return {
   { import = "configs.lang.typescript", enabled = s.lang.typescript },
   { import = "configs.lang.hyprlang", enabled = s.lang.hyprlang },
   { import = "configs.lang.markdown", enabled = s.lang.markdown },
+  { import = "configs.lang.golang", enabled = s.lang.go },
 
   -- Motions
   { import = "configs.motions.hop", enabled = s.motions.hop },
