@@ -3,9 +3,9 @@ return {
   event = "VeryLazy",
   config = function()
     require("lint").linters_by_ft = {
-      typescript = { "biomejs" },
-      javascript = { "biomejs" },
-      lua = { "luacheck" },
+      typescript = { "eslint" },
+      javascript = { "eslint" },
+      -- lua = { "luacheck" },
       json = { "jsonlint" },
       yaml = { "yamllint" },
       markdown = { "markdownlint" },
