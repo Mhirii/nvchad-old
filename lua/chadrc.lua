@@ -43,7 +43,7 @@ local M = {}
 
 M.ui = {
   theme = "tokyonight",
-  theme_toggle = { "tokyonight", "rosepine" },
+  theme_toggle = { "tokyonight", "tokyonight" },
 
   cmp = {
     style = "atom_colored", -- flatt_dark | flat_light | default | atom | atom_colored

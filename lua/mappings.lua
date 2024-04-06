@@ -34,68 +34,8 @@ nomap("n", "<leader>fz")
 
 map("i", "jk", "<ESC>")
 
+map({ "n" }, "<leader>qq", "<CMD>ccl<CR>", { desc = "Quickfix - Close all" })
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
-
-if settings.editor.copilot_chat then
-  map("n", "<A-c>", "<cmd>CopilotChat<CR>", { desc = "CopilotChat - Enable" })
-
-  -- Show help actions with telescope
-  map({ "v", "n" }, "<leader>coh", function()
-    local actions = require "CopilotChat.actions"
-    require("CopilotChat.integrations.telescope").pick(actions.help_actions())
-  end, { desc = "CopilotChat - Help actions" })
-
-  -- Show prompts actions with telescope
-  map({ "n", "v" }, "<leader>cop", function()
-    local actions = require "CopilotChat.actions"
-    require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
-  end, { desc = "CopilotChat - Prompt actions" })
-
-  map(
-    { "n", "v" },
-    "<leader>cop",
-    ":lua require('CopilotChat.integrations.telescope').pick(require('CopilotChat.actions').prompt_actions())<CR>",
-    { desc = "CopilotChat - Prompt actions" }
-  )
-
-  -- Code related commands
-  map({ "n", "v" }, "<leader>coe", "<cmd>CopilotChatExplain<cr>", { desc = "CopilotChat - Explain code" })
-  map({ "n", "v" }, "<leader>cot", "<cmd>CopilotChatTests<cr>", { desc = "CopilotChat - Generate tests" })
-  map({ "n", "v" }, "<leader>cor", "<cmd>CopilotChatReview<cr>", { desc = "CopilotChat - Review code" })
-  map({ "n", "v" }, "<leader>coR", "<cmd>CopilotChatRefactor<cr>", { desc = "CopilotChat - Refactor code" })
-  map({ "n", "v" }, "<leader>con", "<cmd>CopilotChatBetterNamings<cr>", { desc = "CopilotChat - Better Naming" })
-
-  -- Chat with Copilot in visual mode
-  map({ "n", "v" }, "<leader>cov", ":CopilotChatVisual", { desc = "CopilotChat - Open in vertical split" })
-  map({ "n", "v" }, "<leader>cox", ":CopilotChatInline<cr>", { desc = "CopilotChat - Inline chat" })
-  -- -- Custom input for CopilotChat
-  map({ "n", "v" }, "<leader>coi", function()
-    local input = vim.fn.input "Ask Copilot: "
-    if input ~= "" then
-      vim.cmd("CopilotChat " .. input)
-    end
-  end, { desc = "CopilotChat - Ask input" })
-
-  -- -- Quick chat with Copilot
-  map({ "n", "v" }, "<leader>coq", function()
-    local input = vim.fn.input "Quick Chat: "
-    if input ~= "" then
-      vim.cmd("CopilotChatBuffer " .. input)
-    end
-  end, { desc = "CopilotChat - Quick chat" })
-
-  -- -- Fix the issue with diagnostic
-  map({ "n", "v" }, "<leader>cof", "<cmd>CopilotChatFixDiagnostic<cr>", { desc = "CopilotChat - Fix Diagnostic" })
-  -- -- Clear buffer and chat history
-  map(
-    { "n", "v" },
-    "<leader>col",
-    "<cmd>CopilotChatReset<cr>",
-    { desc = "CopilotChat - Clear buffer and chat history" }
-  )
-  -- -- Toggle Copilot Chat Vsplit
-  map({ "n", "v" }, "<leader>cov", "<cmd>CopilotChatToggle<cr>", { desc = "CopilotChat - Toggle Vsplit" })
-end
 
 -- ── Buffer ────────────────────────────────────────────────────
 map("n", "<leader>nb", "<cmd> new <CR>", { desc = "Buffer - New" })

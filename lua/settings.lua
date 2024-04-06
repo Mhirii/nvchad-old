@@ -67,6 +67,7 @@ M.utility = {
   comment_box = true,
   pomodoro = true,
   notes = true,
+  undotree = true,
 }
 
 return M
