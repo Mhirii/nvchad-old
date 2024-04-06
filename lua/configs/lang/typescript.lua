@@ -1,6 +1,16 @@
 local lspconfig = require "override.lspconfig"
 local on_attach = lspconfig.on_attach
 
+local find_nearest_tsconfig = function()
+  local tsconfig = vim.fn.findfile("tsconfig.json", ".;")
+
+  if tsconfig ~= "" then
+    return tsconfig
+  end
+
+  return nil
+end
+
 return {
   {
     "dmmulroy/tsc.nvim",
@@ -16,6 +26,13 @@ return {
         enable_progress_notifications = true,
         hide_progress_notifications_from_history = true,
         pretty_errors = true,
+        flags = {
+          noEmit = true,
+          project = function()
+            return find_nearest_tsconfig()
+          end,
+          watch = false,
+        },
       }
     end,
   },
